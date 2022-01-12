@@ -1,6 +1,8 @@
 ﻿using CodeAgen.Code;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.CodeTemplates;
+using CodeAgen.Code.CodeTemplates.ClassMembers;
+using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 using CodeAgen.Outputs.Entities;
 using Xunit;
@@ -69,6 +71,14 @@ namespace CodeAgen.Tests.CodeGenerationTests
         }
         
         [Fact]
+        public void Build_WithoutName()
+        {
+            var @class = new CodeClassTemplate();
+
+            Assert.Throws(typeof(CodeBuildException), () =>  @class.Build(_codeOutput));
+        }
+        
+        [Fact]
         public void Build_AbstractNoTab()
         {
             var @class = new CodeClassTemplate();
@@ -95,6 +105,60 @@ namespace CodeAgen.Tests.CodeGenerationTests
             @class.Build(_codeOutput);
             
             Assert.Equal("public class ExampleClass<T,A>\r\n{\r\n}\r\n", _codeOutput.ToString());
+        }
+        
+        [Fact]
+        public void Build_InvalidGenericNoTab()
+        {
+            var @class = new CodeClassTemplate();
+            @class.AddGenericArgument("T1");
+
+            Assert.Throws(typeof(CodeBuildException),() => @class.AddGenericArgument("1T"));
+            Assert.Throws(typeof(CodeBuildException),() => @class.AddGenericArgument("T;"));
+        }
+        
+        [Fact]
+        public void Field_Creating()
+        {
+            var field = new CodeClassField(CodeType.Get("float"), "field");
+            
+            field.Build(_codeOutput);
+            
+            Assert.Equal("private float _field;\r\n", _codeOutput.ToString());
+        }
+        
+        [Fact]
+        public void Field_CreatingPublic()
+        {
+            var field = new CodeClassField(CodeType.Get("float"), "field", accessModifier: CodeAccessModifier.Public);
+            
+            field.Build(_codeOutput);
+            
+            Assert.Equal("public float Field;\r\n", _codeOutput.ToString());
+        }
+        
+        [Fact]
+        public void Field_CreatingWithValue()
+        {
+            var field = new CodeClassField(CodeType.Get("float"), "field", "5");
+            
+            field.Build(_codeOutput);
+            
+            Assert.Equal("private float _field = 5;\r\n", _codeOutput.ToString());
+        }
+        
+        [Fact]
+        public void Field_AddingToClass()
+        {
+            var @class = new CodeClassTemplate();
+            @class.SetName("ClassName");
+            
+            var field = new CodeClassField(CodeType.Get("float"), "field", "5");
+
+            @class.AddUnit(field);
+            @class.Build(_codeOutput);
+
+            Assert.Equal("private class ClassName\r\n{\r\n\tprivate float _field = 5;\r\n}\r\n", _codeOutput.ToString());
         }
         
         [Fact]

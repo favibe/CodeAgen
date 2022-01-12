@@ -7,6 +7,7 @@ namespace CodeAgen.Code
         public const char Space = ' ';
         public const char Comma = ',';
         public const char Colon = ':';
+        public const char Underscore = '_';
         public const char Semicolon = ';';
         public const char OpenCurlyBracket = '{';
         public const char CloseCurlyBracket = '}';
@@ -15,5 +16,6 @@ namespace CodeAgen.Code
         public const char OpenAngleBracket = '<';
         public const char CloseAngleBracket = '>';
         public const string Comment = "//";
+        public const string Assignment = " = ";
     }
 }

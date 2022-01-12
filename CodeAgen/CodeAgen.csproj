@@ -49,7 +49,10 @@
         <Compile Include="Code\CodeAccessModifier.cs" />
         <Compile Include="Code\CodeKeywords.cs" />
         <Compile Include="Code\CodeMarkups.cs" />
+        <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassField.cs" />
+        <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassMember.cs" />
         <Compile Include="Code\CodeTemplates\CodeClassTemplate.cs" />
+        <Compile Include="Exceptions\CodeBuildException.cs" />
         <Compile Include="Outputs\Entities\StandardCodeOutput.cs" />
         <Compile Include="Outputs\ICodeOutput.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

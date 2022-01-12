@@ -8,7 +8,7 @@ namespace CodeAgen.Code.Basic
     {
         private readonly List<CodeTabbable> _units = new List<CodeTabbable>();
 
-        public CodeBracedBlock AddUnit(CodeTabbable unit)
+        public virtual CodeBracedBlock AddUnit(CodeTabbable unit)
         {
             unit.Level = Level + 1;
             _units.Add(unit);
