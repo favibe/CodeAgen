@@ -50,8 +50,16 @@
         <Compile Include="Code\CodeKeywords.cs" />
         <Compile Include="Code\CodeMarkups.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassField.cs" />
-        <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassMember.cs" />
+        <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassMethod.cs" />
+        <Compile Include="Code\CodeTemplates\ClassMembers\ICodeClassMember.cs" />
         <Compile Include="Code\CodeTemplates\CodeClassTemplate.cs" />
+        <Compile Include="Code\CodeTemplates\Extensions\AbstractableExtension.cs" />
+        <Compile Include="Code\CodeTemplates\Extensions\GenericableExtension.cs" />
+        <Compile Include="Code\CodeTemplates\Extensions\InheritableExtension.cs" />
+        <Compile Include="Code\CodeTemplates\Interfaces\IAbstractable.cs" />
+        <Compile Include="Code\CodeTemplates\Interfaces\IGenericable.cs" />
+        <Compile Include="Code\CodeTemplates\Interfaces\IInheritable.cs" />
+        <Compile Include="Code\Utils\CodeName.cs" />
         <Compile Include="Exceptions\CodeBuildException.cs" />
         <Compile Include="Outputs\Entities\StandardCodeOutput.cs" />
         <Compile Include="Outputs\ICodeOutput.cs" />

@@ -51,8 +51,10 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="CodeGenerationTests\Class\CodeClassTemplateTests.cs" />
+        <Compile Include="CodeGenerationTests\Class\CodeFieldTest.cs" />
+        <Compile Include="CodeGenerationTests\Class\CodeMethodTest.cs" />
         <Compile Include="CodeGenerationTests\CodeBracedBlockTests.cs" />
-        <Compile Include="CodeGenerationTests\CodeClassTemplateTests.cs" />
         <Compile Include="CodeGenerationTests\CodeFragmentTests.cs" />
         <Compile Include="CodeGenerationTests\CodeLineTests.cs" />
         <Compile Include="OutputsTests\StandardOutputTests.cs" />

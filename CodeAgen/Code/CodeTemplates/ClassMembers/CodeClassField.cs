@@ -1,11 +1,12 @@
-﻿using CodeAgen.Code.Basic;
+﻿using CodeAgen.Code.Abstract;
+using CodeAgen.Code.Basic;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
 {
-    public class CodeClassField : CodeClassMember
+    public class CodeClassField : CodeTabbable, ICodeClassMember
     {
-        public override byte Order => 0;
+        public byte Order => 0;
         
         private readonly CodeType _type;
         private readonly string _name;
