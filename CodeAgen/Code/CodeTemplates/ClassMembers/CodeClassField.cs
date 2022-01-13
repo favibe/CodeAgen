@@ -1,5 +1,7 @@
 ﻿using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
+using CodeAgen.Code.CodeTemplates.Interfaces;
+using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Code.Utils;
 using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
