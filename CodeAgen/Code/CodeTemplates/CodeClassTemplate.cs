@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.CodeTemplates.ClassMembers;
@@ -20,10 +19,9 @@ namespace CodeAgen.Code.CodeTemplates
         
         private string _name = string.Empty;
         private CodeComment _comment;
-
-        private List<ICodeClassMember> _members;
-        
         private CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
+
+        private readonly List<ICodeClassMember> _members = new List<ICodeClassMember>();
 
         // Properties
         

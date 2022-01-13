@@ -66,7 +66,7 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
             output.Write(CodeMarkups.Space);
             output.Write(genericable.GenericRestrictions[0]);
 
-            for (int i = 1; i < genericable.GenericRestrictions.Count; i++)
+            for (var i = 1; i < genericable.GenericRestrictions.Count; i++)
             {
                 output.Write(CodeMarkups.Space);
                 output.Write(CodeKeywords.Where);
