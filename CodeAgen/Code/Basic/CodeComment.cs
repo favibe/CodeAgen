@@ -2,7 +2,7 @@
 
 namespace CodeAgen.Code.Basic
 {
-    public class CodeComment : CodeRaw
+    public sealed class CodeComment : CodeRaw
     {
         private readonly string _content;
         

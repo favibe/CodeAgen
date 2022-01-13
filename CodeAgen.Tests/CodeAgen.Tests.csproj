@@ -52,6 +52,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="CodeGenerationTests\Class\CodeClassEventTests.cs" />
+        <Compile Include="CodeGenerationTests\Class\CodeClassPropertyTest.cs" />
         <Compile Include="CodeGenerationTests\Class\CodeClassTemplateTests.cs" />
         <Compile Include="CodeGenerationTests\Class\CodeFieldTest.cs" />
         <Compile Include="CodeGenerationTests\Class\CodeMethodTest.cs" />
