@@ -1,10 +1,12 @@
 ﻿using System.Text.RegularExpressions;
+using CodeAgen.Code.Basic;
+using CodeAgen.Exceptions;
 
-namespace CodeAgen.Code.Utils
+namespace CodeAgen.Code.CodeTemplates
 {
-    public static class CodeName
+    public class CodeName : CodeRawString
     {
-        private static readonly Regex SpecialCharactersRegex = new Regex("[^A-Za-z0-9]");
+        private static readonly Regex SpecialCharactersRegex = new Regex("[^A-Za-z0-9_@]");
 
         public static bool IsValidMethodName(string name) => IsValidName(name);
         public static bool IsValidTypeName(string name) => IsValidName(name);
@@ -14,7 +16,7 @@ namespace CodeAgen.Code.Utils
             return !string.IsNullOrWhiteSpace(name) && !char.IsNumber(name[0]) && !SpecialCharactersRegex.IsMatch(name);
         }
 
-        public static string GetFieldName(string name, CodeAccessModifier accessModifier)
+        public static CodeName GetFieldName(string name, CodeAccessModifier accessModifier)
         {
             if (accessModifier == CodeAccessModifier.Private)
             {
@@ -22,6 +24,19 @@ namespace CodeAgen.Code.Utils
             }
             
             return $"{char.ToUpper(name[0])}{name.Substring(1)}";
+        }
+
+        public static implicit operator CodeName(string name)
+        {
+            return new CodeName(name);
+        }
+        
+        public CodeName(string data) : base(data)
+        {
+            if (!IsValidName(data))
+            {
+                throw new CodeBuildException();
+            }
         }
     }
 }

@@ -49,11 +49,13 @@
         <Compile Include="Code\CodeAccessModifier.cs" />
         <Compile Include="Code\CodeKeywords.cs" />
         <Compile Include="Code\CodeMarkups.cs" />
+        <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassConstructor.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassEvent.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassField.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassMethod.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassProperty.cs" />
         <Compile Include="Code\CodeTemplates\CodeClass.cs" />
+        <Compile Include="Code\CodeTemplates\CodeName.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\AbstractableExtension.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\GenericableExtension.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\InheritableExtension.cs" />
@@ -61,7 +63,6 @@
         <Compile Include="Code\CodeTemplates\Interfaces\IAbstractable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IGenericable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IInheritable.cs" />
-        <Compile Include="Code\Utils\CodeName.cs" />
         <Compile Include="Exceptions\CodeBuildException.cs" />
         <Compile Include="Outputs\Entities\StandardCodeOutput.cs" />
         <Compile Include="Outputs\ICodeOutput.cs" />

@@ -10,11 +10,11 @@ using Xunit;
 
 namespace CodeAgen.Tests.CodeGenerationTests.Class
 {
-    public class CodeClassTemplateTests
+    public class CodeClassTests
     {
         private readonly ICodeOutput _codeOutput;
         
-        public CodeClassTemplateTests()
+        public CodeClassTests()
         {
             _codeOutput = new StandardCodeOutput();
         }
@@ -52,7 +52,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             
             Assert.Equal("public class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
         }
-        
+
         [Fact]
         public void Build_PublicCommentedNoTab()
         {

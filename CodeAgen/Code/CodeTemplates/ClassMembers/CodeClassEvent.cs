@@ -7,13 +7,13 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 {
     public class CodeClassEvent : CodeTabbable, ICodeClassMember
     {
-        private readonly string _name;
+        private readonly CodeName _name;
         private readonly CodeType _type;
         private readonly CodeAccessModifier _accessModifier;
 
         public byte Order => 2;
 
-        public CodeClassEvent(string name, CodeType type, CodeAccessModifier accessModifier = null)
+        public CodeClassEvent(CodeName name, CodeType type, CodeAccessModifier accessModifier = null)
         {
             _name = name;
             _type = type;
@@ -34,7 +34,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             output.Write(CodeMarkups.Space);
             output.Write(_type);
             output.Write(CodeMarkups.Space);
-            output.Write(_name);
+            _name.Build(output);
             output.Write(CodeMarkups.Semicolon);
             output.NextLine();
         }

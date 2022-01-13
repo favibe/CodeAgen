@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
-using CodeAgen.Code.Utils;
 using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 
@@ -14,7 +12,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
     {
         public byte Order => 255;
         
-        private string _name;
+        private readonly CodeName _name;
         private CodeType _returnType = CodeType.Void;
         private CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
         private List<CodeClassMethodParameter> _parameters;
@@ -25,27 +23,16 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         public bool IsAbstract { get; set; }
         public bool HasParameters => _parameters != null && _parameters.Count > 0;
         public bool HasParams => _params != null;
-        public List<string> GenericArguments { get; set; }
+        public List<CodeName> GenericArguments { get; set; }
         public List<string> GenericRestrictions { get; set; }
 
         // Methods
         
-        public CodeClassMethod(string name)
+        public CodeClassMethod(CodeName name)
         {
-            SetName(name);
+            _name = name;
         }
 
-        public CodeClassMethod SetName(string name)
-        {
-            if (!CodeName.IsValidMethodName(name))
-            {
-                throw new CodeBuildException($"Invalid method name: {name}");
-            }
-            
-            _name = name;
-            return this;
-        }
-        
         public CodeClassMethod SetReturnType(CodeType type)
         {
             _returnType = type;
@@ -70,9 +57,9 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             return this;
         }
 
-        public CodeClassMethod AddParams(CodeClassMethodParameter parameter)
+        public CodeClassMethod AddParams(CodeClassMethodParameter @params)
         {
-            _params = parameter;
+            _params = @params;
             return this;
         }
         
@@ -100,7 +87,8 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             
             output.Write(_returnType);
             output.Write(CodeMarkups.Space);
-            output.Write(_name);
+            
+            _name.Build(output);
 
             if (this.IsGeneric())
             {
@@ -123,8 +111,12 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
             if (HasParams)
             {
-                output.Write(CodeMarkups.Comma);
-                output.Write(CodeMarkups.Space);
+                if (HasParameters)
+                {
+                    output.Write(CodeMarkups.Comma);
+                    output.Write(CodeMarkups.Space);
+                }
+
                 output.Write(CodeKeywords.Params);
                 output.Write(CodeMarkups.Space);
                 _params.Build(output);

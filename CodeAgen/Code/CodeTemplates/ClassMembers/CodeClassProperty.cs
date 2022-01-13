@@ -10,7 +10,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
     {
         public byte Order => 1;
         
-        private readonly string _name;
+        private readonly CodeName _name;
         private readonly CodeType _type;
         private readonly CodeAccessModifier _accessModifier;
 
@@ -18,7 +18,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private bool _hasSetter;
 
         public CodeClassProperty(
-            string name, CodeType type,
+            CodeName name, CodeType type,
             CodeAccessModifier accessModifier = null
             )
         {
@@ -98,7 +98,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             output.Write(CodeMarkups.Space);
             output.Write(_type);
             output.Write(CodeMarkups.Space);
-            output.Write(_name);
+            _name.Build(output);
             output.NextLine();
             base.Build(output);
         }

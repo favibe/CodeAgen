@@ -23,10 +23,12 @@ namespace CodeAgen.Code.Basic
         }
     }
 
-    public sealed class CodeRawString : CodeRaw
+    public class CodeRawString : CodeRaw
     {
         private readonly string _data;
 
+        public string Data => _data;
+        
         public CodeRawString(string data)
         {
             _data = data;

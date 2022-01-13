@@ -125,7 +125,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         }
         
         [Fact]
-        private void Build_WithParams()
+        private void Build_WithParametersAndParams()
         {
             var method = new CodeClassMethod("ExampleMethod");
             method.SetAccess(CodeAccessModifier.Public);
@@ -135,6 +135,18 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             method.Build(_codeOutput);
             
             Assert.Equal("public float ExampleMethod(float ex1 = 2f, params float[] par)\r\n{\r\n}\r\n", _codeOutput.ToString());
+        }
+        
+        [Fact]
+        private void Build_WithParams()
+        {
+            var method = new CodeClassMethod("ExampleMethod");
+            method.SetAccess(CodeAccessModifier.Public);
+            method.SetReturnType(CodeType.Get("float"));
+            method.AddParams(new CodeClassMethodParameter("par", CodeType.Get("float[]")));
+            method.Build(_codeOutput);
+            
+            Assert.Equal("public float ExampleMethod(params float[] par)\r\n{\r\n}\r\n", _codeOutput.ToString());
         }
     }
 }

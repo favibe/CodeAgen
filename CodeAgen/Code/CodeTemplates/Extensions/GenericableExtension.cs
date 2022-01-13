@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using CodeAgen.Code.CodeTemplates.Interfaces;
-using CodeAgen.Code.Utils;
 using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 
@@ -18,16 +17,11 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
             return genericable.GenericRestrictions != null && genericable.GenericRestrictions.Count > 0;
         }
         
-        public static IGenericable AddGenericArgument(this IGenericable genericable, string name, string restriction = null)
+        public static IGenericable AddGenericArgument(this IGenericable genericable, CodeName name, string restriction = null)
         {
-            if (!CodeName.IsValidTypeName(name))
-            {
-                throw new CodeBuildException($"Invalid generic argument name: {name}");
-            }
-            
             if (!IsGeneric(genericable))
             {
-                genericable.GenericArguments = new List<string>();
+                genericable.GenericArguments = new List<CodeName>();
             }
 
             if (restriction != null)
@@ -37,7 +31,7 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
                     genericable.GenericRestrictions = new List<string>();
                 }
                 
-                genericable.GenericRestrictions.Add($"{name}:{restriction}");
+                genericable.GenericRestrictions.Add($"{name.Data}:{restriction}");
             }
 
             genericable.GenericArguments.Add(name);
@@ -48,12 +42,12 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
         public static void WriteGeneric(this IGenericable genericable, ICodeOutput output)
         {
             output.Write(CodeMarkups.OpenAngleBracket);
-            output.Write(genericable.GenericArguments[0]);
+            genericable.GenericArguments[0].Build(output);
 
             for (var i = 1; i < genericable.GenericArguments.Count; i++)
             {
                 output.Write(CodeMarkups.Comma);
-                output.Write(genericable.GenericArguments[i]);
+                genericable.GenericArguments[i].Build(output);
             }
 
             output.Write(CodeMarkups.CloseAngleBracket);

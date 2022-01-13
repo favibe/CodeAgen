@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
-using CodeAgen.Code.CodeTemplates.ClassMembers;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
-using CodeAgen.Code.Utils;
 using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 
@@ -18,35 +16,25 @@ namespace CodeAgen.Code.CodeTemplates
     {
         // Fields
         
-        private string _name = string.Empty;
+        private readonly CodeName _name;
         private CodeComment _comment;
         private CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
 
         private readonly List<ICodeClassMember> _members = new List<ICodeClassMember>();
 
         // Properties
-        
+
+        public CodeName Name => _name;
         public bool IsAbstract { get; set; }
-        public List<string> GenericArguments { get; set; }
+        public List<CodeName> GenericArguments { get; set; }
         public List<string> GenericRestrictions { get; set; }
         public List<CodeType> InheritTypes { get; set; }
         
         // Methods
 
-        public CodeClass(string name)
+        public CodeClass(CodeName name)
         {
-            SetName(name);
-        }
-        
-        public CodeClass SetName(string name)
-        {
-            if (!CodeName.IsValidClassName(name))
-            {
-                throw new CodeBuildException($"Invalid class name:{name}");
-            }
-            
             _name = name;
-            return this;
         }
 
         public CodeClass SetAccess(CodeAccessModifier modifier)
@@ -64,7 +52,7 @@ namespace CodeAgen.Code.CodeTemplates
             
             return base.AddUnit(unit);
         }
-
+        
         public CodeClass Comment(CodeComment comment)
         {
             _comment = comment;
@@ -99,7 +87,7 @@ namespace CodeAgen.Code.CodeTemplates
 
             output.Write(CodeKeywords.Class);
             output.Write(CodeMarkups.Space);
-            output.Write(_name);
+            _name.Build(output);
 
             if (this.IsGeneric())
             {
