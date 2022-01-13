@@ -2,7 +2,6 @@
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.CodeTemplates.ClassMembers;
 using CodeAgen.Code.CodeTemplates.Extensions;
-using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Outputs;
 using CodeAgen.Outputs.Entities;
 using Xunit;
@@ -98,10 +97,44 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             
             Assert.Equal("public float ExampleMethod<T1>() where T1:class\r\n{\r\n}\r\n", _codeOutput.ToString());
         }
-
-        private void Build_Inherited()
+        
+        [Fact]
+        private void Build_WithParametersSimple()
         {
+            var method = new CodeClassMethod("ExampleMethod");
+            method.SetAccess(CodeAccessModifier.Public);
+            method.SetReturnType(CodeType.Get("float"));
+            method.AddParameter(new CodeClassMethodParameter("ex1", CodeType.Get("float")));
+            method.AddParameter(new CodeClassMethodParameter("ex2", CodeType.Get("float")));
+            method.Build(_codeOutput);
             
+            Assert.Equal("public float ExampleMethod(float ex1, float ex2)\r\n{\r\n}\r\n", _codeOutput.ToString());
+        }
+        
+        [Fact]
+        private void Build_WithParametersDefault()
+        {
+            var method = new CodeClassMethod("ExampleMethod");
+            method.SetAccess(CodeAccessModifier.Public);
+            method.SetReturnType(CodeType.Get("float"));
+            method.AddParameter(new CodeClassMethodParameter("ex1", CodeType.Get("float"), "2f"));
+            method.AddParameter(new CodeClassMethodParameter("ex2", CodeType.Get("float"), "5f"));
+            method.Build(_codeOutput);
+            
+            Assert.Equal("public float ExampleMethod(float ex1 = 2f, float ex2 = 5f)\r\n{\r\n}\r\n", _codeOutput.ToString());
+        }
+        
+        [Fact]
+        private void Build_WithParams()
+        {
+            var method = new CodeClassMethod("ExampleMethod");
+            method.SetAccess(CodeAccessModifier.Public);
+            method.SetReturnType(CodeType.Get("float"));
+            method.AddParameter(new CodeClassMethodParameter("ex1", CodeType.Get("float"), "2f"));
+            method.AddParams(new CodeClassMethodParameter("par", CodeType.Get("float[]")));
+            method.Build(_codeOutput);
+            
+            Assert.Equal("public float ExampleMethod(float ex1 = 2f, params float[] par)\r\n{\r\n}\r\n", _codeOutput.ToString());
         }
     }
 }

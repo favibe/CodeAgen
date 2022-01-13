@@ -9,5 +9,6 @@ namespace CodeAgen.Code
         public const string Abstract = "abstract";
         public const string Where = "where";
         public const string Readonly = "readonly";
+        public const string Params = "params";
     }
 }
