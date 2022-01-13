@@ -41,7 +41,7 @@ namespace CodeAgen.Code.CodeTemplates
         {
             if (!CodeName.IsValidClassName(name))
             {
-                throw new CodeBuildException("Class name is not valid");
+                throw new CodeBuildException($"Invalid class name:{name}");
             }
             
             _name = name;

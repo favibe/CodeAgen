@@ -1,5 +1,7 @@
 ﻿using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
+using CodeAgen.Code.Utils;
+using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
@@ -12,18 +14,25 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private readonly string _name;
         private readonly string _value;
         private readonly CodeAccessModifier _accessModifier;
+        private readonly bool _isReadonly;
 
-        public CodeClassField(CodeType type, string name, string value = null, CodeAccessModifier accessModifier = null)
+        public CodeClassField(CodeType type, string name, string value = null, CodeAccessModifier accessModifier = null, bool isReadonly = false)
         {
+            if (!CodeName.IsValidName(name))
+            {
+                throw new CodeBuildException($"Invalid field name: {name}");
+            }
+            
             if (accessModifier == null)
             {
                 accessModifier = CodeAccessModifier.Private;
             }
-            
+
             _type = type;
             _name = name;
             _value = value;
             _accessModifier = accessModifier;
+            _isReadonly = isReadonly;
         }
         
         public override void Build(ICodeOutput output)
@@ -31,11 +40,18 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             output.SetTab(Level);
             output.Write(_accessModifier);
             output.Write(CodeMarkups.Space);
+            
+            if (_isReadonly)
+            {
+                output.Write(CodeKeywords.Readonly);
+                output.Write(CodeMarkups.Space);
+            }
+            
             output.Write(_type);
             output.Write(CodeMarkups.Space);
 
-            var name = _accessModifier == CodeAccessModifier.Private ? GetPrivateName(_name) : GetPublicName(_name);
-
+            var name = CodeName.GetFieldName(_name, _accessModifier);
+                
             output.Write(name);
 
             if (!string.IsNullOrWhiteSpace(_value))
@@ -46,16 +62,6 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
             output.Write(CodeMarkups.Semicolon);
             output.NextLine();
-        }
-
-        private string GetPrivateName(string name)
-        {
-            return $"{CodeMarkups.Underscore}{char.ToLower(name[0])}{name.Substring(1)}";
-        }
-        
-        private string GetPublicName(string name)
-        {
-            return $"{char.ToUpper(name[0])}{name.Substring(1)}";
         }
     }
 }

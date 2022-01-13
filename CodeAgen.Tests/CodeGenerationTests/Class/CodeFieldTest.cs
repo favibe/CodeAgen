@@ -18,7 +18,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         }
         
         [Fact]
-        public void Field_Creating()
+        public void Creating_Simple()
         {
             var field = new CodeClassField(CodeType.Get("float"), "field");
             
@@ -28,7 +28,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         }
         
         [Fact]
-        public void Field_CreatingPublic()
+        public void Creating_Public()
         {
             var field = new CodeClassField(CodeType.Get("float"), "field", accessModifier: CodeAccessModifier.Public);
             
@@ -38,7 +38,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         }
         
         [Fact]
-        public void Field_CreatingWithValue()
+        public void Creating_WithValue()
         {
             var field = new CodeClassField(CodeType.Get("float"), "field", "5");
             
@@ -58,6 +58,16 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             @class.Build(_codeOutput);
 
             Assert.Equal("private class ClassName\r\n{\r\n\tprivate float _field = 5;\r\n}\r\n", _codeOutput.ToString());
+        }
+        
+        [Fact]
+        public void Creating_Readonly()
+        {
+            var field = new CodeClassField(CodeType.Get("float"), "field", "5", isReadonly:true);
+            
+            field.Build(_codeOutput);
+            
+            Assert.Equal("private readonly float _field = 5;\r\n", _codeOutput.ToString());
         }
     }
 }

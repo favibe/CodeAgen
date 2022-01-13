@@ -34,7 +34,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         {
             if (!CodeName.IsValidMethodName(name))
             {
-                throw new CodeBuildException("Method name can't be null, empty or white space");
+                throw new CodeBuildException($"Invalid method name: {name}");
             }
             
             _name = name;

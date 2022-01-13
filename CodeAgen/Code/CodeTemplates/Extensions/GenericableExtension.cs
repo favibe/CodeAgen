@@ -22,7 +22,7 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
         {
             if (!CodeName.IsValidTypeName(name))
             {
-                throw new CodeBuildException("Invalid generic argument name");
+                throw new CodeBuildException($"Invalid generic argument name: {name}");
             }
             
             if (!IsGeneric(genericable))
@@ -50,7 +50,7 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
             output.Write(CodeMarkups.OpenAngleBracket);
             output.Write(genericable.GenericArguments[0]);
 
-            for (int i = 1; i < genericable.GenericArguments.Count; i++)
+            for (var i = 1; i < genericable.GenericArguments.Count; i++)
             {
                 output.Write(CodeMarkups.Comma);
                 output.Write(genericable.GenericArguments[i]);

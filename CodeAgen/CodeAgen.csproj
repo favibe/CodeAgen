@@ -49,7 +49,6 @@
         <Compile Include="Code\CodeAccessModifier.cs" />
         <Compile Include="Code\CodeKeywords.cs" />
         <Compile Include="Code\CodeMarkups.cs" />
-        <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassConstructor.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassField.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassMethod.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\ICodeClassMember.cs" />
