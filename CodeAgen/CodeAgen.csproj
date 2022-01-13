@@ -49,9 +49,10 @@
         <Compile Include="Code\CodeAccessModifier.cs" />
         <Compile Include="Code\CodeKeywords.cs" />
         <Compile Include="Code\CodeMarkups.cs" />
+        <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassEvent.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassField.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassMethod.cs" />
-        <Compile Include="Code\CodeTemplates\CodeClassTemplate.cs" />
+        <Compile Include="Code\CodeTemplates\CodeClass.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\AbstractableExtension.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\GenericableExtension.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\InheritableExtension.cs" />

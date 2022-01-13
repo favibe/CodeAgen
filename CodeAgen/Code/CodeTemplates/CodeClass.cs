@@ -14,7 +14,7 @@ namespace CodeAgen.Code.CodeTemplates
     /// <summary>
     /// Code template for class
     /// </summary>
-    public class CodeClassTemplate : CodeBracedBlock, IAbstractable, IGenericable, IInheritable
+    public class CodeClass : CodeBracedBlock, IAbstractable, IGenericable, IInheritable
     {
         // Fields
         
@@ -33,12 +33,12 @@ namespace CodeAgen.Code.CodeTemplates
         
         // Methods
 
-        public CodeClassTemplate(string name)
+        public CodeClass(string name)
         {
             SetName(name);
         }
         
-        public CodeClassTemplate SetName(string name)
+        public CodeClass SetName(string name)
         {
             if (!CodeName.IsValidClassName(name))
             {
@@ -49,7 +49,7 @@ namespace CodeAgen.Code.CodeTemplates
             return this;
         }
 
-        public CodeClassTemplate SetAccess(CodeAccessModifier modifier)
+        public CodeClass SetAccess(CodeAccessModifier modifier)
         {
             _accessModifier = modifier;
             return this;
@@ -65,7 +65,7 @@ namespace CodeAgen.Code.CodeTemplates
             return base.AddUnit(unit);
         }
 
-        public CodeClassTemplate Comment(CodeComment comment)
+        public CodeClass Comment(CodeComment comment)
         {
             _comment = comment;
             return this;

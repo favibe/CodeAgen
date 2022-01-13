@@ -22,7 +22,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_EmptyNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
             @class.Build(_codeOutput);
             
             Assert.Equal("private class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
@@ -31,7 +31,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_EmptyWithTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass")
+            var @class = new CodeClass("ExampleClass")
             {
                 Level = 1
             };
@@ -44,7 +44,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_PublicNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
 
             @class.SetAccess(CodeAccessModifier.Public);
             
@@ -56,7 +56,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_PublicCommentedNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
 
             @class.SetAccess(CodeAccessModifier.Public)
                 .Comment(new CodeComment("Class comment"));
@@ -69,7 +69,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_AbstractNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
 
             @class
                 .SetAccess(CodeAccessModifier.Public)
@@ -83,7 +83,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_GenericNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
 
             @class
                 .SetAccess(CodeAccessModifier.Public)
@@ -98,7 +98,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_InvalidGenericNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
             @class.AddGenericArgument("T1");
 
             Assert.Throws(typeof(CodeBuildException),() => @class.AddGenericArgument("1T"));
@@ -108,7 +108,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_RestrictedGenericNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
 
             @class
                 .SetAccess(CodeAccessModifier.Public)
@@ -123,7 +123,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_RestrictedGenericInheritedNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
 
             @class
                 .SetAccess(CodeAccessModifier.Public)
@@ -140,7 +140,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_AbstractGenericNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
 
             @class
                 .SetAccess(CodeAccessModifier.Public)
@@ -156,7 +156,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_InheritedNoTab()
         {
-            var @class = new CodeClassTemplate("ExampleClass");
+            var @class = new CodeClass("ExampleClass");
 
             @class
                 .SetAccess(CodeAccessModifier.Public)

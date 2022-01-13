@@ -10,5 +10,6 @@ namespace CodeAgen.Code
         public const string Where = "where";
         public const string Readonly = "readonly";
         public const string Params = "params";
+        public const string Event = "event";
     }
 }

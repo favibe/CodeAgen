@@ -50,7 +50,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Field_AddingToClass()
         {
-            var @class = new CodeClassTemplate("ClassName");
+            var @class = new CodeClass("ClassName");
 
             var field = new CodeClassField(CodeType.Get("float"), "field", "5");
 
