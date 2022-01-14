@@ -2,6 +2,9 @@
 
 namespace CodeAgen.Code.Basic
 {
+    /// <summary>
+    /// Code type unit
+    /// </summary>
     public class CodeType
     {
         private static readonly Dictionary<string, CodeType> Types = new Dictionary<string, CodeType>();
@@ -35,6 +38,11 @@ namespace CodeAgen.Code.Basic
         public static implicit operator string(CodeType type)
         {
             return type._name;
+        }
+        
+        public static implicit operator CodeType(string type)
+        {
+            return Get(type);
         }
     }
 }

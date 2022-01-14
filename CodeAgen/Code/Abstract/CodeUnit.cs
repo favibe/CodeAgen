@@ -2,8 +2,15 @@
 
 namespace CodeAgen.Code.Abstract
 {
+    /// <summary>
+    /// Basic code unit
+    /// </summary>
     public abstract class CodeUnit
     {
+        /// <summary>
+        /// Recursively build code to output 
+        /// </summary>
+        /// <param name="output">Output</param>
         public void Build(ICodeOutput output)
         {
             PreBuild();
@@ -11,16 +18,26 @@ namespace CodeAgen.Code.Abstract
             PostBuild();
         }
 
+        /// <summary>
+        /// Pre-build object handling
+        /// </summary>
+        protected virtual void PreBuild()
+        {
+            
+        }
+        
+        /// <summary>
+        /// Post-build object handling
+        /// </summary>
         protected virtual void PostBuild()
         {
             
         }
 
-        protected virtual void PreBuild()
-        {
-            
-        }
-
+        /// <summary>
+        /// Object building to output
+        /// </summary>
+        /// <param name="output">Output</param>
         protected abstract void OnBuild(ICodeOutput output);
     }
 }

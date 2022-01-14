@@ -4,6 +4,9 @@ using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.Basic
 {
+    /// <summary>
+    /// Code fragment to store one or more code units
+    /// </summary>
     public class CodeFragment : CodeTabbable
     {
         private readonly List<CodeUnit> _units = new List<CodeUnit>();

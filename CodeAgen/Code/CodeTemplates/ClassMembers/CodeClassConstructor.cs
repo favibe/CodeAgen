@@ -1,20 +1,21 @@
 ﻿using System.Collections.Generic;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
-using CodeAgen.Code.CodeTemplates.Extensions;
-using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
 {
+    /// <summary>
+    /// Code unit to build class constructor
+    /// </summary>
     public class CodeClassConstructor : CodeBracedBlock, ICodeClassMember
     {
         private readonly CodeName _className;
         private readonly CodeAccessModifier _access;
         
-        private List<CodeClassParameter> _parameters;
-        private CodeClassParameter _params;
+        private List<CodeMethodParameter> _parameters;
+        private CodeMethodParameter _params;
         private CodeFragment _inheritance;
         
         public bool HasParams => _params != null;
@@ -31,11 +32,16 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             _access = access;
         }
         
-        public CodeClassConstructor AddParameter(CodeClassParameter parameter)
+        /// <summary>
+        /// Add parameter to constructor
+        /// </summary>
+        /// <param name="parameter">Parameter</param>
+        /// <returns></returns>
+        public CodeClassConstructor AddParameter(CodeMethodParameter parameter)
         {
             if (_parameters == null)
             {
-                _parameters = new List<CodeClassParameter>();
+                _parameters = new List<CodeMethodParameter>();
             }
             
             _parameters.Add(parameter);
@@ -43,12 +49,22 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             return this;
         }
 
-        public CodeClassConstructor AddParams(CodeClassParameter @params)
+        /// <summary>
+        /// Add params to constructor
+        /// </summary>
+        /// <param name="params">Params array</param>
+        /// <returns></returns>
+        public CodeClassConstructor AddParams(CodeMethodParameter @params)
         {
             _params = @params;
             return this;
         }
 
+        /// <summary>
+        /// Add inheritance from base like Constructor() : base()
+        /// </summary>
+        /// <param name="parameters">Parameters to pass to base</param>
+        /// <returns></returns>
         public CodeClassConstructor InheritFromBase(
             params CodeNameVar[] parameters)
         {
@@ -121,6 +137,12 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             base.OnBuild(output);
         }
 
+        /// <summary>
+        /// Create constructor for CodeClass
+        /// </summary>
+        /// <param name="class">Target class</param>
+        /// <param name="access">Access modifier</param>
+        /// <returns />
         public static CodeClassConstructor CreateFor(CodeClass @class, CodeAccessModifier access = null)
         {
             return new CodeClassConstructor(@class.Name, access);

@@ -1,7 +1,8 @@
-﻿using CodeAgen.Code.Basic;
-
-namespace CodeAgen.Code
+﻿namespace CodeAgen.Code
 {
+    /// <summary>
+    /// Code access modifier
+    /// </summary>
     public class CodeAccessModifier
     {
         public static readonly CodeAccessModifier Private = new CodeAccessModifier("private");

@@ -2,6 +2,9 @@
 
 namespace CodeAgen.Code.Basic
 {
+    /// <summary>
+    /// Code comment with // before
+    /// </summary>
     public sealed class CodeComment : CodeRaw
     {
         private readonly string _content;

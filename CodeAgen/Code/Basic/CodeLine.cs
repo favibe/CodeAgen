@@ -4,6 +4,9 @@ using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.Basic
 {
+    /// <summary>
+    /// Code line with tabulations
+    /// </summary>
     public class CodeLine : CodeTabbable
     {
         private readonly List<CodeUnit> _units = new List<CodeUnit>();

@@ -56,7 +56,7 @@
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassEvent.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassField.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassMethod.cs" />
-        <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassParameter.cs" />
+        <Compile Include="Code\CodeTemplates\ClassMembers\CodeMethodParameter.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassProperty.cs" />
         <Compile Include="Code\CodeTemplates\CodeClass.cs" />
         <Compile Include="Code\CodeTemplates\CodeNamespace.cs" />

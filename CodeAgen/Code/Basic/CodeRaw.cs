@@ -3,11 +3,17 @@ using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.Basic
 {
+    /// <summary>
+    /// Basic code unit
+    /// </summary>
     public abstract class CodeRaw : CodeUnit
     {
         public static readonly CodeRaw Empty = new CodeRawString(string.Empty);
     }
 
+    /// <summary>
+    /// Char code unit
+    /// </summary>
     public sealed class CodeRawChar : CodeRaw
     {
         private readonly char _data;
@@ -23,6 +29,9 @@ namespace CodeAgen.Code.Basic
         }
     }
 
+    /// <summary>
+    /// String code unit
+    /// </summary>
     public class CodeRawString : CodeRaw
     {
         private readonly string _data;

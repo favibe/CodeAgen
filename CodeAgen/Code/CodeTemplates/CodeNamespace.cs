@@ -4,6 +4,9 @@ using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates
 {
+    /// <summary>
+    /// Code template for namespace
+    /// </summary>
     public class CodeNamespace : CodeBracedBlock
     {
         private readonly CodeNameNamespace _name;

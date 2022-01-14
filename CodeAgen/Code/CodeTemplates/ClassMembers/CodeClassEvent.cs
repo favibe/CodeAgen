@@ -6,12 +6,15 @@ using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
 {
+    /// <summary>
+    /// Code unit for class event
+    /// </summary>
     public class CodeClassEvent : CodeTabbable, ICodeClassMember
     {
         private readonly CodeName _name;
         private readonly CodeType _type;
         private readonly CodeAccessModifier _accessModifier;
-
+        
         public byte Order => 2;
 
         public CodeClassEvent(CodeNameVar name, CodeType type, CodeAccessModifier accessModifier = null)

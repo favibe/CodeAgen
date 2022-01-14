@@ -1,25 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
-using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
 {
+    /// <summary>
+    /// Code entity for class method
+    /// </summary>
     public class CodeClassMethod : CodeBracedBlock, IAbstractable, IGenericable, ICodeClassMember
     {
         public byte Order => 255;
         
         private readonly CodeName _name;
-        private CodeType _returnType = CodeType.Void;
-        private CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
-        private List<CodeClassParameter> _parameters;
-        private CodeClassParameter _params;
+        private readonly CodeAccessModifier _access;
+        private readonly CodeType _returnType;
         
-        // Properties
+        private List<CodeMethodParameter> _parameters;
+        private CodeMethodParameter _params;
         
         public bool IsAbstract { get; set; }
         public bool HasParameters => _parameters != null && _parameters.Count > 0;
@@ -27,38 +29,46 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         public List<CodeName> GenericArguments { get; set; }
         public List<string> GenericRestrictions { get; set; }
 
-        // Methods
-        
-        public CodeClassMethod(CodeNameVar name)
+        public CodeClassMethod(CodeNameVar name, CodeType returnType = null, CodeAccessModifier access = null)
         {
+            if (access == null)
+            {
+                access = CodeAccessModifier.Private;
+            }
+
+            if (returnType == null)
+            {
+                returnType = CodeType.Void;
+            }
+
+            _access = access;
             _name = name;
+            _returnType = returnType;
         }
 
-        public CodeClassMethod SetReturnType(CodeType type)
-        {
-            _returnType = type;
-            return this;
-        }
-
-        public CodeClassMethod SetAccess(CodeAccessModifier accessModifier)
-        {
-            _accessModifier = accessModifier;
-            return this;
-        }
-
-        public CodeClassMethod AddParameter(CodeClassParameter parameter)
+        /// <summary>
+        /// Add parameter to method
+        /// </summary>
+        /// <param name="parameter">Parameter</param>
+        /// <returns></returns>
+        public CodeClassMethod AddParameter(CodeMethodParameter parameter)
         {
             if (_parameters == null)
             {
-                _parameters = new List<CodeClassParameter>();
+                _parameters = new List<CodeMethodParameter>();
             }
             
             _parameters.Add(parameter);
 
             return this;
         }
-
-        public CodeClassMethod AddParams(CodeClassParameter @params)
+        
+        /// <summary>
+        /// Add params to method
+        /// </summary>
+        /// <param name="params">Params</param>
+        /// <returns></returns>
+        public CodeClassMethod AddParams(CodeMethodParameter @params)
         {
             _params = @params;
             return this;
@@ -78,7 +88,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         
         private void WriteHeader(ICodeOutput output)
         {
-            output.Write(_accessModifier);
+            output.Write(_access);
             output.Write(CodeMarkups.Space);
             
             if (IsAbstract)

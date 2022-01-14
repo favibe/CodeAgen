@@ -2,11 +2,13 @@
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
-using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
 {
+    /// <summary>
+    /// Code unit for class field
+    /// </summary>
     public class CodeClassField : CodeTabbable, ICodeClassMember
     {
         public byte Order => 0;

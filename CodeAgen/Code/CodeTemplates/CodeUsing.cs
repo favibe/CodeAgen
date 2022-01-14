@@ -1,10 +1,12 @@
 ﻿using CodeAgen.Code.Abstract;
-using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates
 {
+    /// <summary>
+    /// Code template for using
+    /// </summary>
     public class CodeUsing : CodeTabbable
     {
         private readonly CodeNameNamespace _name;

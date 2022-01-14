@@ -3,6 +3,9 @@ using CodeAgen.Exceptions;
 
 namespace CodeAgen.Code.Basic.CodeNames
 {
+    /// <summary>
+    /// Code name for namespace
+    /// </summary>
     public class CodeNameNamespace : CodeName
     {
         private static readonly Regex SpecialCharactersRegex = new Regex("[^A-Za-z0-9_.]");

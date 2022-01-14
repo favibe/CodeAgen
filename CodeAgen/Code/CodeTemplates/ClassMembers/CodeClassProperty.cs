@@ -7,6 +7,9 @@ using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
 {
+    /// <summary>
+    /// Property unit for code class
+    /// </summary>
     public sealed class CodeClassProperty : CodeBracedBlock, ICodeClassMember
     {
         public byte Order => 1;
