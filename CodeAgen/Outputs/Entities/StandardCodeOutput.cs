@@ -75,6 +75,14 @@ namespace CodeAgen.Outputs.Entities
             return this;
         }
 
-        public override string ToString() => _stringBuilder.ToString();
+        public override string ToString()
+        {
+            if (_symbolsInLine == 0 && _stringBuilder.Length > 0)
+            {
+                _stringBuilder.Length -= _tabLevel + 2;
+            }
+            
+            return _stringBuilder.ToString();
+        }
     }
 }

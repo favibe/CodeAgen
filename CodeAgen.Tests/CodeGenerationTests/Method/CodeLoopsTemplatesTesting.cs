@@ -1,4 +1,5 @@
 ﻿using CodeAgen.Code.Basic;
+using CodeAgen.Code.CodeTemplates;
 using CodeAgen.Code.CodeTemplates.MethodMembers.Loops;
 using CodeAgen.Outputs;
 using CodeAgen.Outputs.Entities;
@@ -27,7 +28,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
 
             var actualCode = _codeOutput.ToString();
 
-            const string expectedCode = "{\r\n\twhile(a > 0)\r\n\t{\r\n\t}\r\n}\r\n";
+            const string expectedCode = "{\r\n\twhile(a > 0)\r\n\t{\r\n\t}\r\n}";
             
             Assert.Equal(expectedCode, actualCode);
         }
@@ -44,11 +45,11 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
 
             var actualCode = _codeOutput.ToString();
 
-            const string expectedCode = "{\r\n\twhile(a > 0)\r\n\t{\r\n\t\tbreak;\r\n\t}\r\n}\r\n";
+            const string expectedCode = "{\r\n\twhile(a > 0)\r\n\t{\r\n\t\tbreak;\r\n\t}\r\n}";
             
             Assert.Equal(expectedCode, actualCode);
         }
-        
+
         [Fact]
         private void Build_YieldReturn()
         {
@@ -57,7 +58,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             yield.Build(_codeOutput);
             var actualCode = _codeOutput.ToString();
 
-            const string expectedCode = "yield break;\r\n";
+            const string expectedCode = "yield break;";
             Assert.Equal(expectedCode, actualCode);
         }
         
@@ -69,7 +70,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             yield.Build(_codeOutput);
             var actualCode = _codeOutput.ToString();
 
-            const string expectedCode = "yield return new Target();\r\n";
+            const string expectedCode = "yield return new Target();";
             Assert.Equal(expectedCode, actualCode);
         }
         
@@ -85,7 +86,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
 
             var actualCode = _codeOutput.ToString();
 
-            const string expectedCode = "{\r\n\twhile(a > 0)\r\n\t{\r\n\t\tcontinue;\r\n\t}\r\n}\r\n";
+            const string expectedCode = "{\r\n\twhile(a > 0)\r\n\t{\r\n\t\tcontinue;\r\n\t}\r\n}";
             
             Assert.Equal(expectedCode, actualCode);
         }
@@ -102,7 +103,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
 
             var actualCode = _codeOutput.ToString();
 
-            const string expectedCode = "{\r\n\tfor(i = 0; i < 5; i++)\r\n\t{\r\n\t}\r\n}\r\n";
+            const string expectedCode = "{\r\n\tfor(i = 0; i < 5; i++)\r\n\t{\r\n\t}\r\n}";
             
             Assert.Equal(expectedCode, actualCode);
         }
@@ -119,7 +120,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
 
             var actualCode = _codeOutput.ToString();
 
-            const string expectedCode = "{\r\n\tforeach(var a in b)\r\n\t{\r\n\t}\r\n}\r\n";
+            const string expectedCode = "{\r\n\tforeach(var a in b)\r\n\t{\r\n\t}\r\n}";
             
             Assert.Equal(expectedCode, actualCode);
         }
@@ -136,7 +137,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
 
             var actualCode = _codeOutput.ToString();
             
-            const string expectedCode = "{\r\n\tdo\r\n\t{\r\n\t}\r\n\twhile(true);\r\n}\r\n";
+            const string expectedCode = "{\r\n\tdo\r\n\t{\r\n\t}\r\n\twhile(true);\r\n}";
             
             Assert.Equal(expectedCode, actualCode);
         }

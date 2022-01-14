@@ -29,7 +29,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             var code = _codeOutput.ToString();
             
-            Assert.Equal("public float Example\r\n{\r\n\tget\r\n\t{\r\n\t\tgetterCode;\r\n\t}\r\n\tset\r\n\t{\r\n\t\tsetterCode;\r\n\t}\r\n}\r\n", code);
+            Assert.Equal("public float Example\r\n{\r\n\tget\r\n\t{\r\n\t\tgetterCode;\r\n\t}\r\n\tset\r\n\t{\r\n\t\tsetterCode;\r\n\t}\r\n}", code);
         }
         
         [Fact]
@@ -44,7 +44,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             var code = _codeOutput.ToString();
 
-            const string targetCode = "public float Example\r\n{\r\n\tget;\r\n\tset;\r\n}\r\n";
+            const string targetCode = "public float Example\r\n{\r\n\tget;\r\n\tset;\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -60,7 +60,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             var code = _codeOutput.ToString();
 
-            const string targetCode = "public float Example\r\n{\r\n\tget;\r\n}\r\n";
+            const string targetCode = "public float Example\r\n{\r\n\tget;\r\n}";
             Assert.Equal(targetCode, code);
         }
         
@@ -75,7 +75,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             var code = _codeOutput.ToString();
 
-            const string targetCode = "public float Example\r\n{\r\n\tset;\r\n}\r\n";
+            const string targetCode = "public float Example\r\n{\r\n\tset;\r\n}";
             Assert.Equal(targetCode, code);
         }
         
@@ -91,7 +91,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             var code = _codeOutput.ToString();
 
-            const string targetCode = "public float Example\r\n{\r\n\tget;\r\n\tprivate set;\r\n}\r\n";
+            const string targetCode = "public float Example\r\n{\r\n\tget;\r\n\tprivate set;\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -108,7 +108,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             var code = _codeOutput.ToString();
 
-            const string targetCode = "public float Example\r\n{\r\n\tprivate get;\r\n\tset;\r\n}\r\n";
+            const string targetCode = "public float Example\r\n{\r\n\tprivate get;\r\n\tset;\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -126,7 +126,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var code = _codeOutput.ToString();
 
             const string targetCode =
-                "public float Example\r\n{\r\n\tprivate get\r\n\t{\r\n\t\tgetterCode;\r\n\t}\r\n\tset\r\n\t{\r\n\t\tsetterCode;\r\n\t}\r\n}\r\n";
+                "public float Example\r\n{\r\n\tprivate get\r\n\t{\r\n\t\tgetterCode;\r\n\t}\r\n\tset\r\n\t{\r\n\t\tsetterCode;\r\n\t}\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -144,7 +144,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var code = _codeOutput.ToString();
 
             const string targetCode =
-                "public float Example\r\n{\r\n\tget\r\n\t{\r\n\t\tgetterCode;\r\n\t}\r\n\tprivate set\r\n\t{\r\n\t\tsetterCode;\r\n\t}\r\n}\r\n";
+                "public float Example\r\n{\r\n\tget\r\n\t{\r\n\t\tgetterCode;\r\n\t}\r\n\tprivate set\r\n\t{\r\n\t\tsetterCode;\r\n\t}\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -171,7 +171,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var code = _codeOutput.ToString();
             
             const string targetCode =
-                "public class ExampleClass\r\n{\r\n\tpublic float Example1\r\n\t{\r\n\t\tget\r\n\t\t{\r\n\t\t\tgetterCode;\r\n\t\t}\r\n\t\tset\r\n\t\t{\r\n\t\t\tsetterCode;\r\n\t\t}\r\n\t}\r\n\tpublic float Example2\r\n\t{\r\n\t\tget\r\n\t\t{\r\n\t\t\tgetterCode;\r\n\t\t}\r\n\t\tset\r\n\t\t{\r\n\t\t\tsetterCode;\r\n\t\t}\r\n\t}\r\n}\r\n";
+                "public class ExampleClass\r\n{\r\n\tpublic float Example1\r\n\t{\r\n\t\tget\r\n\t\t{\r\n\t\t\tgetterCode;\r\n\t\t}\r\n\t\tset\r\n\t\t{\r\n\t\t\tsetterCode;\r\n\t\t}\r\n\t}\r\n\tpublic float Example2\r\n\t{\r\n\t\tget\r\n\t\t{\r\n\t\t\tgetterCode;\r\n\t\t}\r\n\t\tset\r\n\t\t{\r\n\t\t\tsetterCode;\r\n\t\t}\r\n\t}\r\n}";
             
             Assert.Equal(targetCode, code);
         }

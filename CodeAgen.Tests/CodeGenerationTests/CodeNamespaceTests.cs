@@ -25,7 +25,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
 
             var code = _codeOutput.ToString();
 
-            const string targetCode = "namespace ExampleNamespace.Subspace\r\n{\r\n}\r\n";
+            const string targetCode = "namespace ExampleNamespace.Subspace\r\n{\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -42,7 +42,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             var code = _codeOutput.ToString();
 
             const string targetCode =
-                "namespace ExampleNamespace.Subspace\r\n{\r\n\tpublic class ExampleClass\r\n\t{\r\n\t}\r\n}\r\n";
+                "namespace ExampleNamespace.Subspace\r\n{\r\n\tpublic class ExampleClass\r\n\t{\r\n\t}\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -70,7 +70,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
 
             var code = _codeOutput.ToString();
 
-            const string targetCode = "using Example1.Subspace;\r\nusing Example2.Subspace;\r\n";
+            const string targetCode = "using Example1.Subspace;\r\nusing Example2.Subspace;";
             
             Assert.Equal(targetCode, code);
         }

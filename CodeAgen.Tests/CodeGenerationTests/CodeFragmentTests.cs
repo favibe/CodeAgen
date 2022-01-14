@@ -23,19 +23,6 @@ namespace CodeAgen.Tests.CodeGenerationTests
             
             Assert.Equal(string.Empty, _codeOutput.ToString());
         }
-        
-        [Fact]
-        public void Build_EmptyWithTab()
-        {
-            var block = new CodeFragment
-            {
-                Level = 1
-            };
-            
-            block.Build(_codeOutput);
-            
-            Assert.Equal("\t", _codeOutput.ToString());
-        }
 
         [Fact]
         public void Build_WithRawCodeWithTab()
@@ -75,7 +62,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             
             block.Build(_codeOutput);
             
-            Assert.Equal("\tsome code string 1some code string 2var a = 5;\r\n\t", _codeOutput.ToString());
+            Assert.Equal("\tsome code string 1some code string 2var a = 5;", _codeOutput.ToString());
         }
 
         [Fact]
@@ -102,7 +89,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
 
             string actualCode = _codeOutput.ToString();
             const string expectedCode =
-                "{\r\n\tsome code string 1some code string 2var a = 5;\r\n\tsome code string 1some code string 2var a = 5;\r\n\tsome code string 1some code string 2var a = 5;\r\n}\r\n";
+                "{\r\n\tsome code string 1some code string 2var a = 5;\r\n\tsome code string 1some code string 2var a = 5;\r\n\tsome code string 1some code string 2var a = 5;\r\n}";
             
             Assert.Equal(expectedCode, actualCode);
         }

@@ -22,7 +22,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             var constant = new CodeConst("float", "name", "5f");
             constant.Build(_codeOutput);
 
-            const string expected = "public const float name = 5f;\r\n";
+            const string expected = "public const float name = 5f;";
             
             Assert.Equal(expected, _codeOutput.ToString());
         }
@@ -33,7 +33,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             var constant = new CodeConst("float", "name", "5f", CodeAccessModifier.Private);
             constant.Build(_codeOutput);
 
-            const string expected = "private const float name = 5f;\r\n";
+            const string expected = "private const float name = 5f;";
             
             Assert.Equal(expected, _codeOutput.ToString());
         }
@@ -53,7 +53,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             
             codeFrag.Build(_codeOutput);
 
-            const string expected = "\tprivate const float name1 = 5f;\r\n\tprivate const float name2 = 2.5f;\r\n\t";
+            const string expected = "\tprivate const float name1 = 5f;\r\n\tprivate const float name2 = 2.5f;";
             
             Assert.Equal(expected, _codeOutput.ToString());
         }
