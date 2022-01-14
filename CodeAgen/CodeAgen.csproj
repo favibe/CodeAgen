@@ -76,10 +76,11 @@
         <Compile Include="Code\CodeTemplates\MethodMembers\IfElse\CodeElseBlock.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\IfElse\CodeElseIfBlock.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\IfElse\CodeIfBlock.cs" />
-        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeDoWhileLoop.cs" />
-        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeForeachLoop.cs" />
-        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeForLoop.cs" />
-        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeWhileLoop.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeLoopDoWhile.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeLoopForeach.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeLoopFor.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeLoop.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeLoopWhile.cs" />
         <Compile Include="Exceptions\CodeBuildException.cs" />
         <Compile Include="Exceptions\CodeNamingException.cs" />
         <Compile Include="Outputs\Entities\StandardCodeOutput.cs" />

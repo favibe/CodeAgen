@@ -4,16 +4,16 @@ using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.MethodMembers.Loops
 {
-    public class CodeForLoop : CodeBracedBlock
+    public class CodeLoopWhile : CodeLoop
     {
         private readonly CodeUnit _condition;
 
-        public CodeForLoop(CodeUnit condition)
+        public CodeLoopWhile(CodeUnit condition)
         {
             _condition = condition;
         }
-
-        public CodeForLoop(CodeRawString condition)
+        
+        public CodeLoopWhile(CodeRawString condition)
         {
             _condition = condition;
         }
@@ -21,7 +21,7 @@ namespace CodeAgen.Code.CodeTemplates.MethodMembers.Loops
         protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
-            output.Write($"{CodeKeywords.For}{CodeMarkups.OpenBracket}");
+            output.Write($"{CodeKeywords.While}{CodeMarkups.OpenBracket}");
             _condition.Build(output);
             output.Write(CodeMarkups.CloseBracket);
             output.NextLine();
