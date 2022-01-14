@@ -1,5 +1,6 @@
 ﻿using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
+using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
@@ -18,7 +19,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private bool _hasSetter;
 
         public CodeClassProperty(
-            CodeName name, CodeType type,
+            CodeNameVar name, CodeType type,
             CodeAccessModifier accessModifier = null
             )
         {

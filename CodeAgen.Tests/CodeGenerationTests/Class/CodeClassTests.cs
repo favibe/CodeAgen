@@ -101,8 +101,15 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass");
             @class.AddGenericArgument("T1");
 
-            Assert.Throws(typeof(CodeBuildException),() => @class.AddGenericArgument("1T"));
-            Assert.Throws(typeof(CodeBuildException),() => @class.AddGenericArgument("T;"));
+            Assert.Throws(typeof(CodeNamingException),() => @class.AddGenericArgument("1T"));
+            Assert.Throws(typeof(CodeNamingException),() => @class.AddGenericArgument("T;"));
+        }
+        
+        [Fact]
+        public void Build_InvalidName()
+        {
+            Assert.Throws(typeof(CodeNamingException),() => new CodeClass("1ExampleClass"));
+            Assert.Throws(typeof(CodeNamingException),() => new CodeClass("Exa;mpleClass"));
         }
 
         [Fact]

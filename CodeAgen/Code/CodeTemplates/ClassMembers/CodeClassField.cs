@@ -1,5 +1,6 @@
 ﻿using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
+using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
@@ -16,7 +17,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private readonly CodeAccessModifier _accessModifier;
         private readonly bool _isReadonly;
 
-        public CodeClassField(CodeType type, CodeName name, string value = null, CodeAccessModifier accessModifier = null, bool isReadonly = false)
+        public CodeClassField(CodeType type, CodeNameVar name, string value = null, CodeAccessModifier accessModifier = null, bool isReadonly = false)
         {
             if (accessModifier == null)
             {
@@ -45,7 +46,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             output.Write(_type);
             output.Write(CodeMarkups.Space);
 
-            var name = CodeName.GetFieldName(_name.Data, _accessModifier);
+            var name = CodeNameVar.CreateFieldName(_name.Data, _accessModifier);
             
             name.Build(output);
 

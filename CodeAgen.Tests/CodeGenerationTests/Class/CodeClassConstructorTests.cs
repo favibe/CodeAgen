@@ -48,8 +48,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass");
             var constructor = CodeClassConstructor.CreateFor(@class);
 
-            constructor.AddParameter(new CodeClassMethodParameter("par1", CodeType.Get("float")));
-            constructor.AddParameter(new CodeClassMethodParameter("par2", CodeType.Get("float"), "2"));
+            constructor.AddParameter(new CodeClassParameter("par1", CodeType.Get("float")));
+            constructor.AddParameter(new CodeClassParameter("par2", CodeType.Get("float"), "2"));
             
             constructor.Build(_codeOutput);
             var code = _codeOutput.ToString();
@@ -65,7 +65,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass");
             var constructor = CodeClassConstructor.CreateFor(@class);
 
-            constructor.AddParams(new CodeClassMethodParameter("par", CodeType.Get("float[]")));
+            constructor.AddParams(new CodeClassParameter("par", CodeType.Get("float[]")));
         
             constructor.Build(_codeOutput);
             var code = _codeOutput.ToString();
@@ -81,9 +81,9 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass");
             var constructor = CodeClassConstructor.CreateFor(@class);
 
-            constructor.AddParameter(new CodeClassMethodParameter("par1", CodeType.Get("float")));
-            constructor.AddParameter(new CodeClassMethodParameter("par2", CodeType.Get("float"), "2"));
-            constructor.AddParams(new CodeClassMethodParameter("par", CodeType.Get("float[]")));
+            constructor.AddParameter(new CodeClassParameter("par1", CodeType.Get("float")));
+            constructor.AddParameter(new CodeClassParameter("par2", CodeType.Get("float"), "2"));
+            constructor.AddParams(new CodeClassParameter("par", CodeType.Get("float[]")));
         
             constructor.Build(_codeOutput);
             var code = _codeOutput.ToString();
@@ -108,16 +108,16 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             Assert.Equal(targetCode, code);
         }
         
-        [Fact(Skip = "broken")]
+        [Fact()]
         private void Created_InheritsFromBaseWithParameters()
         {
             var @class = new CodeClass("ExampleClass");
             var constructor = CodeClassConstructor.CreateFor(@class);
 
-            constructor.AddParameter(new CodeClassMethodParameter("par1", CodeType.Get("float")));
-            constructor.AddParameter(new CodeClassMethodParameter("par2", CodeType.Get("float")));
+            constructor.AddParameter(new CodeClassParameter("par1", CodeType.Get("float")));
+            constructor.AddParameter(new CodeClassParameter("par2", CodeType.Get("float")));
             
-            constructor.InheritFromBase();
+            constructor.InheritFromBase("par1", "par2");
             
             constructor.Build(_codeOutput);
             var code = _codeOutput.ToString();

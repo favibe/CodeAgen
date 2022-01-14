@@ -44,6 +44,8 @@
         <Compile Include="Code\Basic\CodeComment.cs" />
         <Compile Include="Code\Basic\CodeFragment.cs" />
         <Compile Include="Code\Basic\CodeLine.cs" />
+        <Compile Include="Code\Basic\CodeName.cs" />
+        <Compile Include="Code\Basic\CodeNames\CodeNameVar.cs" />
         <Compile Include="Code\Basic\CodeRaw.cs" />
         <Compile Include="Code\Basic\CodeType.cs" />
         <Compile Include="Code\CodeAccessModifier.cs" />
@@ -53,9 +55,10 @@
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassEvent.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassField.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassMethod.cs" />
+        <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassParameter.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeClassProperty.cs" />
         <Compile Include="Code\CodeTemplates\CodeClass.cs" />
-        <Compile Include="Code\CodeTemplates\CodeName.cs" />
+        <Compile Include="Code\CodeTemplates\CodeNamespace.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\AbstractableExtension.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\GenericableExtension.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\InheritableExtension.cs" />
@@ -64,6 +67,7 @@
         <Compile Include="Code\CodeTemplates\Interfaces\IGenericable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IInheritable.cs" />
         <Compile Include="Exceptions\CodeBuildException.cs" />
+        <Compile Include="Exceptions\CodeNamingException.cs" />
         <Compile Include="Outputs\Entities\StandardCodeOutput.cs" />
         <Compile Include="Outputs\ICodeOutput.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

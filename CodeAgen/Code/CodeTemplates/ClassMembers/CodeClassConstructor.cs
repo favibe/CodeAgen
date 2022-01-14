@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CodeAgen.Code.Basic;
+using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
@@ -12,8 +13,8 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private readonly CodeName _className;
         private readonly CodeAccessModifier _access;
         
-        private List<CodeClassMethodParameter> _parameters;
-        private CodeClassMethodParameter _params;
+        private List<CodeClassParameter> _parameters;
+        private CodeClassParameter _params;
         private CodeFragment _inheritance;
         
         public bool HasParams => _params != null;
@@ -30,11 +31,11 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             _access = access;
         }
         
-        public CodeClassConstructor AddParameter(CodeClassMethodParameter parameter)
+        public CodeClassConstructor AddParameter(CodeClassParameter parameter)
         {
             if (_parameters == null)
             {
-                _parameters = new List<CodeClassMethodParameter>();
+                _parameters = new List<CodeClassParameter>();
             }
             
             _parameters.Add(parameter);
@@ -42,15 +43,14 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             return this;
         }
 
-        public CodeClassConstructor AddParams(CodeClassMethodParameter @params)
+        public CodeClassConstructor AddParams(CodeClassParameter @params)
         {
             _params = @params;
             return this;
         }
 
         public CodeClassConstructor InheritFromBase(
-            CodeClassMethodParameter[] parameters = null,
-            CodeClassMethodParameter @params = null)
+            params CodeNameVar[] parameters)
         {
             var @base = new CodeFragment();
             _inheritance = @base;
@@ -70,17 +70,6 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
                     @base.AddUnit(new CodeRawChar(CodeMarkups.Comma));
                     @base.AddUnit(parameters[i]);
                 }
-            }
-
-            if (@params != null)
-            {
-                if (hasParameters)
-                {
-                    @base.AddUnit(new CodeRawChar(CodeMarkups.Comma));
-                }
-
-                @base.AddUnit(new CodeRawString($"{CodeKeywords.Params} "));
-                @base.AddUnit(@params);
             }
 
             @base.AddUnit(new CodeRawChar(CodeMarkups.CloseBracket));

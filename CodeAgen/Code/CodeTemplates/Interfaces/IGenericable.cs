@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CodeAgen.Code.Basic;
 
 namespace CodeAgen.Code.CodeTemplates.Interfaces
 {

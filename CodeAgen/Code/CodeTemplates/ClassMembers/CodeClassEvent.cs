@@ -1,5 +1,6 @@
 ﻿using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
+using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Outputs;
 
@@ -13,7 +14,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
         public byte Order => 2;
 
-        public CodeClassEvent(CodeName name, CodeType type, CodeAccessModifier accessModifier = null)
+        public CodeClassEvent(CodeNameVar name, CodeType type, CodeAccessModifier accessModifier = null)
         {
             _name = name;
             _type = type;

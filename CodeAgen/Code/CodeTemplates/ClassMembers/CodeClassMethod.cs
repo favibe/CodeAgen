@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CodeAgen.Code.Basic;
+using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
@@ -15,8 +16,8 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private readonly CodeName _name;
         private CodeType _returnType = CodeType.Void;
         private CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
-        private List<CodeClassMethodParameter> _parameters;
-        private CodeClassMethodParameter _params;
+        private List<CodeClassParameter> _parameters;
+        private CodeClassParameter _params;
         
         // Properties
         
@@ -28,7 +29,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
         // Methods
         
-        public CodeClassMethod(CodeName name)
+        public CodeClassMethod(CodeNameVar name)
         {
             _name = name;
         }
@@ -45,11 +46,11 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             return this;
         }
 
-        public CodeClassMethod AddParameter(CodeClassMethodParameter parameter)
+        public CodeClassMethod AddParameter(CodeClassParameter parameter)
         {
             if (_parameters == null)
             {
-                _parameters = new List<CodeClassMethodParameter>();
+                _parameters = new List<CodeClassParameter>();
             }
             
             _parameters.Add(parameter);
@@ -57,7 +58,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             return this;
         }
 
-        public CodeClassMethod AddParams(CodeClassMethodParameter @params)
+        public CodeClassMethod AddParams(CodeClassParameter @params)
         {
             _params = @params;
             return this;
@@ -128,36 +129,6 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             {
                 this.WriteRestrictions(output);
             }
-        }
-    }
-
-    public class CodeClassMethodParameter : CodeRaw
-    {
-        private readonly string _name;
-        private readonly CodeType _type;
-        private readonly string _defaultValue;
-        public bool HasDefaultValue => _defaultValue != null;
-        
-        public CodeClassMethodParameter(string name, CodeType type, string defaultValue = null)
-        {
-            _name = name;
-            _type = type;
-            _defaultValue = defaultValue;
-        }
-        
-        public override void Build(ICodeOutput output)
-        {
-            output.Write(_type);
-            output.Write(CodeMarkups.Space);
-            output.Write(_name);
-
-            if (!HasDefaultValue)
-            {
-                return;
-            }
-            
-            output.Write(CodeMarkups.Assignment);
-            output.Write(_defaultValue);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
+using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Code.CodeTemplates.Interfaces.Class;
@@ -15,8 +16,7 @@ namespace CodeAgen.Code.CodeTemplates
     public class CodeClass : CodeBracedBlock, IAbstractable, IGenericable, IInheritable
     {
         // Fields
-        
-        private readonly CodeName _name;
+
         private CodeComment _comment;
         private CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
 
@@ -24,7 +24,8 @@ namespace CodeAgen.Code.CodeTemplates
 
         // Properties
 
-        public CodeName Name => _name;
+        public CodeName Name { get; }
+
         public bool IsAbstract { get; set; }
         public List<CodeName> GenericArguments { get; set; }
         public List<string> GenericRestrictions { get; set; }
@@ -32,9 +33,9 @@ namespace CodeAgen.Code.CodeTemplates
         
         // Methods
 
-        public CodeClass(CodeName name)
+        public CodeClass(CodeNameVar name)
         {
-            _name = name;
+            Name = name;
         }
 
         public CodeClass SetAccess(CodeAccessModifier modifier)
@@ -87,7 +88,7 @@ namespace CodeAgen.Code.CodeTemplates
 
             output.Write(CodeKeywords.Class);
             output.Write(CodeMarkups.Space);
-            _name.Build(output);
+            Name.Build(output);
 
             if (this.IsGeneric())
             {
