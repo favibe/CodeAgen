@@ -46,7 +46,7 @@ namespace CodeAgen.Code.CodeTemplates
 
         public override CodeBracedBlock AddUnit(CodeTabbable unit)
         {
-            if (!(unit is ICodeClassMember))
+            if (!(unit is ICodeClassMember) && !(unit is CodeLine))
             {
                 throw new CodeBuildException("Only class members can be added as units to class");
             }

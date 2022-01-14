@@ -1,4 +1,7 @@
-﻿using CodeAgen.Code.Basic;
+﻿using CodeAgen.Code;
+using CodeAgen.Code.Basic;
+using CodeAgen.Code.CodeTemplates;
+using CodeAgen.Code.CodeTemplates.ClassMembers;
 using CodeAgen.Code.CodeTemplates.Loops;
 using CodeAgen.Outputs;
 using CodeAgen.Outputs.Entities;
@@ -81,6 +84,27 @@ namespace CodeAgen.Tests.CodeGenerationTests.Templates
             const string expectedCode = "{\r\n\tdo\r\n\t{\r\n\t}\r\n\twhile(true);\r\n}\r\n";
             
             Assert.Equal(expectedCode, actualCode);
+        }
+
+        [Fact]
+        private void GenerateCode()
+        {
+            var @namespace = new CodeNamespace("ExampleNamespace.Subspace");
+            var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
+            var @field = new CodeClassField("string", "name", accessModifier: CodeAccessModifier.Private);
+
+            var constructor = CodeClassConstructor.CreateFor(@class, CodeAccessModifier.Public);
+            @constructor.AddParameter(new CodeMethodParameter("name", "string"));
+            @constructor.AddUnit(new CodeLine("_name = name"));
+
+            @namespace.AddUnit(@class);
+            @class.AddUnit(field);
+            @class.AddUnit(new CodeLine());
+            @class.AddUnit(constructor);
+
+            @namespace.Build(_codeOutput);
+
+            string code = _codeOutput.ToString();
         }
     }
 }
