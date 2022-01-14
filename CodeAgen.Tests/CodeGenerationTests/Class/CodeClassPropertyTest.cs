@@ -20,7 +20,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_Property()
         {
-            var property = new CodeClassProperty("Example", CodeType.Get("float"));
+            var property = new CodeProperty("Example", CodeType.Get("float"));
             
             property.AddGetter(new CodeLine("getterCode"));
             property.AddSetter(new CodeLine("setterCode"));
@@ -35,7 +35,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_AutoBoth()
         {
-            var property = new CodeClassProperty("Example", CodeType.Get("float"));
+            var property = new CodeProperty("Example", CodeType.Get("float"));
             
             property.AddGetter();
             property.AddSetter();
@@ -52,7 +52,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_AutoGetterOnly()
         {
-            var property = new CodeClassProperty("Example", CodeType.Get("float"));
+            var property = new CodeProperty("Example", CodeType.Get("float"));
             
             property.AddGetter();
             
@@ -67,7 +67,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_AutoSetterOnly()
         {
-            var property = new CodeClassProperty("Example", CodeType.Get("float"));
+            var property = new CodeProperty("Example", CodeType.Get("float"));
             
             property.AddSetter();
             
@@ -82,7 +82,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_AutoSetterPrivate()
         {
-            var property = new CodeClassProperty("Example", CodeType.Get("float"));
+            var property = new CodeProperty("Example", CodeType.Get("float"));
             
             property.AddGetter();
             property.AddSetter(accessModifier: CodeAccessModifier.Private);
@@ -99,7 +99,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_AutoGetterPrivate()
         {
-            var property = new CodeClassProperty("Example", CodeType.Get("float"));
+            var property = new CodeProperty("Example", CodeType.Get("float"));
             
             property.AddGetter(accessModifier: CodeAccessModifier.Private);
             property.AddSetter();
@@ -116,7 +116,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_AccessModifierGetter()
         {
-            var property = new CodeClassProperty("Example", CodeType.Get("float"));
+            var property = new CodeProperty("Example", CodeType.Get("float"));
             
             property.AddGetter(new CodeLine("getterCode"), CodeAccessModifier.Private);
             property.AddSetter(new CodeLine("setterCode"));
@@ -134,7 +134,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_AccessModifierSetter()
         {
-            var property = new CodeClassProperty("Example", CodeType.Get("float"));
+            var property = new CodeProperty("Example", CodeType.Get("float"));
             
             property.AddGetter(new CodeLine("getterCode"));
             property.AddSetter(new CodeLine("setterCode"), CodeAccessModifier.Private);
@@ -154,8 +154,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         {
             var @class = new CodeClass("ExampleClass");
 
-            var property1 = new CodeClassProperty("Example1", CodeType.Get("float"));
-            var property2 = new CodeClassProperty("Example2", CodeType.Get("float"));
+            var property1 = new CodeProperty("Example1", CodeType.Get("float"));
+            var property2 = new CodeProperty("Example2", CodeType.Get("float"));
 
             @class.AddUnit(property1);
             @class.AddUnit(property2);

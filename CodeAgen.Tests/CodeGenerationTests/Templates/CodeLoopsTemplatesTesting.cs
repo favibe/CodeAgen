@@ -91,9 +91,9 @@ namespace CodeAgen.Tests.CodeGenerationTests.Templates
         {
             var @namespace = new CodeNamespace("ExampleNamespace.Subspace");
             var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
-            var @field = new CodeClassField("string", "name", accessModifier: CodeAccessModifier.Private, isReadonly:true);
+            var @field = new CodeField("string", "name", accessModifier: CodeAccessModifier.Private, isReadonly:true);
 
-            var constructor = CodeClassConstructor.CreateFor(@class, CodeAccessModifier.Public);
+            var constructor = CodeConstructor.CreateFor(@class, CodeAccessModifier.Public);
             @constructor.AddParameter(new CodeMethodParameter( "string", "name"));
             @constructor.AddUnit(new CodeLine("_name = name"));
 

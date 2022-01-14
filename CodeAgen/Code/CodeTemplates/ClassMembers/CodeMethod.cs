@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
-using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
@@ -12,7 +10,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
     /// <summary>
     /// Code entity for class method
     /// </summary>
-    public class CodeClassMethod : CodeBracedBlock, IAbstractable, IGenericable, ICodeClassMember
+    public class CodeMethod : CodeBracedBlock, IAbstractable, IGenericable
     {
         public byte Order => 255;
         
@@ -29,7 +27,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         public List<CodeName> GenericArguments { get; set; }
         public List<string> GenericRestrictions { get; set; }
 
-        public CodeClassMethod(CodeNameVar name, CodeType returnType = null, CodeAccessModifier access = null)
+        public CodeMethod(CodeNameVar name, CodeType returnType = null, CodeAccessModifier access = null)
         {
             if (access == null)
             {
@@ -51,7 +49,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         /// </summary>
         /// <param name="parameter">Parameter</param>
         /// <returns></returns>
-        public CodeClassMethod AddParameter(CodeMethodParameter parameter)
+        public CodeMethod AddParameter(CodeMethodParameter parameter)
         {
             if (_parameters == null)
             {
@@ -68,7 +66,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         /// </summary>
         /// <param name="params">Params</param>
         /// <returns></returns>
-        public CodeClassMethod AddParams(CodeMethodParameter @params)
+        public CodeMethod AddParams(CodeMethodParameter @params)
         {
             _params = @params;
             return this;

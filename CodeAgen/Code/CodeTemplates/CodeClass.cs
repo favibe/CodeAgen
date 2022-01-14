@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
-using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
-using CodeAgen.Code.CodeTemplates.Interfaces.Class;
-using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates
@@ -19,7 +16,6 @@ namespace CodeAgen.Code.CodeTemplates
 
         private readonly CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
         private readonly CodeComment _comment;
-        private readonly List<ICodeClassMember> _members = new List<ICodeClassMember>();
 
         // Properties
 
@@ -42,16 +38,6 @@ namespace CodeAgen.Code.CodeTemplates
             Name = name;
             _accessModifier = accessModifier;
             _comment = comment;
-        }
-
-        public override CodeBracedBlock AddUnit(CodeTabbable unit)
-        {
-            if (!(unit is ICodeClassMember) && !(unit is CodeLine))
-            {
-                throw new CodeBuildException("Only class members can be added as units to class");
-            }
-            
-            return base.AddUnit(unit);
         }
 
         protected override void OnBuild(ICodeOutput output)

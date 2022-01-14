@@ -22,7 +22,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         private void Created_PrivateSimple()
         {
             var @class = new CodeClass("ExampleClass");
-            var constructor = CodeClassConstructor.CreateFor(@class);
+            var constructor = CodeConstructor.CreateFor(@class);
             constructor.Build(_codeOutput);
 
             const string targetCode = "private ExampleClass()\r\n{\r\n}\r\n";
@@ -34,7 +34,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         private void Created_PublicSimple()
         {
             var @class = new CodeClass("ExampleClass");
-            var constructor = CodeClassConstructor.CreateFor(@class, CodeAccessModifier.Public);
+            var constructor = CodeConstructor.CreateFor(@class, CodeAccessModifier.Public);
             constructor.Build(_codeOutput);
 
             const string targetCode = "public ExampleClass()\r\n{\r\n}\r\n";
@@ -46,7 +46,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         private void Created_WithParameters()
         {
             var @class = new CodeClass("ExampleClass");
-            var constructor = CodeClassConstructor.CreateFor(@class);
+            var constructor = CodeConstructor.CreateFor(@class);
 
             constructor.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"par1"));
             constructor.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"par2", "2"));
@@ -63,7 +63,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         private void Created_WithParams()
         {
             var @class = new CodeClass("ExampleClass");
-            var constructor = CodeClassConstructor.CreateFor(@class);
+            var constructor = CodeConstructor.CreateFor(@class);
 
             constructor.AddParams(new CodeMethodParameter(CodeType.Get("float[]"),"par"));
         
@@ -79,7 +79,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         private void Created_WithParametersAndParams()
         {
             var @class = new CodeClass("ExampleClass");
-            var constructor = CodeClassConstructor.CreateFor(@class);
+            var constructor = CodeConstructor.CreateFor(@class);
 
             constructor.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"par1"));
             constructor.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"par2", "2"));
@@ -97,7 +97,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         private void Created_InheritsFromBaseSimple()
         {
             var @class = new CodeClass("ExampleClass");
-            var constructor = CodeClassConstructor.CreateFor(@class);
+            var constructor = CodeConstructor.CreateFor(@class);
             constructor.InheritFromBase();
             
             constructor.Build(_codeOutput);
@@ -112,7 +112,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         private void Created_InheritsFromBaseWithParameters()
         {
             var @class = new CodeClass("ExampleClass");
-            var constructor = CodeClassConstructor.CreateFor(@class);
+            var constructor = CodeConstructor.CreateFor(@class);
 
             constructor.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"par1"));
             constructor.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"par2"));
@@ -131,7 +131,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         private void Inserted_InClass()
         {
             var @class = new CodeClass("ExampleClass");
-            var constructor = CodeClassConstructor.CreateFor(@class);
+            var constructor = CodeConstructor.CreateFor(@class);
 
             @class.AddUnit(constructor);
             @class.Build(_codeOutput);

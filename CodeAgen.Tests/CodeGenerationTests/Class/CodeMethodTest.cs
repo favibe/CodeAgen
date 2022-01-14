@@ -20,7 +20,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_PrivateVoid()
         {
-            var method = new CodeClassMethod("ExampleMethod");
+            var method = new CodeMethod("ExampleMethod");
             method.Build(_codeOutput);
             
             Assert.Equal("private void ExampleMethod()\r\n{\r\n}\r\n", _codeOutput.ToString());
@@ -29,7 +29,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_PublicVoid()
         {
-            var method = new CodeClassMethod("ExampleMethod", access: CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", access: CodeAccessModifier.Public);
             method.Build(_codeOutput);
             
             Assert.Equal("public void ExampleMethod()\r\n{\r\n}\r\n", _codeOutput.ToString());
@@ -38,7 +38,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_PublicFloat()
         {
-            var method = new CodeClassMethod("ExampleMethod", "float", CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);
             method.Build(_codeOutput);
             
             Assert.Equal("public float ExampleMethod()\r\n{\r\n}\r\n", _codeOutput.ToString());
@@ -47,7 +47,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_GenericOneArg()
         {
-            var method = new CodeClassMethod("ExampleMethod", "float", CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);
             method.AddGenericArgument("T1");
             method.Build(_codeOutput);
             
@@ -57,7 +57,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_GenericTwoArgs()
         {
-            var method = new CodeClassMethod("ExampleMethod", "float", CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);
             method.AddGenericArgument("T1");
             method.AddGenericArgument("T2");
             method.Build(_codeOutput);
@@ -68,7 +68,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_Abstract()
         {
-            var method = new CodeClassMethod("ExampleMethod", "float", CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);
             method.AddGenericArgument("T1");
             method.AddGenericArgument("T2");
             method.SetAbstract(true);
@@ -80,7 +80,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_RestrictedGeneric()
         {
-            var method = new CodeClassMethod("ExampleMethod", "float", CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);
             method.AddGenericArgument("T1", "class");
             method.Build(_codeOutput);
             
@@ -90,7 +90,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_WithParametersSimple()
         {
-            var method = new CodeClassMethod("ExampleMethod", "float", CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);
             method.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"ex1"));
             method.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"ex2"));
             method.Build(_codeOutput);
@@ -101,7 +101,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_WithParametersDefault()
         {
-            var method = new CodeClassMethod("ExampleMethod", "float", CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);
             method.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"ex1", "2f"));
             method.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"ex2", "5f"));
             method.Build(_codeOutput);
@@ -112,7 +112,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_WithParametersAndParams()
         {
-            var method = new CodeClassMethod("ExampleMethod", "float", CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);
             method.AddParameter(new CodeMethodParameter(CodeType.Get("float"),"ex1", "2f"));
             method.AddParams(new CodeMethodParameter(CodeType.Get("float[]"),"par"));
             method.Build(_codeOutput);
@@ -123,7 +123,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         private void Build_WithParams()
         {
-            var method = new CodeClassMethod("ExampleMethod", "float", CodeAccessModifier.Public);
+            var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);
             method.AddParams(new CodeMethodParameter(CodeType.Get("float[]"),"par"));
             method.Build(_codeOutput);
             

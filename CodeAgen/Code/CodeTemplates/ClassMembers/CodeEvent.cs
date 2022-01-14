@@ -1,7 +1,6 @@
 ﻿using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
-using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
@@ -9,7 +8,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
     /// <summary>
     /// Code unit for class event
     /// </summary>
-    public class CodeClassEvent : CodeTabbable, ICodeClassMember
+    public class CodeEvent : CodeTabbable
     {
         private readonly CodeName _name;
         private readonly CodeType _type;
@@ -17,7 +16,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         
         public byte Order => 2;
 
-        public CodeClassEvent(CodeNameVar name, CodeType type, CodeAccessModifier accessModifier = null)
+        public CodeEvent(CodeNameVar name, CodeType type, CodeAccessModifier accessModifier = null)
         {
             _name = name;
             _type = type;

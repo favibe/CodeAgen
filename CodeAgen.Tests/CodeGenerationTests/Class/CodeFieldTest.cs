@@ -20,7 +20,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Creating_Simple()
         {
-            var field = new CodeClassField(CodeType.Get("float"), "field");
+            var field = new CodeField(CodeType.Get("float"), "field");
             
             field.Build(_codeOutput);
             
@@ -30,7 +30,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Creating_Public()
         {
-            var field = new CodeClassField(CodeType.Get("float"), "field", accessModifier: CodeAccessModifier.Public);
+            var field = new CodeField(CodeType.Get("float"), "field", accessModifier: CodeAccessModifier.Public);
             
             field.Build(_codeOutput);
             
@@ -40,7 +40,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Creating_WithValue()
         {
-            var field = new CodeClassField(CodeType.Get("float"), "field", "5");
+            var field = new CodeField(CodeType.Get("float"), "field", "5");
             
             field.Build(_codeOutput);
             
@@ -52,7 +52,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         {
             var @class = new CodeClass("ClassName");
 
-            var field = new CodeClassField(CodeType.Get("float"), "field", "5");
+            var field = new CodeField(CodeType.Get("float"), "field", "5");
 
             @class.AddUnit(field);
             @class.Build(_codeOutput);
@@ -63,7 +63,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Creating_Readonly()
         {
-            var field = new CodeClassField(CodeType.Get("float"), "field", "5", isReadonly:true);
+            var field = new CodeField(CodeType.Get("float"), "field", "5", isReadonly:true);
             
             field.Build(_codeOutput);
             

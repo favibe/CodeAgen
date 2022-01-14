@@ -1,7 +1,6 @@
 ﻿using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
-using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 
@@ -10,7 +9,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
     /// <summary>
     /// Property unit for code class
     /// </summary>
-    public sealed class CodeClassProperty : CodeBracedBlock, ICodeClassMember
+    public sealed class CodeProperty : CodeBracedBlock
     {
         public byte Order => 1;
         
@@ -21,7 +20,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private bool _hasGetter;
         private bool _hasSetter;
 
-        public CodeClassProperty(
+        public CodeProperty(
             CodeNameVar name, CodeType type,
             CodeAccessModifier accessModifier = null
             )

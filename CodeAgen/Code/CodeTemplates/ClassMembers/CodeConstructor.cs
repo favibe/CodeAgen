@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
-using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
@@ -9,7 +8,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
     /// <summary>
     /// Code unit to build class constructor
     /// </summary>
-    public class CodeClassConstructor : CodeBracedBlock, ICodeClassMember
+    public class CodeConstructor : CodeBracedBlock
     {
         private readonly CodeName _className;
         private readonly CodeAccessModifier _access;
@@ -21,7 +20,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         public bool HasParams => _params != null;
         public bool HasParameters => _parameters != null && _parameters.Count > 0;
 
-        private CodeClassConstructor(CodeName className, CodeAccessModifier access = null)
+        private CodeConstructor(CodeName className, CodeAccessModifier access = null)
         {
             if (access == null)
             {
@@ -37,7 +36,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         /// </summary>
         /// <param name="parameter">Parameter</param>
         /// <returns></returns>
-        public CodeClassConstructor AddParameter(CodeMethodParameter parameter)
+        public CodeConstructor AddParameter(CodeMethodParameter parameter)
         {
             if (_parameters == null)
             {
@@ -54,7 +53,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         /// </summary>
         /// <param name="params">Params array</param>
         /// <returns></returns>
-        public CodeClassConstructor AddParams(CodeMethodParameter @params)
+        public CodeConstructor AddParams(CodeMethodParameter @params)
         {
             _params = @params;
             return this;
@@ -65,7 +64,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         /// </summary>
         /// <param name="parameters">Parameters to pass to base</param>
         /// <returns></returns>
-        public CodeClassConstructor InheritFromBase(
+        public CodeConstructor InheritFromBase(
             params CodeNameVar[] parameters)
         {
             var @base = new CodeFragment();
@@ -143,9 +142,9 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         /// <param name="class">Target class</param>
         /// <param name="access">Access modifier</param>
         /// <returns />
-        public static CodeClassConstructor CreateFor(CodeClass @class, CodeAccessModifier access = null)
+        public static CodeConstructor CreateFor(CodeClass @class, CodeAccessModifier access = null)
         {
-            return new CodeClassConstructor(@class.Name, access);
+            return new CodeConstructor(@class.Name, access);
         }
 
         public byte Order => 5;

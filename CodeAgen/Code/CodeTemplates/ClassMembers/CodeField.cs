@@ -1,7 +1,6 @@
 ﻿using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
-using CodeAgen.Code.CodeTemplates.Interfaces.Class;
 using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.CodeTemplates.ClassMembers
@@ -9,7 +8,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
     /// <summary>
     /// Code unit for class field
     /// </summary>
-    public class CodeClassField : CodeTabbable, ICodeClassMember
+    public class CodeField : CodeTabbable
     {
         public byte Order => 0;
         
@@ -19,7 +18,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private readonly CodeAccessModifier _accessModifier;
         private readonly bool _isReadonly;
 
-        public CodeClassField(CodeType type, CodeNameVar name, string value = null, CodeAccessModifier accessModifier = null, bool isReadonly = false)
+        public CodeField(CodeType type, CodeNameVar name, string value = null, CodeAccessModifier accessModifier = null, bool isReadonly = false)
         {
             if (accessModifier == null)
             {
