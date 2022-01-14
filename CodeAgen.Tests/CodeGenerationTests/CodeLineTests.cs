@@ -37,13 +37,13 @@ namespace CodeAgen.Tests.CodeGenerationTests
             code.Level = 2;
             code.Build(_codeOutput);
             
-            Assert.Equal(("\t\t" + source + ";\r\n\t\t"), _codeOutput.ToString());
+            Assert.Equal(("\t\t" + source + ";\r\n"), _codeOutput.ToString());
             _codeOutput.Clear();
         }
         
         [Theory]
-        [InlineData("\t\tvar a = abc;\r\n\t\t", new string[] {"var ", "a", " = ", "abc"})]
-        [InlineData("\t\tConsole.Write(\"HelloWorld!\");\r\n\t\t", new string[] {"Console", ".Write(", "\"HelloWorld!\"", ")"})]
+        [InlineData("\t\tvar a = abc;\r\n", new string[] {"var ", "a", " = ", "abc"})]
+        [InlineData("\t\tConsole.Write(\"HelloWorld!\");\r\n", new string[] {"Console", ".Write(", "\"HelloWorld!\"", ")"})]
         public void Build_MultipleUnitsTabbed(string expected, string[] args)
         {
             var code = new CodeLine();

@@ -41,7 +41,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             
             @class.Build(_codeOutput);
             
-            Assert.Equal("\tpublic class ExampleClass\r\n\t{\r\n\t}\r\n\t", _codeOutput.ToString());
+            Assert.Equal("\tpublic class ExampleClass\r\n\t{\r\n\t}\r\n", _codeOutput.ToString());
         }
         
         [Fact]

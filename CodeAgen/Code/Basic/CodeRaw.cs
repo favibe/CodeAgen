@@ -27,6 +27,11 @@ namespace CodeAgen.Code.Basic
         {
             output.Write(_data);
         }
+        
+        public static implicit operator CodeRawChar(char code)
+        {
+            return new CodeRawChar(code);
+        }
     }
 
     /// <summary>

@@ -91,7 +91,7 @@ namespace CodeAgen.Tests.OutputsTests
 
         public static IEnumerable<object[]> Write_Tabbed_Data()
         {
-            yield return new object[] {"\ta\r\n\t", new[] {(1, "a")}};
+            yield return new object[] {"\ta\r\n", new[] {(1, "a")}};
             yield return new object[] {"\ta\r\n\t\tbcd\r\nefg\r\n", new[] {(1, "a"), (2, "bcd"), (0, "efg")}};
         }
     }

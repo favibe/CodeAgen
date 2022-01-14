@@ -53,7 +53,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             
             codeFrag.Build(_codeOutput);
 
-            const string expected = "\tprivate const float name1 = 5f;\r\n\tprivate const float name2 = 2.5f;\r\n\t";
+            const string expected = "\tprivate const float name1 = 5f;\r\n\tprivate const float name2 = 2.5f;\r\n";
             
             Assert.Equal(expected, _codeOutput.ToString());
         }
