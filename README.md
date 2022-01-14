@@ -1,2 +1,2 @@
 # CodeAgen
-Генератор C# кода
+C# code generation library
