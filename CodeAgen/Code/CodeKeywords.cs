@@ -12,5 +12,7 @@ namespace CodeAgen.Code
         public const string Params = "params";
         public const string Event = "event";
         public const string Base = "base";
+        public const string Namespace = "namespace";
+        public const string Using = "using";
     }
 }

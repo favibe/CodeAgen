@@ -60,6 +60,7 @@
         <Compile Include="CodeGenerationTests\CodeBracedBlockTests.cs" />
         <Compile Include="CodeGenerationTests\CodeFragmentTests.cs" />
         <Compile Include="CodeGenerationTests\CodeLineTests.cs" />
+        <Compile Include="CodeGenerationTests\CodeNamespaceTests.cs" />
         <Compile Include="OutputsTests\StandardOutputTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

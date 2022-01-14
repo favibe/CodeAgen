@@ -105,27 +105,6 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         }
 
         [Fact]
-        public void Tes()
-        {
-            var @class = new CodeClass("ExampleClass");
-
-            var constructor = CodeClassConstructor.CreateFor(@class, CodeAccessModifier.Public);
-            @class.AddUnit(constructor);
-
-            var method = new CodeClassMethod("OpenPanel");
-            @class.AddUnit(method);
-            
-            method = new CodeClassMethod("ClosePanel");
-            @class.AddUnit(method);
-            
-            @class.Build(_codeOutput);
-
-            string code = _codeOutput.ToString();
-            
-            Assert.Equal(true, true);
-        }
-        
-        [Fact]
         public void Build_InvalidName()
         {
             Assert.Throws(typeof(CodeNamingException),() => new CodeClass("1ExampleClass"));
