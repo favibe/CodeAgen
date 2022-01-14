@@ -17,9 +17,8 @@ namespace CodeAgen.Code.CodeTemplates
     {
         // Fields
 
-        private CodeComment _comment;
-        private CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
-
+        private readonly CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
+        private readonly CodeComment _comment;
         private readonly List<ICodeClassMember> _members = new List<ICodeClassMember>();
 
         // Properties
@@ -33,15 +32,16 @@ namespace CodeAgen.Code.CodeTemplates
         
         // Methods
 
-        public CodeClass(CodeNameVar name)
+        public CodeClass(CodeNameVar name, CodeAccessModifier accessModifier = null, CodeComment comment = null)
         {
+            if (accessModifier == null)
+            {
+                accessModifier = CodeAccessModifier.Public;
+            }
+            
             Name = name;
-        }
-
-        public CodeClass SetAccess(CodeAccessModifier modifier)
-        {
-            _accessModifier = modifier;
-            return this;
+            _accessModifier = accessModifier;
+            _comment = comment;
         }
 
         public override CodeBracedBlock AddUnit(CodeTabbable unit)
@@ -52,12 +52,6 @@ namespace CodeAgen.Code.CodeTemplates
             }
             
             return base.AddUnit(unit);
-        }
-        
-        public CodeClass Comment(CodeComment comment)
-        {
-            _comment = comment;
-            return this;
         }
 
         public override void Build(ICodeOutput output)

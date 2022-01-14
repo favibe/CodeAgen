@@ -44,7 +44,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             @class.AddUnit(@event);
             @class.Build(_codeOutput);
             
-            Assert.Equal("private class ExampleClass\r\n{\r\n\tprivate event Action ExampleEvent;\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public class ExampleClass\r\n{\r\n\tprivate event Action ExampleEvent;\r\n}\r\n", _codeOutput.ToString());
         }
     }
 }

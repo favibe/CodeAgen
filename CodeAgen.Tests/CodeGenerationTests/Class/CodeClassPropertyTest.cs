@@ -171,7 +171,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var code = _codeOutput.ToString();
             
             const string targetCode =
-                "private class ExampleClass\r\n{\r\n\tpublic float Example1\r\n\t{\r\n\t\tget\r\n\t\t{\r\n\t\t\tgetterCode;\r\n\t\t}\r\n\t\tset\r\n\t\t{\r\n\t\t\tsetterCode;\r\n\t\t}\r\n\t}\r\n\tpublic float Example2\r\n\t{\r\n\t\tget\r\n\t\t{\r\n\t\t\tgetterCode;\r\n\t\t}\r\n\t\tset\r\n\t\t{\r\n\t\t\tsetterCode;\r\n\t\t}\r\n\t}\r\n}\r\n";
+                "public class ExampleClass\r\n{\r\n\tpublic float Example1\r\n\t{\r\n\t\tget\r\n\t\t{\r\n\t\t\tgetterCode;\r\n\t\t}\r\n\t\tset\r\n\t\t{\r\n\t\t\tsetterCode;\r\n\t\t}\r\n\t}\r\n\tpublic float Example2\r\n\t{\r\n\t\tget\r\n\t\t{\r\n\t\t\tgetterCode;\r\n\t\t}\r\n\t\tset\r\n\t\t{\r\n\t\t\tsetterCode;\r\n\t\t}\r\n\t}\r\n}\r\n";
             
             Assert.Equal(targetCode, code);
         }

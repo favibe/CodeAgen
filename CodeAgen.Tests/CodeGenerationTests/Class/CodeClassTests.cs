@@ -1,12 +1,15 @@
-﻿using CodeAgen.Code;
+﻿using System.CodeDom;
+using CodeAgen.Code;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.CodeTemplates;
+using CodeAgen.Code.CodeTemplates.ClassMembers;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Exceptions;
 using CodeAgen.Outputs;
 using CodeAgen.Outputs.Entities;
 using Xunit;
+using CodeComment = CodeAgen.Code.Basic.CodeComment;
 
 namespace CodeAgen.Tests.CodeGenerationTests.Class
 {
@@ -25,7 +28,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass");
             @class.Build(_codeOutput);
             
-            Assert.Equal("private class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
         }
         
         [Fact]
@@ -38,16 +41,14 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             
             @class.Build(_codeOutput);
             
-            Assert.Equal("\tprivate class ExampleClass\r\n\t{\r\n\t}\r\n\t", _codeOutput.ToString());
+            Assert.Equal("\tpublic class ExampleClass\r\n\t{\r\n\t}\r\n\t", _codeOutput.ToString());
         }
         
         [Fact]
         public void Build_PublicNoTab()
         {
-            var @class = new CodeClass("ExampleClass");
+            var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
-            @class.SetAccess(CodeAccessModifier.Public);
-            
             @class.Build(_codeOutput);
             
             Assert.Equal("public class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
@@ -56,11 +57,11 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_PublicCommentedNoTab()
         {
-            var @class = new CodeClass("ExampleClass");
+            var @class = new CodeClass(
+                "ExampleClass", 
+                CodeAccessModifier.Public,
+                new CodeComment("Class comment"));
 
-            @class.SetAccess(CodeAccessModifier.Public)
-                .Comment(new CodeComment("Class comment"));
-            
             @class.Build(_codeOutput);
 
             Assert.Equal("// Class comment\r\npublic class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
@@ -69,10 +70,9 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_AbstractNoTab()
         {
-            var @class = new CodeClass("ExampleClass");
+            var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .SetAccess(CodeAccessModifier.Public)
                 .SetAbstract(true);
 
             @class.Build(_codeOutput);
@@ -83,10 +83,9 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_GenericNoTab()
         {
-            var @class = new CodeClass("ExampleClass");
+            var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .SetAccess(CodeAccessModifier.Public)
                 .AddGenericArgument("T")
                 .AddGenericArgument("A");
 
@@ -104,6 +103,27 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             Assert.Throws(typeof(CodeNamingException),() => @class.AddGenericArgument("1T"));
             Assert.Throws(typeof(CodeNamingException),() => @class.AddGenericArgument("T;"));
         }
+
+        [Fact]
+        public void Tes()
+        {
+            var @class = new CodeClass("ExampleClass");
+
+            var constructor = CodeClassConstructor.CreateFor(@class, CodeAccessModifier.Public);
+            @class.AddUnit(constructor);
+
+            var method = new CodeClassMethod("OpenPanel");
+            @class.AddUnit(method);
+            
+            method = new CodeClassMethod("ClosePanel");
+            @class.AddUnit(method);
+            
+            @class.Build(_codeOutput);
+
+            string code = _codeOutput.ToString();
+            
+            Assert.Equal(true, true);
+        }
         
         [Fact]
         public void Build_InvalidName()
@@ -115,10 +135,9 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_RestrictedGenericNoTab()
         {
-            var @class = new CodeClass("ExampleClass");
+            var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .SetAccess(CodeAccessModifier.Public)
                 .AddGenericArgument("T", "class")
                 .AddGenericArgument("A", "new()");
 
@@ -130,10 +149,9 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_RestrictedGenericInheritedNoTab()
         {
-            var @class = new CodeClass("ExampleClass");
+            var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .SetAccess(CodeAccessModifier.Public)
                 .InheritFrom(CodeType.Get("ParentType"));
 
             @class.AddGenericArgument("T", "class")
@@ -147,10 +165,9 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_AbstractGenericNoTab()
         {
-            var @class = new CodeClass("ExampleClass");
+            var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .SetAccess(CodeAccessModifier.Public)
                 .AddGenericArgument("T")
                 .AddGenericArgument("A");
 
@@ -163,10 +180,9 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Build_InheritedNoTab()
         {
-            var @class = new CodeClass("ExampleClass");
+            var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .SetAccess(CodeAccessModifier.Public)
                 .InheritFrom(CodeType.Get("ParentClass"))
                 .InheritFrom(CodeType.Get("IExampleInterface"));
 

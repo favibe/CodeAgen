@@ -57,7 +57,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             @class.AddUnit(field);
             @class.Build(_codeOutput);
 
-            Assert.Equal("private class ClassName\r\n{\r\n\tprivate float _field = 5;\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public class ClassName\r\n{\r\n\tprivate float _field = 5;\r\n}\r\n", _codeOutput.ToString());
         }
         
         [Fact]

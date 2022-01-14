@@ -137,7 +137,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             @class.Build(_codeOutput);
 
             var code = _codeOutput.ToString();
-            const string targetCode = "private class ExampleClass\r\n{\r\n\tprivate ExampleClass()\r\n\t{\r\n\t}\r\n}\r\n";
+            const string targetCode = "public class ExampleClass\r\n{\r\n\tprivate ExampleClass()\r\n\t{\r\n\t}\r\n}\r\n";
             
             Assert.Equal(targetCode, code);
         }
