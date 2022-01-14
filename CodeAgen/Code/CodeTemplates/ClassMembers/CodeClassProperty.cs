@@ -91,7 +91,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             AddUnit(block);
         }
         
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
             
@@ -99,9 +99,9 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             output.Write(CodeMarkups.Space);
             output.Write(_type);
             output.Write(CodeMarkups.Space);
-            _name.Build(output);
+            _name.OnBuild(output);
             output.NextLine();
-            base.Build(output);
+            base.OnBuild(output);
         }
 
         private void AddAuto(string label, CodeAccessModifier accessModifier)

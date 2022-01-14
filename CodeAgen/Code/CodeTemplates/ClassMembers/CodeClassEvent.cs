@@ -26,7 +26,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             
             _accessModifier = accessModifier;
         }
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
             output.Write(_accessModifier);
@@ -35,7 +35,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             output.Write(CodeMarkups.Space);
             output.Write(_type);
             output.Write(CodeMarkups.Space);
-            _name.Build(output);
+            _name.OnBuild(output);
             output.Write(CodeMarkups.Semicolon);
             output.NextLine();
         }

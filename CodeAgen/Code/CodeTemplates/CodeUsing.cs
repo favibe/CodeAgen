@@ -14,11 +14,11 @@ namespace CodeAgen.Code.CodeTemplates
             _name = name;
         }
 
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
             output.Write($"{CodeKeywords.Using}{CodeMarkups.Space}");
-            _name.Build(output);
+            _name.OnBuild(output);
             output.Write(CodeMarkups.Semicolon);
             output.NextLine();
         }

@@ -18,11 +18,11 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             _defaultValue = defaultValue;
         }
         
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.Write(_type);
             output.Write(CodeMarkups.Space);
-            _name.Build(output);
+            _name.OnBuild(output);
 
             if (!HasDefaultValue)
             {

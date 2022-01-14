@@ -19,14 +19,14 @@ namespace CodeAgen.Code.CodeTemplates.Loops
             _condition = condition;
         }
 
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
             output.Write($"{CodeKeywords.For}{CodeMarkups.OpenBracket}");
-            _condition.Build(output);
+            _condition.OnBuild(output);
             output.Write(CodeMarkups.CloseBracket);
             output.NextLine();
-            base.Build(output);
+            base.OnBuild(output);
         }
     }
 }

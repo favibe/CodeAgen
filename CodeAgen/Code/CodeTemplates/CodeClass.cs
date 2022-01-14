@@ -54,7 +54,7 @@ namespace CodeAgen.Code.CodeTemplates
             return base.AddUnit(unit);
         }
 
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
 
@@ -62,7 +62,7 @@ namespace CodeAgen.Code.CodeTemplates
 
             output.NextLine();
             
-            base.Build(output);
+            base.OnBuild(output);
         }
 
         private void WriteHeader(ICodeOutput output)
@@ -82,7 +82,7 @@ namespace CodeAgen.Code.CodeTemplates
 
             output.Write(CodeKeywords.Class);
             output.Write(CodeMarkups.Space);
-            Name.Build(output);
+            Name.OnBuild(output);
 
             if (this.IsGeneric())
             {
@@ -102,7 +102,7 @@ namespace CodeAgen.Code.CodeTemplates
 
         private void WriteComment(ICodeOutput output)
         {
-            _comment.Build(output);
+            _comment.OnBuild(output);
             output.NextLine();
         }
     }

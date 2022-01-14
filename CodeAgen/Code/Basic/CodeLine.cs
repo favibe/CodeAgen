@@ -30,7 +30,7 @@ namespace CodeAgen.Code.Basic
             _semicolonEnabled = isEnabled;
         }
         
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
 
@@ -38,11 +38,11 @@ namespace CodeAgen.Code.Basic
 
             if (unitsCount > 0)
             {
-                _units[0].Build(output);
+                _units[0].OnBuild(output);
 
                 for (int index = 1; index < unitsCount; index++)
                 {
-                    _units[index].Build(output);
+                    _units[index].OnBuild(output);
                 }
 
                 if (_semicolonEnabled)

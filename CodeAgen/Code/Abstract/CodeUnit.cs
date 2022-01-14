@@ -4,6 +4,23 @@ namespace CodeAgen.Code.Abstract
 {
     public abstract class CodeUnit
     {
-        public abstract void Build(ICodeOutput output);
+        public void Build(ICodeOutput output)
+        {
+            PreBuild();
+            OnBuild(output);
+            PostBuild();
+        }
+
+        private void PostBuild()
+        {
+            
+        }
+
+        private void PreBuild()
+        {
+            
+        }
+
+        public abstract void OnBuild(ICodeOutput output);
     }
 }

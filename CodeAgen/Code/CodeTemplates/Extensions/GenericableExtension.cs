@@ -44,12 +44,12 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
         public static void WriteGeneric(this IGenericable genericable, ICodeOutput output)
         {
             output.Write(CodeMarkups.OpenAngleBracket);
-            genericable.GenericArguments[0].Build(output);
+            genericable.GenericArguments[0].OnBuild(output);
 
             for (var i = 1; i < genericable.GenericArguments.Count; i++)
             {
                 output.Write(CodeMarkups.Comma);
-                genericable.GenericArguments[i].Build(output);
+                genericable.GenericArguments[i].OnBuild(output);
             }
 
             output.Write(CodeMarkups.CloseAngleBracket);

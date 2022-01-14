@@ -20,13 +20,13 @@ namespace CodeAgen.Code.Basic
             return this;
         }
         
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
 
             foreach (var unit in _units)
             {
-                unit.Build(output);
+                unit.OnBuild(output);
             }
 
             output.SetTab(Level);

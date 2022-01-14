@@ -11,7 +11,7 @@ namespace CodeAgen.Code.Basic
             _content = content;
         }
         
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.Write(CodeMarkups.Comment);
             output.Write(CodeMarkups.Space);

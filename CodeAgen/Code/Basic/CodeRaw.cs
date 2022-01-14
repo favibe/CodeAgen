@@ -17,7 +17,7 @@ namespace CodeAgen.Code.Basic
             _data = data;
         }
 
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.Write(_data);
         }
@@ -34,7 +34,7 @@ namespace CodeAgen.Code.Basic
             _data = data;
         }
         
-        public override void Build(ICodeOutput output)
+        public override void OnBuild(ICodeOutput output)
         {
             output.Write(_data);
         }
