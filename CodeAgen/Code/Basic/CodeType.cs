@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using CodeAgen.Exceptions;
 
 namespace CodeAgen.Code.Basic
 {
@@ -7,6 +9,7 @@ namespace CodeAgen.Code.Basic
     /// </summary>
     public class CodeType
     {
+        private static readonly Regex SpecialCharactersRegex = new Regex("[^A-Za-z0-9_.\\[//]<>]");
         private static readonly Dictionary<string, CodeType> Types = new Dictionary<string, CodeType>();
         
         public static CodeType Void => Types["Void"];
@@ -32,9 +35,19 @@ namespace CodeAgen.Code.Basic
         
         private CodeType(string name)
         {
+            if (!IsValid(name))
+            {
+                throw new CodeNamingException($"Invalid type name: {name}");
+            }
+            
             _name = name;
         }
 
+        private static bool IsValid(string name)
+        {
+            return !(string.IsNullOrWhiteSpace(name) || char.IsNumber(name[0]) || SpecialCharactersRegex.IsMatch(name));
+        }
+        
         public static implicit operator string(CodeType type)
         {
             return type._name;

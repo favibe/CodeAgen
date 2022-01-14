@@ -94,17 +94,24 @@ namespace CodeAgen.Tests.CodeGenerationTests.Templates
             var @field = new CodeField("string", "name", accessModifier: CodeAccessModifier.Private, isReadonly:true);
 
             var constructor = CodeConstructor.CreateFor(@class, CodeAccessModifier.Public);
+            
             @constructor.AddParameter(new CodeMethodParameter( "string", "name"));
             @constructor.AddUnit(new CodeLine("_name = name"));
-
-            @namespace.AddUnit(@class);
+            @constructor.AddUnit(new CodeLine());
+            
+            var @for = new CodeForLoop("var i = 0; i < name.Length; i++");
+            @for.AddUnit(new CodeLine("Console.WriteLine(name[i])"));
+            
+            @constructor.AddUnit(@for);
+            
             @class.AddUnit(field);
             @class.AddUnit(new CodeLine());
             @class.AddUnit(constructor);
+            @namespace.AddUnit(@class);
 
             @namespace.Build(_codeOutput);
-
-            string code = _codeOutput.ToString();
+            
+            var code = _codeOutput.ToString();
         }
     }
 }
