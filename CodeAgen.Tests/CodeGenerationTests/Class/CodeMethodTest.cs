@@ -55,6 +55,34 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         }
         
         [Fact]
+        private void Build_ReturnVoid()
+        {
+            var method = new CodeMethod("ExampleMethod");
+
+            method.AddUnit(CodeMethod.Return());
+            method.Build(_codeOutput);
+
+            string actual = _codeOutput.ToString();
+            const string expected = "private void ExampleMethod()\r\n{\r\n\treturn;\r\n}\r\n";
+            
+            Assert.Equal(expected, actual);
+        }
+        
+        [Fact]
+        private void Build_ReturnSomething()
+        {
+            var method = new CodeMethod("ExampleMethod");
+
+            method.AddUnit(CodeMethod.Return("new ExampleClass()"));
+            method.Build(_codeOutput);
+
+            string actual = _codeOutput.ToString();
+            const string expected = "private void ExampleMethod()\r\n{\r\n\treturn new ExampleClass();\r\n}\r\n";
+            
+            Assert.Equal(expected, actual);
+        }
+        
+        [Fact]
         private void Build_GenericTwoArgs()
         {
             var method = new CodeMethod("ExampleMethod", "float", CodeAccessModifier.Public);

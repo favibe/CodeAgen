@@ -64,7 +64,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         [Fact]
         private void Build_YieldBreak()
         {
-            var yield = CodeLoop.YieldReturn(new CodeRawString("new Target()"));
+            var yield = CodeLoop.Yield(new CodeRawString("new Target()"));
             
             yield.Build(_codeOutput);
             var actualCode = _codeOutput.ToString();

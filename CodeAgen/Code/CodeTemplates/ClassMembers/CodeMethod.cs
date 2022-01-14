@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
 using CodeAgen.Code.CodeTemplates.Extensions;
@@ -137,6 +138,19 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             {
                 this.WriteRestrictions(output);
             }
+        }
+
+        public static CodeLine Return(CodeUnit code = null)
+        {
+            var @return = new CodeLine($"{CodeKeywords.Return}");
+
+            if (code != null)
+            {
+                @return.AddUnit(CodeMarkups.Space);
+                @return.AddUnit(code);
+            }
+
+            return @return;
         }
     }
 }

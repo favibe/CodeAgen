@@ -46,10 +46,8 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             
             _type.Build(output);
             output.Write(CodeMarkups.Space);
-
-            var name = CodeNameVar.CreateFieldName(_name.Data, _accessModifier);
             
-            name.Build(output);
+            _name.Build(output);
 
             if (!string.IsNullOrWhiteSpace(_value))
             {
