@@ -20,7 +20,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             var block = new CodeBracedBlock();
             block.Build(_codeOutput);
             
-            Assert.Equal("{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("{\r\n}", _codeOutput.ToString());
         }
         
         [Fact]
@@ -30,7 +30,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             block.Level = 1;
             block.Build(_codeOutput);
             
-            Assert.Equal("\t{\r\n\t}\r\n", _codeOutput.ToString());
+            Assert.Equal("\t{\r\n\t}", _codeOutput.ToString());
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             block.Build(_codeOutput);
             block.AddUnit(line);
             
-            Assert.Equal("{\r\n\tvar abc = 5;\r\n\tabc.Use();\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("{\r\n\tvar abc = 5;\r\n\tabc.Use();\r\n}", _codeOutput.ToString());
         }
         
         [Fact]
@@ -67,7 +67,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             block.Build(_codeOutput);
             block.AddUnit(line);
             
-            Assert.Equal("\t{\r\n\t\tvar abc = 5;\r\n\t\tabc.Use();\r\n\t}\r\n", _codeOutput.ToString());
+            Assert.Equal("\t{\r\n\t\tvar abc = 5;\r\n\t\tabc.Use();\r\n\t}", _codeOutput.ToString());
         }
     }
 }

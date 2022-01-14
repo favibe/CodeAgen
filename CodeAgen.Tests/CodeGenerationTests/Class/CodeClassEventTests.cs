@@ -23,7 +23,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @event = new CodeEvent("ExampleEvent", CodeType.Get("Action"));
             @event.Build(_codeOutput);
             
-            Assert.Equal("public event Action ExampleEvent;\r\n", _codeOutput.ToString());
+            Assert.Equal("public event Action ExampleEvent;", _codeOutput.ToString());
         }
         
         [Fact]
@@ -32,7 +32,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @event = new CodeEvent("ExampleEvent", CodeType.Get("Action"), CodeAccessModifier.Private);
             @event.Build(_codeOutput);
             
-            Assert.Equal("private event Action ExampleEvent;\r\n", _codeOutput.ToString());
+            Assert.Equal("private event Action ExampleEvent;", _codeOutput.ToString());
         }
         
         [Fact]
@@ -44,7 +44,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             @class.Event(@event);
             @class.Build(_codeOutput);
             
-            Assert.Equal("public class ExampleClass\r\n{\r\n\tprivate event Action ExampleEvent;\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public class ExampleClass\r\n{\r\n\tprivate event Action ExampleEvent;\r\n}", _codeOutput.ToString());
         }
     }
 }

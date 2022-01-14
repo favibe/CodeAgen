@@ -25,7 +25,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var constructor = CodeConstructor.CreateFor(@class);
             constructor.Build(_codeOutput);
 
-            const string targetCode = "private ExampleClass()\r\n{\r\n}\r\n";
+            const string targetCode = "private ExampleClass()\r\n{\r\n}";
             
             Assert.Equal(targetCode, _codeOutput.ToString());
         }
@@ -37,7 +37,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var constructor = CodeConstructor.CreateFor(@class, CodeAccessModifier.Public);
             constructor.Build(_codeOutput);
 
-            const string targetCode = "public ExampleClass()\r\n{\r\n}\r\n";
+            const string targetCode = "public ExampleClass()\r\n{\r\n}";
             
             Assert.Equal(targetCode, _codeOutput.ToString());
         }
@@ -54,7 +54,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             constructor.Build(_codeOutput);
             var code = _codeOutput.ToString();
 
-            const string targetCode = "private ExampleClass(float par1, float par2 = 2)\r\n{\r\n}\r\n";
+            const string targetCode = "private ExampleClass(float par1, float par2 = 2)\r\n{\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -70,7 +70,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             constructor.Build(_codeOutput);
             var code = _codeOutput.ToString();
 
-            const string targetCode = "private ExampleClass(params float[] par)\r\n{\r\n}\r\n";
+            const string targetCode = "private ExampleClass(params float[] par)\r\n{\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -88,7 +88,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             constructor.Build(_codeOutput);
             var code = _codeOutput.ToString();
 
-            const string targetCode = "private ExampleClass(float par1, float par2 = 2, params float[] par)\r\n{\r\n}\r\n";
+            const string targetCode = "private ExampleClass(float par1, float par2 = 2, params float[] par)\r\n{\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -103,7 +103,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             constructor.Build(_codeOutput);
             var code = _codeOutput.ToString();
 
-            const string targetCode = "private ExampleClass():base()\r\n{\r\n}\r\n";
+            const string targetCode = "private ExampleClass():base()\r\n{\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -122,7 +122,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             constructor.Build(_codeOutput);
             var code = _codeOutput.ToString();
 
-            const string targetCode = "private ExampleClass(float par1, float par2):base(par1,par2)\r\n{\r\n}\r\n";
+            const string targetCode = "private ExampleClass(float par1, float par2):base(par1,par2)\r\n{\r\n}";
             
             Assert.Equal(targetCode, code);
         }
@@ -137,7 +137,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             @class.Build(_codeOutput);
 
             var code = _codeOutput.ToString();
-            const string targetCode = "public class ExampleClass\r\n{\r\n\tprivate ExampleClass()\r\n\t{\r\n\t}\r\n}\r\n";
+            const string targetCode = "public class ExampleClass\r\n{\r\n\tprivate ExampleClass()\r\n\t{\r\n\t}\r\n}";
             
             Assert.Equal(targetCode, code);
         }

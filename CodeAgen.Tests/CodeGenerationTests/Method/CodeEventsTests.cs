@@ -20,7 +20,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             var code = new CodeEventSubscribe("event", "instance.Foo");
             code.Build(_codeOutput);
             
-            Assert.Equal("event += instance.Foo;\r\n", _codeOutput.ToString());
+            Assert.Equal("event += instance.Foo;", _codeOutput.ToString());
         }
         
         [Fact]
@@ -29,7 +29,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             var code = new CodeEventUnsubscribe("event", "instance.Foo");
             code.Build(_codeOutput);
             
-            Assert.Equal("event -= instance.Foo;\r\n", _codeOutput.ToString());
+            Assert.Equal("event -= instance.Foo;", _codeOutput.ToString());
         }
     }
 }

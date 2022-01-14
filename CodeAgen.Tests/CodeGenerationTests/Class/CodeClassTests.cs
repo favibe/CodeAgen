@@ -28,7 +28,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass");
             @class.Build(_codeOutput);
             
-            Assert.Equal("public class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public class ExampleClass\r\n{\r\n}", _codeOutput.ToString());
         }
         
         [Fact]
@@ -41,7 +41,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             
             @class.Build(_codeOutput);
             
-            Assert.Equal("\tpublic class ExampleClass\r\n\t{\r\n\t}\r\n", _codeOutput.ToString());
+            Assert.Equal("\tpublic class ExampleClass\r\n\t{\r\n\t}", _codeOutput.ToString());
         }
         
         [Fact]
@@ -51,7 +51,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             @class.Build(_codeOutput);
             
-            Assert.Equal("public class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public class ExampleClass\r\n{\r\n}", _codeOutput.ToString());
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             @class.Build(_codeOutput);
 
-            Assert.Equal("// Class comment\r\npublic class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("// Class comment\r\npublic class ExampleClass\r\n{\r\n}", _codeOutput.ToString());
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             @class.Build(_codeOutput);
             
-            Assert.Equal("public abstract class ExampleClass\r\n{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public abstract class ExampleClass\r\n{\r\n}", _codeOutput.ToString());
         }
         
         [Fact]
@@ -91,7 +91,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             @class.Build(_codeOutput);
             
-            Assert.Equal("public class ExampleClass<T,A>\r\n{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public class ExampleClass<T,A>\r\n{\r\n}", _codeOutput.ToString());
         }
         
         [Fact]
@@ -122,7 +122,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             @class.Build(_codeOutput);
             
-                Assert.Equal("public class ExampleClass<T,A> where T:class where A:new()\r\n{\r\n}\r\n", _codeOutput.ToString());
+                Assert.Equal("public class ExampleClass<T,A> where T:class where A:new()\r\n{\r\n}", _codeOutput.ToString());
         }
         
         [Fact]
@@ -138,7 +138,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             
             @class.Build(_codeOutput);
             
-            Assert.Equal("public class ExampleClass<T,A> : ParentType where T:class where A:new()\r\n{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public class ExampleClass<T,A> : ParentType where T:class where A:new()\r\n{\r\n}", _codeOutput.ToString());
         }
         
         [Fact]
@@ -153,7 +153,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             @class.Abstract(true);
             @class.Build(_codeOutput);
             
-            Assert.Equal("public abstract class ExampleClass<T,A>\r\n{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public abstract class ExampleClass<T,A>\r\n{\r\n}", _codeOutput.ToString());
         }
         
         [Fact]
@@ -167,7 +167,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
 
             @class.Build(_codeOutput);
             
-            Assert.Equal("public class ExampleClass : ParentClass, IExampleInterface\r\n{\r\n}\r\n", _codeOutput.ToString());
+            Assert.Equal("public class ExampleClass : ParentClass, IExampleInterface\r\n{\r\n}", _codeOutput.ToString());
         }
     }
 }

@@ -79,7 +79,7 @@ namespace CodeAgen.Outputs.Entities
         {
             if (_symbolsInLine == 0 && _stringBuilder.Length > 0)
             {
-                _stringBuilder.Length -= _tabLevel;
+                _stringBuilder.Length -= _tabLevel + 2;
             }
             
             return _stringBuilder.ToString();

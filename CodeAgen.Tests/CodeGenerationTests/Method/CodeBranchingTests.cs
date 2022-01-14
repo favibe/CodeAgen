@@ -27,7 +27,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             
             @if.Build(_codeOutput);
 
-            const string expected = "if (condition)\r\n{\r\n\tdo;\r\n}\r\n";
+            const string expected = "if (condition)\r\n{\r\n\tdo;\r\n}";
             string actual = _codeOutput.ToString();
             
             Assert.Equal(expected, actual);
@@ -41,7 +41,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             
             @if.Build(_codeOutput);
 
-            const string expected = "if (condition)\r\n{\r\n\tdo;\r\n}\r\nelse if (condition2)\r\n{\r\n\tdo2;\r\n}\r\n";
+            const string expected = "if (condition)\r\n{\r\n\tdo;\r\n}\r\nelse if (condition2)\r\n{\r\n\tdo2;\r\n}";
             string actual = _codeOutput.ToString();
             
             Assert.Equal(expected, actual);
@@ -55,7 +55,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             
             @if.Build(_codeOutput);
 
-            const string expected = "if (condition)\r\n{\r\n\tdo;\r\n}\r\nelse\r\n{\r\n\tdo2;\r\n}\r\n";
+            const string expected = "if (condition)\r\n{\r\n\tdo;\r\n}\r\nelse\r\n{\r\n\tdo2;\r\n}";
             string actual = _codeOutput.ToString();
             
             Assert.Equal(expected, actual);
@@ -68,7 +68,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             codeCase.Build(_codeOutput);
 
             var actual = _codeOutput.ToString();
-            const string expected = "case case1:\r\n\tdo1;\r\n\tbreak;\r\n";
+            const string expected = "case case1:\r\n\tdo1;\r\n\tbreak;";
             
             Assert.Equal(expected, actual);
         }
@@ -80,7 +80,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             codeCase.Build(_codeOutput);
 
             var actual = _codeOutput.ToString();
-            const string expected = "default:\r\n\tdo1;\r\n\tbreak;\r\n";
+            const string expected = "default:\r\n\tdo1;\r\n\tbreak;";
             
             Assert.Equal(expected, actual);
         }
@@ -102,7 +102,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
 
             var actualCode = _codeOutput.ToString();
             const string expected =
-                "case case1:\r\n\tdo1;\r\n\tbreak;\r\ncase case2:\r\n\tdo2;\r\n\tbreak;\r\ncase case3:\r\ncase case4:\r\ncase case5:\r\n\tdo5;\r\n\tbreak;\r\n";
+                "case case1:\r\n\tdo1;\r\n\tbreak;\r\ncase case2:\r\n\tdo2;\r\n\tbreak;\r\ncase case3:\r\ncase case4:\r\ncase case5:\r\n\tdo5;\r\n\tbreak;";
             
             Assert.Equal(expected, actualCode);
         }
@@ -126,7 +126,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
 
             var actualCode = _codeOutput.ToString();
             const string expected =
-                "\t\tcase case1:\r\n\t\t\tdo1;\r\n\t\t\tbreak;\r\n\t\tcase case2:\r\n\t\t\tdo2;\r\n\t\t\tbreak;\r\n\t\tcase case3:\r\n\t\tcase case4:\r\n\t\tcase case5:\r\n\t\t\tdo5;\r\n\t\t\tbreak;\r\n";
+                "\t\tcase case1:\r\n\t\t\tdo1;\r\n\t\t\tbreak;\r\n\t\tcase case2:\r\n\t\t\tdo2;\r\n\t\t\tbreak;\r\n\t\tcase case3:\r\n\t\tcase case4:\r\n\t\tcase case5:\r\n\t\t\tdo5;\r\n\t\t\tbreak;";
             Assert.Equal(expected, actualCode);
         }
         
@@ -139,7 +139,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             
             var actualCode = _codeOutput.ToString();
             const string expected =
-                "switch(var1)\r\n{\r\n}\r\n";
+                "switch(var1)\r\n{\r\n}";
             Assert.Equal(expected, actualCode);
         }
         
@@ -158,7 +158,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             var actualCode = _codeOutput.ToString();
 
             const string expected =
-                "switch(variable)\r\n{\r\n\tcase case1:\r\n\t\tdo1;\r\n\t\tbreak;\r\n\tcase case2:\r\n\tcase case3:\r\n\t\tdo3;\r\n\t\tbreak;\r\n\tdefault:\r\n\t\tdoDefault;\r\n\t\tbreak;\r\n}\r\n";
+                "switch(variable)\r\n{\r\n\tcase case1:\r\n\t\tdo1;\r\n\t\tbreak;\r\n\tcase case2:\r\n\tcase case3:\r\n\t\tdo3;\r\n\t\tbreak;\r\n\tdefault:\r\n\t\tdoDefault;\r\n\t\tbreak;\r\n}";
             
             Assert.Equal(expected, actualCode);
         }
@@ -186,7 +186,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             var actualCode = _codeOutput.ToString();
 
             const string expected =
-                "\t\tswitch(variable)\r\n\t\t{\r\n\t\t\tcase case1:\r\n\t\t\t\tdo1;\r\n\t\t\t\tbreak;\r\n\t\t\tcase case2:\r\n\t\t\tcase case3:\r\n\t\t\t\tdo3;\r\n\t\t\t\tbreak;\r\n\t\t\tdefault:\r\n\t\t\t\tdoDefault;\r\n\t\t\t\tbreak;\r\n\t\t}\r\n";
+                "\t\tswitch(variable)\r\n\t\t{\r\n\t\t\tcase case1:\r\n\t\t\t\tdo1;\r\n\t\t\t\tbreak;\r\n\t\t\tcase case2:\r\n\t\t\tcase case3:\r\n\t\t\t\tdo3;\r\n\t\t\t\tbreak;\r\n\t\t\tdefault:\r\n\t\t\t\tdoDefault;\r\n\t\t\t\tbreak;\r\n\t\t}";
             
             Assert.Equal(expected, actualCode);
         }
@@ -207,7 +207,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             codeFrag.AddUnit(@if);
             codeFrag.Build(_codeOutput);
 
-            const string expected = "\tif (condition1)\r\n\t{\r\n\t\tdo1;\r\n\t}\r\n\telse if (condition2)\r\n\t{\r\n\t\tdo2;\r\n\t}\r\n\telse if (condition3)\r\n\t{\r\n\t\tdo3;\r\n\t}\r\n\telse\r\n\t{\r\n\t\tdo2;\r\n\t}\r\n";
+            const string expected = "\tif (condition1)\r\n\t{\r\n\t\tdo1;\r\n\t}\r\n\telse if (condition2)\r\n\t{\r\n\t\tdo2;\r\n\t}\r\n\telse if (condition3)\r\n\t{\r\n\t\tdo3;\r\n\t}\r\n\telse\r\n\t{\r\n\t\tdo2;\r\n\t}";
             var actual = _codeOutput.ToString();
             
             Assert.Equal(expected, actual);

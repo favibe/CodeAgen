@@ -31,9 +31,9 @@ namespace CodeAgen.Tests.OutputsTests
         }
 
         [Theory]
-        [InlineData("ab\r\ncde\r\nfg\r\n", new[] {"ab", "cde", "fg"})]
-        [InlineData("hola\r\namigo\r\n", new[] {"hola", "amigo"})]
-        [InlineData("class\r\nClassExample\r\n: object\r\n", new[] {"class", "ClassExample",": object"})]
+        [InlineData("ab\r\ncde\r\nfg", new[] {"ab", "cde", "fg"})]
+        [InlineData("hola\r\namigo", new[] {"hola", "amigo"})]
+        [InlineData("class\r\nClassExample\r\n: object", new[] {"class", "ClassExample",": object"})]
         public void Write_LineByLine(string expected, string[] args)
         {
             foreach (var arg in args)
@@ -46,9 +46,9 @@ namespace CodeAgen.Tests.OutputsTests
         }
 
         [Theory]
-        [InlineData("ab\r\ncde\r\nfg\r\n", new[] {"ab", "cde", "fg"})]
-        [InlineData("hola\r\namigo\r\n", new[] {"hola", "amigo"})]
-        [InlineData("class\r\nClassExample\r\n: object\r\n", new[] {"class", "ClassExample",": object"})]
+        [InlineData("ab\r\ncde\r\nfg", new[] {"ab", "cde", "fg"})]
+        [InlineData("hola\r\namigo", new[] {"hola", "amigo"})]
+        [InlineData("class\r\nClassExample\r\n: object", new[] {"class", "ClassExample",": object"})]
         public void Write_LineSkip(string expected, string[] args)
         {
             foreach (var arg in args)
@@ -91,8 +91,8 @@ namespace CodeAgen.Tests.OutputsTests
 
         public static IEnumerable<object[]> Write_Tabbed_Data()
         {
-            yield return new object[] {"\ta\r\n", new[] {(1, "a")}};
-            yield return new object[] {"\ta\r\n\t\tbcd\r\nefg\r\n", new[] {(1, "a"), (2, "bcd"), (0, "efg")}};
+            yield return new object[] {"\ta", new[] {(1, "a")}};
+            yield return new object[] {"\ta\r\n\t\tbcd\r\nefg", new[] {(1, "a"), (2, "bcd"), (0, "efg")}};
         }
     }
 }
