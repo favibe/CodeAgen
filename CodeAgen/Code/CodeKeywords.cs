@@ -14,5 +14,9 @@ namespace CodeAgen.Code
         public const string Base = "base";
         public const string Namespace = "namespace";
         public const string Using = "using";
+        public const string While = "while";
+        public const string Foreach = "foreach";
+        public const string For = "for";
+        public const string Do = "do";
     }
 }

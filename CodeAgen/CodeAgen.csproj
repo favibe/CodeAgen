@@ -68,6 +68,10 @@
         <Compile Include="Code\CodeTemplates\Interfaces\IAbstractable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IGenericable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IInheritable.cs" />
+        <Compile Include="Code\CodeTemplates\Loops\CodeDoWhileLoop.cs" />
+        <Compile Include="Code\CodeTemplates\Loops\CodeForeachLoop.cs" />
+        <Compile Include="Code\CodeTemplates\Loops\CodeForLoop.cs" />
+        <Compile Include="Code\CodeTemplates\Loops\CodeWhileLoop.cs" />
         <Compile Include="Exceptions\CodeBuildException.cs" />
         <Compile Include="Exceptions\CodeNamingException.cs" />
         <Compile Include="Outputs\Entities\StandardCodeOutput.cs" />

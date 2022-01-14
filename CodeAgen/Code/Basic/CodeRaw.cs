@@ -38,5 +38,10 @@ namespace CodeAgen.Code.Basic
         {
             output.Write(_data);
         }
+        
+        public static implicit operator CodeRawString(string code)
+        {
+            return new CodeRawString(code);
+        }
     }
 }

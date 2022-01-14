@@ -29,6 +29,8 @@ namespace CodeAgen.Code.Basic
             output.SetTab(Level);
             output.Write(CodeMarkups.CloseCurlyBracket);
             output.NextLine();
+
+            Level = 0;
         }
     }
 }
