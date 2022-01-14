@@ -71,9 +71,12 @@
         <Compile Include="Code\CodeTemplates\Interfaces\IGenericable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IInheritable.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Branching\CodeIfElse.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Branching\CodeSwitch.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Branching\IfElse\CodeElseBlock.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Branching\IfElse\CodeElseIfBlock.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Branching\IfElse\CodeIfBlock.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Branching\Switch\CodeSwitchCase.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Branching\Switch\CodeSwtichDefault.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Events\CodeEventSubscribe.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Events\CodeEventUnsubscribe.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeLoopDoWhile.cs" />

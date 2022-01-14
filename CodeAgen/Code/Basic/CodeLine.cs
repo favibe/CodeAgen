@@ -17,6 +17,11 @@ namespace CodeAgen.Code.Basic
             
         }
         
+        public CodeLine(CodeUnit code)
+        {
+            _units.Add(code);
+        }
+        
         public CodeLine(string code)
         {
             _units.Add(new CodeRawString(code));

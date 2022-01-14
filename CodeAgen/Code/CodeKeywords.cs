@@ -21,5 +21,8 @@ namespace CodeAgen.Code
         public const string If = "if";
         public const string Else = "else";
         public const string Const = "const";
+        public const string Switch = "switch";
+        public const string Case = "case";
+        public const string Default = "default";
     }
 }

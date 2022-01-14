@@ -9,8 +9,27 @@ namespace CodeAgen.Code.Basic
     /// </summary>
     public class CodeFragment : CodeTabbable
     {
-        private readonly List<CodeUnit> _units = new List<CodeUnit>();
+        private readonly List<CodeUnit> _units;
+        public bool IncreaseTabulation { get; set; }
 
+        public CodeFragment()
+        {
+            _units = new List<CodeUnit>();
+        }
+
+        public CodeFragment(List<CodeUnit> units)
+        {
+            _units = units;
+
+            foreach (var unit in _units)
+            {
+                if (unit is CodeTabbable tabbable)
+                {
+                    tabbable.Parent = this;
+                }
+            }
+        }
+        
         public CodeFragment AddUnit(CodeUnit unit)
         {
             if (unit is CodeTabbable tabbable)
@@ -20,6 +39,12 @@ namespace CodeAgen.Code.Basic
             
             _units.Add(unit);
 
+            return this;
+        }
+
+        public CodeFragment Clear()
+        {
+            _units.Clear();
             return this;
         }
         
@@ -37,7 +62,14 @@ namespace CodeAgen.Code.Basic
 
         protected override int GetNextTabLevel()
         {
-            return Level;
+            if (!IncreaseTabulation)
+            {
+                return Level;
+            }
+            else
+            {
+                return Level + 1;
+            }
         }
     }
 }
