@@ -11,11 +11,11 @@ namespace CodeAgen.Code.CodeTemplates
         {
             _name = name;
         }
-        public override void OnBuild(ICodeOutput output)
+        protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
             output.Write($"{CodeKeywords.Namespace}{CodeMarkups.Space}");
-            _name.OnBuild(output);
+            _name.Build(output);
             output.NextLine();
             base.OnBuild(output);
         }

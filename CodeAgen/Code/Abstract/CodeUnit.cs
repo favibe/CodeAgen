@@ -11,16 +11,16 @@ namespace CodeAgen.Code.Abstract
             PostBuild();
         }
 
-        private void PostBuild()
+        protected virtual void PostBuild()
         {
             
         }
 
-        private void PreBuild()
+        protected virtual void PreBuild()
         {
             
         }
 
-        public abstract void OnBuild(ICodeOutput output);
+        protected abstract void OnBuild(ICodeOutput output);
     }
 }

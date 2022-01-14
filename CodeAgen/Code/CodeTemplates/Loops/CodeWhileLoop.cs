@@ -18,11 +18,11 @@ namespace CodeAgen.Code.CodeTemplates.Loops
             _condition = condition;
         }
 
-        public override void OnBuild(ICodeOutput output)
+        protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
             output.Write($"{CodeKeywords.While}{CodeMarkups.OpenBracket}");
-            _condition.OnBuild(output);
+            _condition.Build(output);
             output.Write(CodeMarkups.CloseBracket);
             output.NextLine();
             base.OnBuild(output);

@@ -91,7 +91,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             AddUnit(block);
         }
         
-        public override void OnBuild(ICodeOutput output)
+        protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
             
@@ -99,7 +99,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             output.Write(CodeMarkups.Space);
             output.Write(_type);
             output.Write(CodeMarkups.Space);
-            _name.OnBuild(output);
+            _name.Build(output);
             output.NextLine();
             base.OnBuild(output);
         }

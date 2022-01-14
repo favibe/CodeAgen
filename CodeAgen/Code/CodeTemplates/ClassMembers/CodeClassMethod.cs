@@ -65,7 +65,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         }
         
         
-        public override void OnBuild(ICodeOutput output)
+        protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
 
@@ -89,7 +89,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             output.Write(_returnType);
             output.Write(CodeMarkups.Space);
             
-            _name.OnBuild(output);
+            _name.Build(output);
 
             if (this.IsGeneric())
             {
@@ -100,13 +100,13 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
             if (HasParameters)
             {
-                _parameters[0].OnBuild(output);
+                _parameters[0].Build(output);
                 
                 for (int index = 1; index < _parameters.Count; index++)
                 {
                     output.Write(CodeMarkups.Comma);
                     output.Write(CodeMarkups.Space);
-                    _parameters[index].OnBuild(output);
+                    _parameters[index].Build(output);
                 }
             }
 
@@ -120,7 +120,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
                 output.Write(CodeKeywords.Params);
                 output.Write(CodeMarkups.Space);
-                _params.OnBuild(output);
+                _params.Build(output);
             }
             
             output.Write(CodeMarkups.CloseBracket);

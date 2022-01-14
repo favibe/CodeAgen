@@ -31,7 +31,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             _isReadonly = isReadonly;
         }
         
-        public override void OnBuild(ICodeOutput output)
+        protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
             output.Write(_accessModifier);
@@ -48,7 +48,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
             var name = CodeNameVar.CreateFieldName(_name.Data, _accessModifier);
             
-            name.OnBuild(output);
+            name.Build(output);
 
             if (!string.IsNullOrWhiteSpace(_value))
             {

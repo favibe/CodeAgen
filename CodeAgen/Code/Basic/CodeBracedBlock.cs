@@ -10,12 +10,19 @@ namespace CodeAgen.Code.Basic
 
         public virtual CodeBracedBlock AddUnit(CodeTabbable unit)
         {
-            unit.Level = Level + 1;
             _units.Add(unit);
             return this;
         }
 
-        public override void OnBuild(ICodeOutput output)
+        protected override void PreBuild()
+        {
+            foreach (var unit in _units)
+            {
+                unit.Level = Level + 1;
+            }
+        }
+
+        protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
             output.Write(CodeMarkups.OpenCurlyBracket);
@@ -23,14 +30,12 @@ namespace CodeAgen.Code.Basic
             
             foreach (var unit in _units)
             {
-                unit.OnBuild(output);
+                unit.Build(output);
             }
 
             output.SetTab(Level);
             output.Write(CodeMarkups.CloseCurlyBracket);
             output.NextLine();
-
-            Level = 0;
         }
     }
 }

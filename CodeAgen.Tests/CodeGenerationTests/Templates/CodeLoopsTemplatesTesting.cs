@@ -77,8 +77,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Templates
             block.Build(_codeOutput);
 
             var actualCode = _codeOutput.ToString();
-
-            const string expectedCode = "{\r\n\tforeach(var a in b)\r\n\t{\r\n\t}\r\n}\r\n";
+            
+            const string expectedCode = "{\r\n\tdo\r\n\t{\r\n\t}\r\n\twhile(true);\r\n}\r\n";
             
             Assert.Equal(expectedCode, actualCode);
         }
