@@ -98,7 +98,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Templates
             @constructor.AddParameter(new CodeMethodParameter( "string", "name"));
             @constructor.AddUnit(new CodeLine("_name = name"));
             @constructor.AddUnit(new CodeLine());
-            
+
             var @for = new CodeForLoop("var i = 0; i < name.Length; i++");
             @for.AddUnit(new CodeLine("Console.WriteLine(name[i])"));
             
@@ -107,11 +107,25 @@ namespace CodeAgen.Tests.CodeGenerationTests.Templates
             @class.AddUnit(field);
             @class.AddUnit(new CodeLine());
             @class.AddUnit(constructor);
+            @class.AddUnit(new CodeLine());
             @namespace.AddUnit(@class);
 
+            var fragment = new CodeFragment();
+            fragment.AddUnit(new CodeMethod("Method1").AddUnit(new CodeLine()));
+            fragment.AddUnit(new CodeLine());
+            fragment.AddUnit(new CodeMethod("Method2", "float").AddUnit(new CodeLine()));
+            fragment.AddUnit(new CodeLine());
+            fragment.AddUnit(new CodeMethod("Method3", "float", CodeAccessModifier.Public).AddUnit(new CodeLine()));
+
+            @class.AddUnit(fragment);
+            
             @namespace.Build(_codeOutput);
             
+            
             var code = _codeOutput.ToString();
+
+            Assert.Equal(true, false);
         }
     }
+    
 }

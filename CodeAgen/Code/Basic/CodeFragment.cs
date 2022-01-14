@@ -15,7 +15,7 @@ namespace CodeAgen.Code.Basic
         {
             if (unit is CodeTabbable tabbable)
             {
-                tabbable.Level = Level;
+                tabbable.Parent = this;
             }
             
             _units.Add(unit);
@@ -33,6 +33,11 @@ namespace CodeAgen.Code.Basic
             }
 
             output.SetTab(Level);
+        }
+
+        protected override int GetNextTabLevel()
+        {
+            return Level;
         }
     }
 }
