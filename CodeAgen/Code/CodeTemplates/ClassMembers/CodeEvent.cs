@@ -35,7 +35,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             output.Write(CodeMarkups.Space);
             output.Write(CodeKeywords.Event);
             output.Write(CodeMarkups.Space);
-            output.Write(_type);
+            _type.Build(output);
             output.Write(CodeMarkups.Space);
             _name.Build(output);
             output.Write(CodeMarkups.Semicolon);

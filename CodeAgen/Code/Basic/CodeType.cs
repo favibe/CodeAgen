@@ -7,7 +7,7 @@ namespace CodeAgen.Code.Basic
     /// <summary>
     /// Code type unit
     /// </summary>
-    public class CodeType
+    public class CodeType : CodeRawString
     {
         private static readonly Regex SpecialCharactersRegex = new Regex("[^A-Za-z0-9_.\\[//]<>]");
         private static readonly Dictionary<string, CodeType> Types = new Dictionary<string, CodeType>();
@@ -33,7 +33,7 @@ namespace CodeAgen.Code.Basic
 
         private readonly string _name;
         
-        private CodeType(string name)
+        private CodeType(string name) : base(name)
         {
             if (!IsValid(name))
             {
@@ -48,10 +48,10 @@ namespace CodeAgen.Code.Basic
             return !(string.IsNullOrWhiteSpace(name) || char.IsNumber(name[0]) || SpecialCharactersRegex.IsMatch(name));
         }
         
-        public static implicit operator string(CodeType type)
-        {
-            return type._name;
-        }
+        //public static implicit operator string(CodeType type)
+        //{
+        //    return type._name;
+        //}
         
         public static implicit operator CodeType(string type)
         {

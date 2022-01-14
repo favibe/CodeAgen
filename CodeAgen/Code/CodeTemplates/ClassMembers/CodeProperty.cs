@@ -99,7 +99,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             
             output.Write(_accessModifier);
             output.Write(CodeMarkups.Space);
-            output.Write(_type);
+            _type.Build(output);
             output.Write(CodeMarkups.Space);
             _name.Build(output);
             output.NextLine();

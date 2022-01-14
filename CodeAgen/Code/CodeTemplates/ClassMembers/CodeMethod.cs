@@ -94,7 +94,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
                 this.WriteAbstract(output);
             }
             
-            output.Write(_returnType);
+            _returnType.Build(output);
             output.Write(CodeMarkups.Space);
             
             _name.Build(output);

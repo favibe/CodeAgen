@@ -29,13 +29,13 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
             output.Write(CodeMarkups.Space);
             output.Write(CodeMarkups.Colon);
             output.Write(CodeMarkups.Space);
-            output.Write(inheritable.InheritTypes[0]);
+            inheritable.InheritTypes[0].Build(output);
 
             for (var i = 1; i < inheritable.InheritTypes.Count; i++)
             {
                 output.Write(CodeMarkups.Comma);
                 output.Write(CodeMarkups.Space);
-                output.Write(inheritable.InheritTypes[i]);
+                inheritable.InheritTypes[i].Build(output);
             }
         }
     }

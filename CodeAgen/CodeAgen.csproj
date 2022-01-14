@@ -61,6 +61,7 @@
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeMethodParameter.cs" />
         <Compile Include="Code\CodeTemplates\ClassMembers\CodeProperty.cs" />
         <Compile Include="Code\CodeTemplates\CodeClass.cs" />
+        <Compile Include="Code\CodeTemplates\CodeConst.cs" />
         <Compile Include="Code\CodeTemplates\CodeNamespace.cs" />
         <Compile Include="Code\CodeTemplates\CodeUsing.cs" />
         <Compile Include="Code\CodeTemplates\Extensions\AbstractableExtension.cs" />

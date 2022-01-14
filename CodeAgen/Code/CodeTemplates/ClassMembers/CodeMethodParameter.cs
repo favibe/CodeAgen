@@ -23,7 +23,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         
         protected override void OnBuild(ICodeOutput output)
         {
-            output.Write(_type);
+            _type.Build(output);
             output.Write(CodeMarkups.Space);
             _name.Build(output);
 
