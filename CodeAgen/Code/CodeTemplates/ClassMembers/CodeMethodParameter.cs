@@ -14,7 +14,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private readonly string _defaultValue;
         public bool HasDefaultValue => _defaultValue != null;
         
-        public CodeMethodParameter(CodeNameVar name, CodeType type, string defaultValue = null)
+        public CodeMethodParameter(CodeType type, CodeNameVar name, string defaultValue = null)
         {
             _name = name;
             _type = type;
