@@ -5,7 +5,7 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
 {
     public static class AbstractableExtension
     {
-        public static IAbstractable SetAbstract(this IAbstractable abstractable, bool isAbstract)
+        public static IAbstractable Abstract(this IAbstractable abstractable, bool isAbstract)
         {
             abstractable.IsAbstract = isAbstract;
             return abstractable;

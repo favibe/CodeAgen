@@ -73,7 +73,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .SetAbstract(true);
+                .Abstract(true);
 
             @class.Build(_codeOutput);
             
@@ -86,8 +86,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .AddGenericArgument("T")
-                .AddGenericArgument("A");
+                .Generic("T")
+                .Generic("A");
 
             @class.Build(_codeOutput);
             
@@ -98,10 +98,10 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         public void Build_InvalidGenericNoTab()
         {
             var @class = new CodeClass("ExampleClass");
-            @class.AddGenericArgument("T1");
+            @class.Generic("T1");
 
-            Assert.Throws(typeof(CodeNamingException),() => @class.AddGenericArgument("1T"));
-            Assert.Throws(typeof(CodeNamingException),() => @class.AddGenericArgument("T;"));
+            Assert.Throws(typeof(CodeNamingException),() => @class.Generic("1T"));
+            Assert.Throws(typeof(CodeNamingException),() => @class.Generic("T;"));
         }
 
         [Fact]
@@ -117,8 +117,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .AddGenericArgument("T", "class")
-                .AddGenericArgument("A", "new()");
+                .Generic("T", "class")
+                .Generic("A", "new()");
 
             @class.Build(_codeOutput);
             
@@ -131,10 +131,10 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .InheritFrom(CodeType.Get("ParentType"));
+                .Inherit(CodeType.Get("ParentType"));
 
-            @class.AddGenericArgument("T", "class")
-                .AddGenericArgument("A", "new()");
+            @class.Generic("T", "class")
+                .Generic("A", "new()");
             
             @class.Build(_codeOutput);
             
@@ -147,10 +147,10 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .AddGenericArgument("T")
-                .AddGenericArgument("A");
+                .Generic("T")
+                .Generic("A");
 
-            @class.SetAbstract(true);
+            @class.Abstract(true);
             @class.Build(_codeOutput);
             
             Assert.Equal("public abstract class ExampleClass<T,A>\r\n{\r\n}\r\n", _codeOutput.ToString());
@@ -162,8 +162,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var @class = new CodeClass("ExampleClass", CodeAccessModifier.Public);
 
             @class
-                .InheritFrom(CodeType.Get("ParentClass"))
-                .InheritFrom(CodeType.Get("IExampleInterface"));
+                .Inherit(CodeType.Get("ParentClass"))
+                .Inherit(CodeType.Get("IExampleInterface"));
 
             @class.Build(_codeOutput);
             

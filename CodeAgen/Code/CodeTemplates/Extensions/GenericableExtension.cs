@@ -19,7 +19,7 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
             return genericable.GenericRestrictions != null && genericable.GenericRestrictions.Count > 0;
         }
         
-        public static IGenericable AddGenericArgument(this IGenericable genericable, CodeNameVar name, string restriction = null)
+        public static IGenericable Generic(this IGenericable genericable, CodeNameVar name, string restriction = null)
         {
             if (!IsGeneric(genericable))
             {

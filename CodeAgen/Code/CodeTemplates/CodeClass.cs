@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
 using CodeAgen.Code.Basic.CodeNames;
+using CodeAgen.Code.CodeTemplates.ClassMembers;
 using CodeAgen.Code.CodeTemplates.Extensions;
 using CodeAgen.Code.CodeTemplates.Interfaces;
 using CodeAgen.Outputs;
@@ -40,6 +43,18 @@ namespace CodeAgen.Code.CodeTemplates
             _comment = comment;
         }
 
+        public CodeClass Method(CodeMethod method) => AddAndReturn(method);
+        public CodeClass Fields(CodeField field) => AddAndReturn(field);
+        public CodeClass Property(CodeProperty property) => AddAndReturn(property);
+        public CodeClass Constant(CodeConst constant) => AddAndReturn(constant);
+        public CodeClass Event(CodeEvent @event) => AddAndReturn(@event);
+
+        [Obsolete("Use special methods instead")]
+        public override CodeBracedBlock AddUnit(CodeTabbable unit)
+        {
+            return base.AddUnit(unit);
+        }
+
         protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
@@ -49,6 +64,12 @@ namespace CodeAgen.Code.CodeTemplates
             output.NextLine();
             
             base.OnBuild(output);
+        }
+
+        private CodeClass AddAndReturn(CodeTabbable unit)
+        {
+            AddUnit(unit);
+            return this;
         }
 
         private void WriteHeader(ICodeOutput output)

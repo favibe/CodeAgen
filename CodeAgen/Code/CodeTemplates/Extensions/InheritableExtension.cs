@@ -12,7 +12,7 @@ namespace CodeAgen.Code.CodeTemplates.Extensions
             return inheritable.InheritTypes != null && inheritable.InheritTypes.Count > 0;
         }
        
-        public static IInheritable InheritFrom(this IInheritable inheritable, CodeType type)
+        public static IInheritable Inherit(this IInheritable inheritable, CodeType type)
         {
             if (!IsInherits(inheritable))
             {

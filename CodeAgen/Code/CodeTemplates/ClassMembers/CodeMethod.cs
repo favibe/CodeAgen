@@ -49,7 +49,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         /// </summary>
         /// <param name="parameter">Parameter</param>
         /// <returns></returns>
-        public CodeMethod AddParameter(CodeMethodParameter parameter)
+        public CodeMethod Parameter(CodeMethodParameter parameter)
         {
             if (_parameters == null)
             {
@@ -66,7 +66,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         /// </summary>
         /// <param name="params">Params</param>
         /// <returns></returns>
-        public CodeMethod AddParams(CodeMethodParameter @params)
+        public CodeMethod Params(CodeMethodParameter @params)
         {
             _params = @params;
             return this;
