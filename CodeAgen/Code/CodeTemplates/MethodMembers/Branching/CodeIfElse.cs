@@ -1,24 +1,24 @@
 ﻿using System.Collections.Generic;
 using CodeAgen.Code.Abstract;
 using CodeAgen.Code.Basic;
-using CodeAgen.Code.CodeTemplates.MethodMembers.IfElse;
+using CodeAgen.Code.CodeTemplates.MethodMembers.Branching.IfElse;
 using CodeAgen.Outputs;
 
-namespace CodeAgen.Code.CodeTemplates.MethodMembers
+namespace CodeAgen.Code.CodeTemplates.MethodMembers.Branching
 {
-    public class CodeIfElseTemplate : CodeTabbable
+    public class CodeIfElse : CodeTabbable
     {
         private readonly CodeBracedBlock _if;
         private CodeBracedBlock _else;
         private List<CodeBracedBlock> _elseIfs;
 
-        public CodeIfElseTemplate(CodeConditionChain condition, CodeTabbable code)
+        public CodeIfElse(CodeConditionChain condition, CodeTabbable code)
         {
             _if = new CodeIfBlock(condition, code);
             _if.Parent = this;
         }
 
-        public CodeIfElseTemplate ElseIf(CodeConditionChain condition, CodeTabbable code)
+        public CodeIfElse ElseIf(CodeConditionChain condition, CodeTabbable code)
         {
             if (_elseIfs == null)
             {
@@ -35,7 +35,7 @@ namespace CodeAgen.Code.CodeTemplates.MethodMembers
             return this;
         }
         
-        public CodeIfElseTemplate Else(CodeTabbable code)
+        public CodeIfElse Else(CodeTabbable code)
         {
             _else = new CodeElseBlock(code);
             _else.Parent = this;

@@ -70,12 +70,12 @@
         <Compile Include="Code\CodeTemplates\Interfaces\IAbstractable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IGenericable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IInheritable.cs" />
-        <Compile Include="Code\CodeTemplates\MethodMembers\CodeIfElseTemplate.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Branching\CodeIfElse.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Branching\IfElse\CodeElseBlock.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Branching\IfElse\CodeElseIfBlock.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Branching\IfElse\CodeIfBlock.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Events\CodeEventSubscribe.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Events\CodeEventUnsubscribe.cs" />
-        <Compile Include="Code\CodeTemplates\MethodMembers\IfElse\CodeElseBlock.cs" />
-        <Compile Include="Code\CodeTemplates\MethodMembers\IfElse\CodeElseIfBlock.cs" />
-        <Compile Include="Code\CodeTemplates\MethodMembers\IfElse\CodeIfBlock.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeLoopDoWhile.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeLoopForeach.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeLoopFor.cs" />

@@ -2,13 +2,13 @@
 using CodeAgen.Code.Basic;
 using CodeAgen.Outputs;
 
-namespace CodeAgen.Code.CodeTemplates.MethodMembers.IfElse
+namespace CodeAgen.Code.CodeTemplates.MethodMembers.Branching.IfElse
 {
-    public sealed class CodeElseIfBlock : CodeBracedBlock
+    public sealed class CodeIfBlock : CodeBracedBlock
     {
         private readonly CodeConditionChain _condition;
 
-        public CodeElseIfBlock(CodeConditionChain condition, CodeTabbable code)
+        public CodeIfBlock(CodeConditionChain condition, CodeTabbable code)
         {
             _condition = condition;
             code.Parent = this;
@@ -18,7 +18,7 @@ namespace CodeAgen.Code.CodeTemplates.MethodMembers.IfElse
         protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
-            output.Write($"{CodeKeywords.Else}{CodeMarkups.Space}{CodeKeywords.If}{CodeMarkups.Space}{CodeMarkups.OpenBracket}");
+            output.Write($"{CodeKeywords.If}{CodeMarkups.Space}{CodeMarkups.OpenBracket}");
             _condition.Build(output);
             output.Write(CodeMarkups.CloseBracket);
             output.NextLine();

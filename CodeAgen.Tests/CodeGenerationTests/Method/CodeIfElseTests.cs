@@ -1,5 +1,6 @@
 ﻿using CodeAgen.Code.Basic;
 using CodeAgen.Code.CodeTemplates.MethodMembers;
+using CodeAgen.Code.CodeTemplates.MethodMembers.Branching;
 using CodeAgen.Outputs;
 using CodeAgen.Outputs.Entities;
 using Xunit;
@@ -18,7 +19,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         [Fact]
         private void Build_Simple()
         {
-            var @if = new CodeIfElseTemplate("condition", new CodeLine("do"));
+            var @if = new CodeIfElse("condition", new CodeLine("do"));
             
             @if.Build(_codeOutput);
 
@@ -31,7 +32,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         [Fact]
         private void Build_Elseif()
         {
-            var @if = new CodeIfElseTemplate("condition", new CodeLine("do"));
+            var @if = new CodeIfElse("condition", new CodeLine("do"));
             @if.ElseIf("condition2", new CodeLine("do2"));
             
             @if.Build(_codeOutput);
@@ -45,7 +46,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         [Fact]
         private void Build_Else()
         {
-            var @if = new CodeIfElseTemplate("condition", new CodeLine("do"));
+            var @if = new CodeIfElse("condition", new CodeLine("do"));
             @if.Else(new CodeLine("do2"));
             
             @if.Build(_codeOutput);
@@ -64,7 +65,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
                 Level = 1
             };
 
-            var @if = new CodeIfElseTemplate("condition1", new CodeLine("do1"));
+            var @if = new CodeIfElse("condition1", new CodeLine("do1"));
             @if.ElseIf("condition2", new CodeLine("do2"));
             @if.ElseIf("condition3", new CodeLine("do3"));
             @if.Else(new CodeLine("do2"));

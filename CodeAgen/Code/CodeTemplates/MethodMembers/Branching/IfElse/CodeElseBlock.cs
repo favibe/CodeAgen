@@ -2,7 +2,7 @@
 using CodeAgen.Code.Basic;
 using CodeAgen.Outputs;
 
-namespace CodeAgen.Code.CodeTemplates.MethodMembers.IfElse
+namespace CodeAgen.Code.CodeTemplates.MethodMembers.Branching.IfElse
 {
     public sealed class CodeElseBlock : CodeBracedBlock
     {
