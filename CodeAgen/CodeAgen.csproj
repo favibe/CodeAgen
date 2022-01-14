@@ -42,7 +42,9 @@
         <Compile Include="Code\Abstract\CodeUnit.cs" />
         <Compile Include="Code\Basic\CodeBracedBlock.cs" />
         <Compile Include="Code\Basic\CodeComment.cs" />
+        <Compile Include="Code\Basic\CodeConditionChain.cs" />
         <Compile Include="Code\Basic\CodeFragment.cs" />
+        <Compile Include="Code\Basic\CodeInBrackets.cs" />
         <Compile Include="Code\Basic\CodeLine.cs" />
         <Compile Include="Code\Basic\CodeName.cs" />
         <Compile Include="Code\Basic\CodeNames\CodeNameNamespace.cs" />
@@ -67,8 +69,12 @@
         <Compile Include="Code\CodeTemplates\Interfaces\IAbstractable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IGenericable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IInheritable.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\CodeIfElseTemplate.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Events\CodeEventSubscribe.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Events\CodeEventUnsubscribe.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\IfElse\CodeElseBlock.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\IfElse\CodeElseIfBlock.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\IfElse\CodeIfBlock.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeDoWhileLoop.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeForeachLoop.cs" />
         <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeForLoop.cs" />

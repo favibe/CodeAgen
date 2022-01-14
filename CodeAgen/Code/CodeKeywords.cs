@@ -18,5 +18,7 @@ namespace CodeAgen.Code
         public const string Foreach = "foreach";
         public const string For = "for";
         public const string Do = "do";
+        public const string If = "if";
+        public const string Else = "else";
     }
 }

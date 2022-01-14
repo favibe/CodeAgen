@@ -1,4 +1,5 @@
-﻿using CodeAgen.Outputs;
+﻿using CodeAgen.Code.Basic;
+using CodeAgen.Outputs;
 
 namespace CodeAgen.Code.Abstract
 {
@@ -39,5 +40,15 @@ namespace CodeAgen.Code.Abstract
         /// </summary>
         /// <param name="output">Output</param>
         protected abstract void OnBuild(ICodeOutput output);
+        
+        public static implicit operator CodeUnit(string @string)
+        {
+            return new CodeRawString(@string);
+        }
+        
+        public static implicit operator CodeUnit(char @char)
+        {
+            return new CodeRawChar(@char);
+        }
     }
 }

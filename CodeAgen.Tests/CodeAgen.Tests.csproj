@@ -61,7 +61,9 @@
         <Compile Include="CodeGenerationTests\CodeFragmentTests.cs" />
         <Compile Include="CodeGenerationTests\CodeLineTests.cs" />
         <Compile Include="CodeGenerationTests\CodeNamespaceTests.cs" />
+        <Compile Include="CodeGenerationTests\Method\CodeConditionChainTests.cs" />
         <Compile Include="CodeGenerationTests\Method\CodeEventsTests.cs" />
+        <Compile Include="CodeGenerationTests\Method\CodeIfElseTests.cs" />
         <Compile Include="CodeGenerationTests\Method\CodeLoopsTemplatesTesting.cs" />
         <Compile Include="OutputsTests\StandardOutputTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
