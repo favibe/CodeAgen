@@ -24,5 +24,7 @@ namespace CodeAgen.Code
         public const string Switch = "switch";
         public const string Case = "case";
         public const string Default = "default";
+        public const string Yield = "yield";
+        public const string Return = "return";
     }
 }

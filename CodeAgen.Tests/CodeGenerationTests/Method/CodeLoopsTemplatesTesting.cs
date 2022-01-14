@@ -50,6 +50,30 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         }
         
         [Fact]
+        private void Build_YieldReturn()
+        {
+            var yield = CodeLoop.YieldBreak;
+            
+            yield.Build(_codeOutput);
+            var actualCode = _codeOutput.ToString();
+
+            const string expectedCode = "yield break;\r\n";
+            Assert.Equal(expectedCode, actualCode);
+        }
+        
+        [Fact]
+        private void Build_YieldBreak()
+        {
+            var yield = CodeLoop.YieldReturn(new CodeRawString("new Target()"));
+            
+            yield.Build(_codeOutput);
+            var actualCode = _codeOutput.ToString();
+
+            const string expectedCode = "yield return new Target();\r\n";
+            Assert.Equal(expectedCode, actualCode);
+        }
+        
+        [Fact]
         private void Build_ContinueLoop()
         {
             var block = new CodeBracedBlock();
