@@ -20,5 +20,6 @@ namespace CodeAgen.Code
         public const string Do = "do";
         public const string If = "if";
         public const string Else = "else";
+        public const string Const = "const";
     }
 }

@@ -48,11 +48,6 @@ namespace CodeAgen.Code.Basic
             return !(string.IsNullOrWhiteSpace(name) || char.IsNumber(name[0]) || SpecialCharactersRegex.IsMatch(name));
         }
         
-        //public static implicit operator string(CodeType type)
-        //{
-        //    return type._name;
-        //}
-        
         public static implicit operator CodeType(string type)
         {
             return Get(type);
