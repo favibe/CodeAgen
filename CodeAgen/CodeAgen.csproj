@@ -67,10 +67,12 @@
         <Compile Include="Code\CodeTemplates\Interfaces\IAbstractable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IGenericable.cs" />
         <Compile Include="Code\CodeTemplates\Interfaces\IInheritable.cs" />
-        <Compile Include="Code\CodeTemplates\Loops\CodeDoWhileLoop.cs" />
-        <Compile Include="Code\CodeTemplates\Loops\CodeForeachLoop.cs" />
-        <Compile Include="Code\CodeTemplates\Loops\CodeForLoop.cs" />
-        <Compile Include="Code\CodeTemplates\Loops\CodeWhileLoop.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Events\CodeEventSubscribe.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Events\CodeEventUnsubscribe.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeDoWhileLoop.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeForeachLoop.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeForLoop.cs" />
+        <Compile Include="Code\CodeTemplates\MethodMembers\Loops\CodeWhileLoop.cs" />
         <Compile Include="Exceptions\CodeBuildException.cs" />
         <Compile Include="Exceptions\CodeNamingException.cs" />
         <Compile Include="Outputs\Entities\StandardCodeOutput.cs" />

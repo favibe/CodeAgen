@@ -2,18 +2,18 @@
 using CodeAgen.Code.Basic;
 using CodeAgen.Outputs;
 
-namespace CodeAgen.Code.CodeTemplates.Loops
+namespace CodeAgen.Code.CodeTemplates.MethodMembers.Loops
 {
-    public class CodeWhileLoop : CodeBracedBlock
+    public class CodeForeachLoop : CodeBracedBlock
     {
         private readonly CodeUnit _condition;
 
-        public CodeWhileLoop(CodeUnit condition)
+        public CodeForeachLoop(CodeUnit condition)
         {
             _condition = condition;
         }
-        
-        public CodeWhileLoop(CodeRawString condition)
+
+        public CodeForeachLoop(CodeRawString condition)
         {
             _condition = condition;
         }
@@ -21,7 +21,7 @@ namespace CodeAgen.Code.CodeTemplates.Loops
         protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
-            output.Write($"{CodeKeywords.While}{CodeMarkups.OpenBracket}");
+            output.Write($"{CodeKeywords.Foreach}{CodeMarkups.OpenBracket}");
             _condition.Build(output);
             output.Write(CodeMarkups.CloseBracket);
             output.NextLine();

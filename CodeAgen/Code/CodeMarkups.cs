@@ -4,8 +4,6 @@ namespace CodeAgen.Code
 {
     public static class CodeMarkups
     {
-        // TODO: refactor to CodeMarkup
-        
         public const char Space = ' ';
         public const char Comma = ',';
         public const char Colon = ':';
@@ -19,5 +17,7 @@ namespace CodeAgen.Code
         public const char CloseAngleBracket = '>';
         public const string Comment = "//";
         public const string Assignment = " = ";
+        public const string EventSubscribe = " += ";
+        public const string EventUnsubscribe = " -= ";
     }
 }

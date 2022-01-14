@@ -1,13 +1,10 @@
-﻿using CodeAgen.Code;
-using CodeAgen.Code.Basic;
-using CodeAgen.Code.CodeTemplates;
-using CodeAgen.Code.CodeTemplates.ClassMembers;
-using CodeAgen.Code.CodeTemplates.Loops;
+﻿using CodeAgen.Code.Basic;
+using CodeAgen.Code.CodeTemplates.MethodMembers.Loops;
 using CodeAgen.Outputs;
 using CodeAgen.Outputs.Entities;
 using Xunit;
 
-namespace CodeAgen.Tests.CodeGenerationTests.Templates
+namespace CodeAgen.Tests.CodeGenerationTests.Method
 {
     public class CodeLoopsTemplatesTesting
     {
