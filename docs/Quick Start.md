@@ -88,6 +88,8 @@ internal class ExampleClass
 ```
 ### Члены класса
 
+#### Поля
+
 После генерации пустого класса пиступим к его начинке. Для примера, заведем пару полей:
 ```c#
 code.Field(new CodeField("float", "_index", "5f", CodeAccessModifier.Private, true))
@@ -106,10 +108,10 @@ code.Field(new CodeField("float", "_index", "5f", CodeAccessModifier.Private, tr
 ---
 Тем не менее, существует альтернативный вариант осуществления того же действия:
 ```c#
-code.AddUnit(new CodeLine("private readonly float _index"));
-code.AddUnit(new CodeLine("private readonly float _name"));
+code.AddUnit(new CodeLine("private readonly float _index;"));
+code.AddUnit(new CodeLine("private readonly float _name;"));
 ```
-> Также обратите внимание, что при использовании `CodeLine` мы не ставим в конце строк `;`, компилятор сделает это автоматически. Чтобы отключить такое поведение, используйте метод `.SetSemicolon(false)`
+
 ---
 После добавления полей полученный код будет иметь вид:
 
@@ -120,4 +122,20 @@ internal class ExampleClass
 	private readonly float _index = 5f;
 	private readonly string _name;
 }
+```
+#### Конструктор
+
+Теперь добавим конструктор:
+
+```c#
+code.Constructor(CodeConstructor.CreateFor(code, CodeAccessModifier.Public)
+    .AddParameter(new CodeMethodParameter("float", "_index"))
+    .AddParameter(new CodeMethodParameter("string", "_name"))
+);
+```
+
+Результат выполнения:
+
+```c#
+
 ```

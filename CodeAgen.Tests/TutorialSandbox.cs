@@ -20,9 +20,11 @@ namespace CodeAgen.Tests
             
             code.Field(new CodeField("float", "_index", "5f", CodeAccessModifier.Private, true))
                 .Field(new CodeField("string", "_name", null, CodeAccessModifier.Private, true));
-            
-            code.AddUnit(new CodeLine("private readonly float _index"));
-            code.AddUnit(new CodeLine("private readonly float _name"));
+
+            code.Constructor(CodeConstructor.CreateFor(code, CodeAccessModifier.Public)
+                .AddParameter(new CodeMethodParameter("float", "_index"))
+                .AddParameter(new CodeMethodParameter("string", "_name"))
+            );
             
             code.Build(output);
             
