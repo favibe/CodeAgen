@@ -33,9 +33,10 @@ namespace CodeAgen.Code.Basic
             return this;
         }
 
-        public void SetSemicolon(bool isEnabled)
+        public CodeLine SetSemicolon(bool isEnabled)
         {
             _semicolonEnabled = isEnabled;
+            return this;
         }
         
         protected override void OnBuild(ICodeOutput output)
