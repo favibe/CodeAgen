@@ -53,8 +53,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
 
             var raw1 = new CodeRawString("some code string 1");
             var raw2 = new CodeRawString("some code string 2");
-            var line = new CodeLine();
-            line.AddUnit(new CodeRawString("var a = 5"));
+            var line = new CodeLine("var a = 5;");
             
             block.AddUnit(raw1);
             block.AddUnit(raw2);
@@ -73,7 +72,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
             var raw1 = new CodeRawString("some code string 1");
             var raw2 = new CodeRawString("some code string 2");
             var line = new CodeLine();
-            line.AddUnit(new CodeRawString("var a = 5"));
+            line.AddUnit(new CodeRawString("var a = 5;"));
             
             block.AddUnit(raw1);
             block.AddUnit(raw2);

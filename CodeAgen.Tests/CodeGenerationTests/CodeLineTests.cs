@@ -19,7 +19,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
         {
             const string source = "var a = 5"; 
             
-            var code = new CodeLine();
+            var code = new CodeLine().SetSemicolon(true);
             code.AddUnit(new CodeRawString(source));
             code.Build(_codeOutput);
             
@@ -32,7 +32,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
         {
             const string source = "var a = 5"; 
             
-            var code = new CodeLine();
+            var code = new CodeLine().SetSemicolon(true);
             code.AddUnit(new CodeRawString(source));
             code.Level = 2;
             code.Build(_codeOutput);
@@ -46,7 +46,7 @@ namespace CodeAgen.Tests.CodeGenerationTests
         [InlineData("\t\tConsole.Write(\"HelloWorld!\");", new string[] {"Console", ".Write(", "\"HelloWorld!\"", ")"})]
         public void Build_MultipleUnitsTabbed(string expected, string[] args)
         {
-            var code = new CodeLine();
+            var code = new CodeLine().SetSemicolon(true);
 
             foreach (var arg in args)
             {

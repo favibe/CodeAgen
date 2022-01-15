@@ -22,8 +22,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         {
             var property = new CodeProperty("Example", CodeType.Get("float"));
             
-            property.AddGetter(new CodeLine("getterCode"));
-            property.AddSetter(new CodeLine("setterCode"));
+            property.AddGetter(new CodeLine("getterCode;"));
+            property.AddSetter(new CodeLine("setterCode;"));
             
             property.Build(_codeOutput);
 
@@ -118,8 +118,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         {
             var property = new CodeProperty("Example", CodeType.Get("float"));
             
-            property.AddGetter(new CodeLine("getterCode"), CodeAccessModifier.Private);
-            property.AddSetter(new CodeLine("setterCode"));
+            property.AddGetter(new CodeLine("getterCode;"), CodeAccessModifier.Private);
+            property.AddSetter(new CodeLine("setterCode;"));
             
             property.Build(_codeOutput);
 
@@ -136,8 +136,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         {
             var property = new CodeProperty("Example", CodeType.Get("float"));
             
-            property.AddGetter(new CodeLine("getterCode"));
-            property.AddSetter(new CodeLine("setterCode"), CodeAccessModifier.Private);
+            property.AddGetter(new CodeLine("getterCode;"));
+            property.AddSetter(new CodeLine("setterCode;"), CodeAccessModifier.Private);
             
             property.Build(_codeOutput);
 
@@ -160,11 +160,11 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             @class.AddUnit(property1);
             @class.AddUnit(property2);
             
-            property1.AddGetter(new CodeLine("getterCode"));
-            property1.AddSetter(new CodeLine("setterCode"));
+            property1.AddGetter(new CodeLine("getterCode;"));
+            property1.AddSetter(new CodeLine("setterCode;"));
             
-            property2.AddGetter(new CodeLine("getterCode"));
-            property2.AddSetter(new CodeLine("setterCode"));
+            property2.AddGetter(new CodeLine("getterCode;"));
+            property2.AddSetter(new CodeLine("setterCode;"));
 
             @class.Build(_codeOutput);
 

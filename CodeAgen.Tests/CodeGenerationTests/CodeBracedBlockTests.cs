@@ -38,11 +38,9 @@ namespace CodeAgen.Tests.CodeGenerationTests
         {
             var block = new CodeBracedBlock();
 
-            var line = new CodeLine();
-            line.AddUnit(new CodeRawString("var abc = 5"));
+            var line = new CodeLine("var abc = 5;");
             block.AddUnit(line);
-            line = new CodeLine();
-            line.AddUnit(new CodeRawString("abc.Use()"));
+            line = new CodeLine("abc.Use();");
             block.AddUnit(line);
             
             block.Build(_codeOutput);
@@ -58,10 +56,10 @@ namespace CodeAgen.Tests.CodeGenerationTests
             block.Level = 1;
 
             var line = new CodeLine();
-            line.AddUnit(new CodeRawString("var abc = 5"));
+            line.AddUnit(new CodeRawString("var abc = 5;"));
             block.AddUnit(line);
             line = new CodeLine();
-            line.AddUnit(new CodeRawString("abc.Use()"));
+            line.AddUnit(new CodeRawString("abc.Use();"));
             block.AddUnit(line);
             
             block.Build(_codeOutput);

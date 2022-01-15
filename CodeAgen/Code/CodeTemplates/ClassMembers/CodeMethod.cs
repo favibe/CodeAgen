@@ -142,7 +142,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
         public static CodeLine Return(CodeUnit code = null)
         {
-            var @return = new CodeLine($"{CodeKeywords.Return}");
+            var @return = new CodeLine($"{CodeKeywords.Return}").SetSemicolon(true);
 
             if (code != null)
             {

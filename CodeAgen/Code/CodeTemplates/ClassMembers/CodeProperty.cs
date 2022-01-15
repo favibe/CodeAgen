@@ -45,7 +45,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
             if (code == null)
             {
-                AddAuto("get", access);
+                AddAuto("get;", access);
             }
             else
             {
@@ -63,7 +63,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             
             if (code == null)
             {
-                AddAuto("set", access);
+                AddAuto("set;", access);
             }
             else
             {

@@ -10,7 +10,7 @@ namespace CodeAgen.Code.Basic
     public class CodeLine : CodeTabbable
     {
         private readonly List<CodeUnit> _units = new List<CodeUnit>();
-        private bool _semicolonEnabled = true;
+        private bool _semicolonEnabled;
 
         public CodeLine()
         {

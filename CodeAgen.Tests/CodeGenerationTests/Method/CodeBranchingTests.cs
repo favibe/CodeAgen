@@ -23,7 +23,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         [Fact]
         private void Build_Simple()
         {
-            var @if = new CodeIfElse("condition", new CodeLine("do"));
+            var @if = new CodeIfElse("condition", new CodeLine("do;"));
             
             @if.Build(_codeOutput);
 
@@ -36,8 +36,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         [Fact]
         private void Build_Elseif()
         {
-            var @if = new CodeIfElse("condition", new CodeLine("do"));
-            @if.ElseIf("condition2", new CodeLine("do2"));
+            var @if = new CodeIfElse("condition", new CodeLine("do;"));
+            @if.ElseIf("condition2", new CodeLine("do2;"));
             
             @if.Build(_codeOutput);
 
@@ -50,8 +50,8 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         [Fact]
         private void Build_Else()
         {
-            var @if = new CodeIfElse("condition", new CodeLine("do"));
-            @if.Else(new CodeLine("do2"));
+            var @if = new CodeIfElse("condition", new CodeLine("do;"));
+            @if.Else(new CodeLine("do2;"));
             
             @if.Build(_codeOutput);
 
@@ -64,7 +64,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         [Fact]
         private void Build_Case()
         {
-            var codeCase = new CodeSwitchCase(new CodeRawString("case1"), new CodeLine("do1"), CodeLoop.Break);
+            var codeCase = new CodeSwitchCase(new CodeRawString("case1"), new CodeLine("do1;"), CodeLoop.Break);
             codeCase.Build(_codeOutput);
 
             var actual = _codeOutput.ToString();
@@ -76,7 +76,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         [Fact]
         private void Build_Default()
         {
-            var codeCase = new CodeSwitchDefault(new CodeLine("do1"), CodeLoop.Break);
+            var codeCase = new CodeSwitchDefault(new CodeLine("do1;"), CodeLoop.Break);
             codeCase.Build(_codeOutput);
 
             var actual = _codeOutput.ToString();
@@ -90,11 +90,11 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         {
             var frag = new CodeFragment(new List<CodeUnit>()
             {
-                new CodeSwitchCase(new CodeRawString("case1"), new CodeLine("do1"), CodeLoop.Break),
-                new CodeSwitchCase(new CodeRawString("case2"), new CodeLine("do2"), CodeLoop.Break),
+                new CodeSwitchCase(new CodeRawString("case1"), new CodeLine("do1;"), CodeLoop.Break),
+                new CodeSwitchCase(new CodeRawString("case2"), new CodeLine("do2;"), CodeLoop.Break),
                 new CodeSwitchCase(new CodeRawString("case3")),
                 new CodeSwitchCase(new CodeRawString("case4")),
-                new CodeSwitchCase(new CodeRawString("case5"), new CodeLine("do5"), CodeLoop.Break)
+                new CodeSwitchCase(new CodeRawString("case5"), new CodeLine("do5;"), CodeLoop.Break)
             });
             
             
@@ -112,11 +112,11 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         {
             var frag = new CodeFragment(new List<CodeUnit>()
             {
-                new CodeSwitchCase(new CodeRawString("case1"), new CodeLine("do1"), CodeLoop.Break),
-                new CodeSwitchCase(new CodeRawString("case2"), new CodeLine("do2"), CodeLoop.Break),
+                new CodeSwitchCase(new CodeRawString("case1"), new CodeLine("do1;"), CodeLoop.Break),
+                new CodeSwitchCase(new CodeRawString("case2"), new CodeLine("do2;"), CodeLoop.Break),
                 new CodeSwitchCase(new CodeRawString("case3")),
                 new CodeSwitchCase(new CodeRawString("case4")),
-                new CodeSwitchCase(new CodeRawString("case5"), new CodeLine("do5"), CodeLoop.Break)
+                new CodeSwitchCase(new CodeRawString("case5"), new CodeLine("do5;"), CodeLoop.Break)
             })
             {
                 Level = 2
@@ -148,10 +148,10 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
         {
             var switchCode = new CodeSwitch("variable");
 
-            switchCode.Default(new CodeSwitchDefault(new CodeLine("doDefault"), CodeLoop.Break))
-                .Case(new CodeSwitchCase("case1", new CodeLine("do1"), CodeLoop.Break))
+            switchCode.Default(new CodeSwitchDefault(new CodeLine("doDefault;"), CodeLoop.Break))
+                .Case(new CodeSwitchCase("case1", new CodeLine("do1;"), CodeLoop.Break))
                 .Case(new CodeSwitchCase("case2"))
-                .Case(new CodeSwitchCase("case3", new CodeLine("do3"), CodeLoop.Break));
+                .Case(new CodeSwitchCase("case3", new CodeLine("do3;"), CodeLoop.Break));
             
             switchCode.Build(_codeOutput);
             
@@ -176,10 +176,10 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
             frag.AddUnit(switchCode);
 
             switchCode
-                .Case(new CodeSwitchCase("case1", new CodeLine("do1"), CodeLoop.Break))
+                .Case(new CodeSwitchCase("case1", new CodeLine("do1;"), CodeLoop.Break))
                 .Case(new CodeSwitchCase("case2"))
-                .Case(new CodeSwitchCase("case3", new CodeLine("do3"), CodeLoop.Break))
-                .Default(new CodeSwitchDefault(new CodeLine("doDefault"), CodeLoop.Break));
+                .Case(new CodeSwitchCase("case3", new CodeLine("do3;"), CodeLoop.Break))
+                .Default(new CodeSwitchDefault(new CodeLine("doDefault;"), CodeLoop.Break));
             
             switchCode.Build(_codeOutput);
             
@@ -199,10 +199,10 @@ namespace CodeAgen.Tests.CodeGenerationTests.Method
                 Level = 1
             };
 
-            var @if = new CodeIfElse("condition1", new CodeLine("do1"));
-            @if.ElseIf("condition2", new CodeLine("do2"));
-            @if.ElseIf("condition3", new CodeLine("do3"));
-            @if.Else(new CodeLine("do2"));
+            var @if = new CodeIfElse("condition1", new CodeLine("do1;"));
+            @if.ElseIf("condition2", new CodeLine("do2;"));
+            @if.ElseIf("condition3", new CodeLine("do3;"));
+            @if.Else(new CodeLine("do2;"));
 
             codeFrag.AddUnit(@if);
             codeFrag.Build(_codeOutput);
