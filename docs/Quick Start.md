@@ -100,7 +100,7 @@ code.Field(new CodeField("float", "_index", "5f", CodeAccessModifier.Private, tr
 ---
 Тем не менее, существует альтернативный вариант осуществления того же действия:
 ```c#
-code.AddUnit(new CodeLine("private readonly float _index;"));
+code.AddUnit(new CodeLine("private readonly float _index = 5f;"));
 code.AddUnit(new CodeLine("private readonly float _name;"));
 ```
 
