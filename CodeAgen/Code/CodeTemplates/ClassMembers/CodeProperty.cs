@@ -15,28 +15,28 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         
         private readonly CodeName _name;
         private readonly CodeType _type;
-        private readonly CodeAccessModifier _accessModifier;
+        private readonly CodeAccessModifier _access;
 
         private bool _hasGetter;
         private bool _hasSetter;
 
         public CodeProperty(
             CodeNameVar name, CodeType type,
-            CodeAccessModifier accessModifier = null
+            CodeAccessModifier access = null
             )
         {
             _name = name;
             _type = type;
 
-            if (accessModifier == null)
+            if (access == null)
             {
-                accessModifier = CodeAccessModifier.Public;
+                access = CodeAccessModifier.Public;
             }
             
-            _accessModifier = accessModifier;
+            _access = access;
         }
 
-        public void AddGetter(CodeTabbable code = null, CodeAccessModifier accessModifier = null)
+        public void AddGetter(CodeTabbable code = null, CodeAccessModifier access = null)
         {
             if (_hasGetter)
             {
@@ -45,16 +45,16 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
 
             if (code == null)
             {
-                AddAuto("get", accessModifier);
+                AddAuto("get", access);
             }
             else
             {
-                AddBlock(code, "get", accessModifier);
+                AddBlock(code, "get", access);
                 _hasGetter = true;
             }
         }
 
-        public void AddSetter(CodeTabbable code = null, CodeAccessModifier accessModifier = null)
+        public void AddSetter(CodeTabbable code = null, CodeAccessModifier access = null)
         {
             if (_hasSetter)
             {
@@ -63,11 +63,11 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             
             if (code == null)
             {
-                AddAuto("set", accessModifier);
+                AddAuto("set", access);
             }
             else
             {
-                AddBlock(code, "set", accessModifier);
+                AddBlock(code, "set", access);
                 _hasSetter = true;
             }
         }
@@ -97,7 +97,7 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         {
             output.SetTab(Level);
             
-            output.Write(_accessModifier);
+            output.Write(_access);
             output.Write(CodeMarkups.Space);
             _type.Build(output);
             output.Write(CodeMarkups.Space);
@@ -106,12 +106,12 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
             base.OnBuild(output);
         }
 
-        private void AddAuto(string label, CodeAccessModifier accessModifier)
+        private void AddAuto(string label, CodeAccessModifier access)
         {
             var header = new CodeLine();
 
-            header.AddUnit(accessModifier != null
-                ? new CodeRawString($"{accessModifier} {label}")
+            header.AddUnit(access != null
+                ? new CodeRawString($"{access} {label}")
                 : new CodeRawString(label));
 
             AddUnit(header);

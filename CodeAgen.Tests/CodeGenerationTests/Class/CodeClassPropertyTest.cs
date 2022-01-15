@@ -85,7 +85,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
             var property = new CodeProperty("Example", CodeType.Get("float"));
             
             property.AddGetter();
-            property.AddSetter(accessModifier: CodeAccessModifier.Private);
+            property.AddSetter(access: CodeAccessModifier.Private);
             
             property.Build(_codeOutput);
 
@@ -101,7 +101,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         {
             var property = new CodeProperty("Example", CodeType.Get("float"));
             
-            property.AddGetter(accessModifier: CodeAccessModifier.Private);
+            property.AddGetter(access: CodeAccessModifier.Private);
             property.AddSetter();
             
             property.Build(_codeOutput);

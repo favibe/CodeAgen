@@ -17,7 +17,7 @@ namespace CodeAgen.Code.CodeTemplates
     {
         // Fields
 
-        private readonly CodeAccessModifier _accessModifier = CodeAccessModifier.Private;
+        private readonly CodeAccessModifier _access;
         private readonly CodeComment _comment;
 
         // Properties
@@ -31,15 +31,15 @@ namespace CodeAgen.Code.CodeTemplates
         
         // Methods
 
-        public CodeClass(CodeNameVar name, CodeAccessModifier accessModifier = null, CodeComment comment = null)
+        public CodeClass(CodeNameVar name, CodeAccessModifier access = null, CodeComment comment = null)
         {
-            if (accessModifier == null)
+            if (access == null)
             {
-                accessModifier = CodeAccessModifier.Public;
+                access = CodeAccessModifier.Public;
             }
             
             Name = name;
-            _accessModifier = accessModifier;
+            _access = access;
             _comment = comment;
         }
 
@@ -79,7 +79,7 @@ namespace CodeAgen.Code.CodeTemplates
                 WriteComment(output);
             }
 
-            output.Write(_accessModifier);
+            output.Write(_access);
             output.Write(CodeMarkups.Space);
 
             if (IsAbstract)

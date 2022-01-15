@@ -30,7 +30,7 @@ namespace CodeAgen.Tests.CodeGenerationTests.Class
         [Fact]
         public void Creating_Public()
         {
-            var field = new CodeField(CodeType.Get("float"), "Field", accessModifier: CodeAccessModifier.Public);
+            var field = new CodeField(CodeType.Get("float"), "Field", access: CodeAccessModifier.Public);
             
             field.Build(_codeOutput);
             

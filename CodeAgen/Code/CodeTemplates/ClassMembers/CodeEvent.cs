@@ -12,26 +12,26 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
     {
         private readonly CodeName _name;
         private readonly CodeType _type;
-        private readonly CodeAccessModifier _accessModifier;
+        private readonly CodeAccessModifier _access;
         
         public byte Order => 2;
 
-        public CodeEvent(CodeNameVar name, CodeType type, CodeAccessModifier accessModifier = null)
+        public CodeEvent(CodeNameVar name, CodeType type, CodeAccessModifier access = null)
         {
             _name = name;
             _type = type;
 
-            if (accessModifier == null)
+            if (access == null)
             {
-                accessModifier = CodeAccessModifier.Public;
+                access = CodeAccessModifier.Public;
             }
             
-            _accessModifier = accessModifier;
+            _access = access;
         }
         protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
-            output.Write(_accessModifier);
+            output.Write(_access);
             output.Write(CodeMarkups.Space);
             output.Write(CodeKeywords.Event);
             output.Write(CodeMarkups.Space);

@@ -15,27 +15,27 @@ namespace CodeAgen.Code.CodeTemplates.ClassMembers
         private readonly CodeType _type;
         private readonly CodeName _name;
         private readonly string _value;
-        private readonly CodeAccessModifier _accessModifier;
+        private readonly CodeAccessModifier _access;
         private readonly bool _isReadonly;
 
-        public CodeField(CodeType type, CodeNameVar name, string value = null, CodeAccessModifier accessModifier = null, bool isReadonly = false)
+        public CodeField(CodeType type, CodeNameVar name, string value = null, CodeAccessModifier access = null, bool isReadonly = false)
         {
-            if (accessModifier == null)
+            if (access == null)
             {
-                accessModifier = CodeAccessModifier.Private;
+                access = CodeAccessModifier.Private;
             }
 
             _type = type;
             _name = name;
             _value = value;
-            _accessModifier = accessModifier;
+            _access = access;
             _isReadonly = isReadonly;
         }
         
         protected override void OnBuild(ICodeOutput output)
         {
             output.SetTab(Level);
-            output.Write(_accessModifier);
+            output.Write(_access);
             output.Write(CodeMarkups.Space);
             
             if (_isReadonly)
