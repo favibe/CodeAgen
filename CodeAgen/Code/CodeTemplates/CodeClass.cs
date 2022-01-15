@@ -44,7 +44,7 @@ namespace CodeAgen.Code.CodeTemplates
         }
 
         public CodeClass Method(CodeMethod method) => AddAndReturn(method);
-        public CodeClass Fields(CodeField field) => AddAndReturn(field);
+        public CodeClass Field(CodeField field) => AddAndReturn(field);
         public CodeClass Property(CodeProperty property) => AddAndReturn(property);
         public CodeClass Constant(CodeConst constant) => AddAndReturn(constant);
         public CodeClass Event(CodeEvent @event) => AddAndReturn(@event);
