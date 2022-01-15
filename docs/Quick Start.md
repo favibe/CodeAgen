@@ -90,16 +90,34 @@ internal class ExampleClass
 
 После генерации пустого класса пиступим к его начинке. Для примера, заведем пару полей:
 ```c#
-code.Field(new CodeField("float", "_index", accessModifier: CodeAccessModifier.Private,
-        isReadonly: true))
-    .Field(new CodeField("string", "_name", accessModifier: CodeAccessModifier.Private,
-        isReadonly: true));
+code.Field(new CodeField("float", "_index", "5f", CodeAccessModifier.Private, true))
+    .Field(new CodeField("string", "_name", null, CodeAccessModifier.Private, true));
 ```
+
+Параметры конструктора поля по порядку:
+
+* Параметр ```type``` - тип поля, в данном случае ```"float"``` и `"string"`
+* Параметр ```name``` - имя поля, в данном случае ```"_index"``` и `"_name"`
+* Параметр ```value``` - стандартное значение поля, в данном случае ```"5f"``` и `null`
+* Параметр ```access``` - флаг, чтобы отметить поле как readonly, в данном случае `true`
+
 Несмотря на то, что такой код выглядит громоздким и нагруженным, в результате мы получим лучшую производительность при генерации за счёт внутренних оптимизаций и преимущества валидации.
 
+---
 Тем не менее, существует альтернативный вариант осуществления того же действия:
 ```c#
 code.AddUnit(new CodeLine("private readonly float _index"));
 code.AddUnit(new CodeLine("private readonly float _name"));
 ```
-После добавления любого из перечисленных выше действий
+> Также обратите внимание, что при использовании `CodeLine` мы не ставим в конце строк `;`, компилятор сделает это автоматически. Чтобы отключить такое поведение, используйте метод `.SetSemicolon(false)`
+---
+После добавления полей полученный код будет иметь вид:
+
+```c#
+// Мой первый класс!
+internal class ExampleClass
+{
+	private readonly float _index = 5f;
+	private readonly string _name;
+}
+```

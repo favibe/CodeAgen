@@ -17,13 +17,10 @@ namespace CodeAgen.Tests
             ICodeOutput output = new StandardCodeOutput();
             
             var code = new CodeClass("ExampleClass", CodeAccessModifier.Internal, new CodeComment("Мой первый класс!"));
-            //
-            //code.Field(new CodeField("float", "_index", accessModifier: CodeAccessModifier.Private,
-            //        isReadonly: true))
-            //    .Field(new CodeField("string", "_name", accessModifier: CodeAccessModifier.Private,
-            //        isReadonly: true));
-            //
-
+            
+            code.Field(new CodeField("float", "_index", "5f", CodeAccessModifier.Private, true))
+                .Field(new CodeField("string", "_name", null, CodeAccessModifier.Private, true));
+            
             code.AddUnit(new CodeLine("private readonly float _index"));
             code.AddUnit(new CodeLine("private readonly float _name"));
             
