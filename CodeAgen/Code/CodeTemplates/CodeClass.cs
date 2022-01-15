@@ -49,6 +49,7 @@ namespace CodeAgen.Code.CodeTemplates
         public CodeClass Constant(CodeConst constant) => AddAndReturn(constant);
         public CodeClass Event(CodeEvent @event) => AddAndReturn(@event);
         public CodeClass Constructor(CodeConstructor constructor) => AddAndReturn(constructor);
+        public CodeClass Space() => AddAndReturn(CodeLine.Empty);
 
         [Obsolete("Use special methods instead")]
         public override CodeBracedBlock AddUnit(CodeTabbable unit)

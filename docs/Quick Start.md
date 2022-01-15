@@ -95,14 +95,6 @@ internal class ExampleClass
 code.Field(new CodeField("float", "_index", "5f", CodeAccessModifier.Private, true))
     .Field(new CodeField("string", "_name", null, CodeAccessModifier.Private, true));
 ```
-
-Параметры конструктора поля по порядку:
-
-* Параметр ```type``` - тип поля, в данном случае ```"float"``` и `"string"`
-* Параметр ```name``` - имя поля, в данном случае ```"_index"``` и `"_name"`
-* Параметр ```value``` - стандартное значение поля, в данном случае ```"5f"``` и `null`
-* Параметр ```access``` - флаг, чтобы отметить поле как readonly, в данном случае `true`
-
 Несмотря на то, что такой код выглядит громоздким и нагруженным, в результате мы получим лучшую производительность при генерации за счёт внутренних оптимизаций и преимущества валидации.
 
 ---
@@ -128,14 +120,325 @@ internal class ExampleClass
 Теперь добавим конструктор:
 
 ```c#
-code.Constructor(CodeConstructor.CreateFor(code, CodeAccessModifier.Public)
-    .AddParameter(new CodeMethodParameter("float", "_index"))
-    .AddParameter(new CodeMethodParameter("string", "_name"))
+code.Constructor(CodeConstructor.CreateFor(code, CodeAccessModifier.Internal)
+    .AddParameter(new CodeMethodParameter("float", "index"))
+    .AddParameter(new CodeMethodParameter("string", "name"))
 );
 ```
 
 Результат выполнения:
 
 ```c#
+// Мой первый класс!
+internal class ExampleClass
+{
+	private readonly float _index = 5f;
+	private readonly string _name;
+	internal ExampleClass(float index, string name)
+	{
+	}
+}
+```
 
+Здесь определенно пригодился бы пропуск строки. Между добавлением полей и конструктора добавим новую строку:
+```c#
+code.Space();
+```
+Результат:
+
+```c#
+// Мой первый класс!
+internal class ExampleClass
+{
+	private readonly float _index = 5f;
+	private readonly string _name;
+	
+	internal ExampleClass(float index, string name)
+	{
+	}
+}
+```
+Теперь не помешало бы добавить в конструктор пару строк кода. Немного изменим приведенный выше код для добавления конструктора:
+
+```c#
+var constructor = CodeConstructor.CreateFor(code, CodeAccessModifier.Internal)
+    .AddParameter(new CodeMethodParameter("float", "index"))
+    .AddParameter(new CodeMethodParameter("string", "name"));
+
+constructor
+    .AddUnit(new CodeLine("_index = index;"))
+    .AddUnit(new CodeLine("_name = name;"));
+
+code.Constructor(constructor);
+```
+Результат:
+```c#
+// Мой первый класс!
+internal class ExampleClass
+{
+	private readonly float _index = 5f;
+	private readonly string _name;
+	
+	internal ExampleClass(float index, string name)
+	{
+		_index = index;
+		_name = name;
+	}
+}
+```
+#### Методы
+
+Теперь создадим два простых метода и добавим их в класс:
+
+```c#
+var methodA = new CodeMethod("MethodA", CodeType.Void, CodeAccessModifier.Internal);
+var methodB = new CodeMethod("MethodB", CodeType.Void, CodeAccessModifier.Internal);
+
+code.Space().Method(methodA)
+    .Space().Method(methodB);
+```
+
+В результате получим:
+
+```c#
+// Мой первый класс!
+internal class ExampleClass
+{
+	private readonly float _index = 5f;
+	private readonly string _name;
+	
+	internal ExampleClass(float index, string name)
+	{
+		_index = index;
+		_name = name;
+	}
+	
+	internal void MethodA()
+	{
+	}
+	
+	internal void MethodB()
+	{
+	}
+}
+```
+
+Теперь создадим код, одинаковый для обоих методов. Для этого используем `CodeFragment` и `CodeLoopWhile`
+
+```c#
+var commonCode = new CodeFragment();
+
+commonCode
+    .AddUnit(new CodeLine("var i = 0;"))
+    .AddUnit(CodeLine.Empty)
+    .AddUnit(new CodeLoopWhile("i < 10")
+        .AddUnit(new CodeLine("Console.WriteLine(i);"))
+        .AddUnit(new CodeLine("i++;"))
+    );
+
+methodA.AddUnit(commonCode);
+methodB.AddUnit(commonCode);
+```
+
+Результат:
+
+```c#
+// Мой первый класс!
+internal class ExampleClass
+{
+	private readonly float _index = 5f;
+	private readonly string _name;
+	
+	internal ExampleClass(float index, string name)
+	{
+		_index = index;
+		_name = name;
+	}
+	
+	internal void MethodA()
+	{
+		var i = 0;
+	
+		while(i < 10)
+		{
+			Console.WriteLine(i);
+			i++;
+		}
+	}
+	
+	internal void MethodB()
+	{
+		var i = 0;
+	
+		while(i < 10)
+		{
+			Console.WriteLine(i);
+			i++;
+		}
+	}
+}
+```
+Но, допустим, что нам нужно, чтобы в методе `MethodA` фрагмент `commonCode` выполнялся только при выполнении условия. Немного изменим добавление фрагмента в метод:
+```c#
+methodA.AddUnit(new CodeIfElse("_index == 0", commonCode));
+```
+
+Теперь `MethodA` будет выглядеть так:
+```c#
+internal void MethodA()
+{
+    if (_index == 0)
+    {
+        var i = 0;
+
+        while(i < 10)
+        {
+            Console.WriteLine(i);
+            i++;
+        }
+    }
+}
+```
+
+Также, допустим, что я хочу, чтобы `MethodA` возвращал `float`. Изменим его объявление и добавление в него кода:
+
+```c#
+var methodA = new CodeMethod("MethodA", "float", CodeAccessModifier.Internal);
+```
+
+```c#
+methodA
+    .AddUnit(new CodeIfElse("_index == 0", 
+        new CodeFragment()
+            .AddUnit(commonCode)
+            .AddUnit(CodeLine.Empty)
+            .AddUnit(CodeMethod.Return("3.5f * 2"))
+        ))
+    .AddUnit(CodeLine.Empty)
+    .AddUnit(CodeMethod.Return("12f"));
+```
+Результат:
+
+```c#
+internal float MethodA()
+{
+    if (_index == 0)
+    {
+        var i = 0;
+    
+        while(i < 10)
+        {
+            Console.WriteLine(i);
+            i++;
+        }
+    
+        return 3.5f * 2;
+    }
+    
+    return 12f;
+}
+```
+### Итоговый результат:
+
+После проведенных процедур наш код для генерации теперь выглядит так:
+
+```c#
+ICodeOutput output = new StandardCodeOutput();
+
+var code = new CodeClass("ExampleClass", CodeAccessModifier.Internal, new CodeComment("Мой первый класс!"));
+
+code.Field(new CodeField("float", "_index", "5f", CodeAccessModifier.Private, true))
+    .Field(new CodeField("string", "_name", null, CodeAccessModifier.Private, true));
+
+code.Space();
+
+var constructor = CodeConstructor.CreateFor(code, CodeAccessModifier.Internal)
+    .AddParameter(new CodeMethodParameter("float", "index"))
+    .AddParameter(new CodeMethodParameter("string", "name"));
+
+constructor
+    .AddUnit(new CodeLine("_index = index;"))
+    .AddUnit(new CodeLine("_name = name;"));
+
+code.Constructor(constructor);
+
+var methodA = new CodeMethod("MethodA", "float", CodeAccessModifier.Internal);
+var methodB = new CodeMethod("MethodB", CodeType.Void, CodeAccessModifier.Internal);
+
+code.Space().Method(methodA)
+    .Space().Method(methodB);
+
+var commonCode = new CodeFragment();
+
+commonCode
+    .AddUnit(new CodeLine("var i = 0;"))
+    .AddUnit(CodeLine.Empty)
+    .AddUnit(new CodeLoopWhile("i < 10")
+        .AddUnit(new CodeLine("Console.WriteLine(i);"))
+        .AddUnit(new CodeLine("i++;"))
+    );
+
+methodA
+    .AddUnit(new CodeIfElse("_index == 0", 
+        new CodeFragment()
+            .AddUnit(commonCode)
+            .AddUnit(CodeLine.Empty)
+            .AddUnit(CodeMethod.Return("3.5f * 2"))
+        ))
+    .AddUnit(CodeLine.Empty)
+    .AddUnit(CodeMethod.Return("12f"));
+
+methodB.AddUnit(commonCode);
+
+code.Build(output);
+
+var result = output.ToString();
+```
+
+Хоть он и может показаться большим по сравнению с результатом, мы подразумеваем, что эти инструменты не будут использоваться для ручного написания кода, и скорее предназначены для реализации генерации кода в рантайме.
+
+Код, полученный в результате:
+
+```c#
+// Мой первый класс!
+internal class ExampleClass
+{
+	private readonly float _index = 5f;
+	private readonly string _name;
+	
+	internal ExampleClass(float index, string name)
+	{
+		_index = index;
+		_name = name;
+	}
+	
+	internal float MethodA()
+	{
+		if (_index == 0)
+		{
+			var i = 0;
+		
+			while(i < 10)
+			{
+				Console.WriteLine(i);
+				i++;
+			}
+		
+			return 3.5f * 2;
+		}
+		
+		return 12f;
+	}
+	
+	internal void MethodB()
+	{
+		var i = 0;
+	
+		while(i < 10)
+		{
+			Console.WriteLine(i);
+			i++;
+		}
+	}
+}
 ```

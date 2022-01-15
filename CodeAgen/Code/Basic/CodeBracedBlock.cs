@@ -19,8 +19,17 @@ namespace CodeAgen.Code.Basic
         public virtual CodeBracedBlock AddUnit(CodeTabbable unit)
         {
             _units.Add(unit);
-            unit.Parent = this;
             return this;
+        }
+
+        protected override void PreBuild()
+        {
+            foreach (var unit in _units)
+            {
+                unit.Parent = this;
+            }
+            
+            base.PreBuild();
         }
 
         protected override void OnBuild(ICodeOutput output)

@@ -9,6 +9,8 @@ namespace CodeAgen.Code.Basic
     /// </summary>
     public class CodeLine : CodeTabbable
     {
+        public static readonly CodeLine Empty = new CodeLine();
+        
         private readonly List<CodeUnit> _units = new List<CodeUnit>();
         private bool _semicolonEnabled;
 
