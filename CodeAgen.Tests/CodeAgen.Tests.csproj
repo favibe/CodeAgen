@@ -51,25 +51,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="CodeGenerationTests\Class\CodeClassConstructorTests.cs" />
-        <Compile Include="CodeGenerationTests\Class\CodeClassEventTests.cs" />
-        <Compile Include="CodeGenerationTests\Class\CodeClassPropertyTest.cs" />
-        <Compile Include="CodeGenerationTests\Class\CodeClassTests.cs" />
-        <Compile Include="CodeGenerationTests\Class\CodeFieldTest.cs" />
-        <Compile Include="CodeGenerationTests\Class\CodeMethodTest.cs" />
-        <Compile Include="CodeGenerationTests\CodeBracedBlockTests.cs" />
-        <Compile Include="CodeGenerationTests\CodeConstantsTests.cs" />
-        <Compile Include="CodeGenerationTests\CodeFragmentTests.cs" />
-        <Compile Include="CodeGenerationTests\CodeLineTests.cs" />
-        <Compile Include="CodeGenerationTests\CodeNamespaceTests.cs" />
-        <Compile Include="CodeGenerationTests\Method\CodeConditionChainTests.cs" />
-        <Compile Include="CodeGenerationTests\Method\CodeEventsTests.cs" />
-        <Compile Include="CodeGenerationTests\Method\CodeBranchingTests.cs" />
-        <Compile Include="CodeGenerationTests\Method\CodeLoopsTemplatesTesting.cs" />
-        <Compile Include="OutputsTests\StandardOutputTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Settings.cs" />
-        <Compile Include="TutorialSandbox.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\CodeAgen\CodeAgen.csproj">
