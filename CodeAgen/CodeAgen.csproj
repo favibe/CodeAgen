@@ -38,6 +38,10 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Concrete\CodeTypeProvider.cs" />
+        <Compile Include="Exceptions\CodeTypeException.cs" />
+        <Compile Include="Interfaces\ICodeTypeProvider.cs" />
+        <Compile Include="Primitives\CodeType.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
