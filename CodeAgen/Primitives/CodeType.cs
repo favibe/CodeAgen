@@ -1,10 +1,15 @@
-﻿namespace CodeAgen.Primitives
+﻿using System.Text.RegularExpressions;
+using CodeAgen.Exceptions;
+
+namespace CodeAgen.Primitives
 {
     /// <summary>
     /// Base struct to store code type
     /// </summary>
     public readonly struct CodeType
     {
+        private static readonly Regex SpecialCharactersRegex = new Regex("^(?:(?:[A-z][A-z0-9 ]*\\.?)*)[^\\.]$");
+        
         /// <summary>
         /// Full type name, including namespace
         /// </summary>
@@ -20,6 +25,11 @@
         
         public CodeType(string fullName)
         {
+            if (!SpecialCharactersRegex.IsMatch(fullName))
+            {
+                throw new CodeTypeException($"Bad name format for type: {fullName}");
+            }
+            
             var lastDotIndex = fullName.LastIndexOf('.');
 
             FullName = fullName;

@@ -39,20 +39,5 @@ namespace CodeAgen.Tests.Typing
                 Create_SingleType("Namespace.Type1", "Namespace", "Type1");
             });
         }
-        
-        [Theory]
-        [InlineData("1Namespace.Format")]
-        [InlineData("Namespace.1Format")]
-        [InlineData("N$amespace.Format")]
-        [InlineData("Namesp-ace.Format")]
-        [InlineData(".Namespace.Format")]
-        [InlineData("Namespace.Format.")]
-        public void Create_BadFormat(string input)
-        {
-            Assert.Throws(typeof(CodeTypeException), () =>
-            {
-                _provider.CreateType(input);
-            });
-        }
     }
 }

@@ -10,8 +10,6 @@ namespace CodeAgen.Concrete
 {
     public class CodeTypeProvider : ICodeTypeProvider
     {
-        private static readonly Regex SpecialCharactersRegex = new Regex("^(?:(?:[A-z][A-z0-9 ]*\\.?)*)[^\\.]$");
-        
         private readonly List<CodeType> _types = new List<CodeType>();
         
         public IReadOnlyCollection<CodeType> Types => _types;
@@ -21,11 +19,6 @@ namespace CodeAgen.Concrete
             if (_types.Any(x => x.FullName == fullName))
             {
                 throw new CodeTypeException($"Type with full name {fullName} already exist");
-            }
-            
-            if (!SpecialCharactersRegex.IsMatch(fullName))
-            {
-                throw new CodeTypeException($"Bad name format for type: {fullName}");
             }
 
             var type = new CodeType(fullName);

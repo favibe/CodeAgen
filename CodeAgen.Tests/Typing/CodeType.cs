@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using CodeAgen.Exceptions;
+using Xunit;
 
 namespace CodeAgen.Tests.Typing
 {
@@ -44,6 +45,21 @@ namespace CodeAgen.Tests.Typing
             var type = new Primitives.CodeType("Namespace.Name");
             
             Assert.Equal("Name", type.ShortName);
+        }
+        
+        [Theory]
+        [InlineData("1Namespace.Format")]
+        [InlineData("Namespace.1Format")]
+        [InlineData("N$amespace.Format")]
+        [InlineData("Namesp-ace.Format")]
+        [InlineData(".Namespace.Format")]
+        [InlineData("Namespace.Format.")]
+        public void Create_BadFormat(string input)
+        {
+            Assert.Throws(typeof(CodeTypeException), () =>
+            {
+                new Primitives.CodeType(input);
+            });
         }
     }
 }
