@@ -15,13 +15,13 @@ namespace CodeAgen.Concrete
         private readonly List<CodeType> _types = new List<CodeType>();
         
         public IReadOnlyCollection<CodeType> Types => _types;
+        
         public CodeType CreateType(string fullName)
         {
             if (_types.Any(x => x.FullName == fullName))
             {
                 throw new CodeTypeException($"Type with full name {fullName} already exist");
             }
-
             
             if (!SpecialCharactersRegex.IsMatch(fullName))
             {

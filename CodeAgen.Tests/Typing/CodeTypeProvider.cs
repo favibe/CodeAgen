@@ -1,4 +1,5 @@
 ﻿using CodeAgen.Exceptions;
+using CodeAgen.Interfaces;
 using Xunit;
 using Provider = CodeAgen.Concrete.CodeTypeProvider;
 
@@ -6,7 +7,7 @@ namespace CodeAgen.Tests.Typing
 {
     public class CodeTypeProvider
     {
-        private readonly Provider _provider = new Provider();
+        private readonly ICodeTypeProvider _provider = new Provider();
 
         [Theory]
         [InlineData("ExampleSpace.TypeA", "ExampleSpace", "TypeA")]
