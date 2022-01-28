@@ -8,7 +8,7 @@ namespace CodeAgen.Primitives
     /// </summary>
     public readonly struct CodeType
     {
-        private static readonly Regex SpecialCharactersRegex = new Regex("^(?:(?:[A-z][A-z0-9 ]*\\.?)*)[^\\.]$");
+        private static readonly Regex NameFormat = new Regex("^(?:(?:[A-z][A-z0-9 ]*\\.?)*)[^\\.]$");
         
         /// <summary>
         /// Full type name, including namespace
@@ -25,7 +25,7 @@ namespace CodeAgen.Primitives
         
         public CodeType(string fullName)
         {
-            if (!SpecialCharactersRegex.IsMatch(fullName))
+            if (!NameFormat.IsMatch(fullName))
             {
                 throw new CodeTypeException($"Bad name format for type: {fullName}");
             }
