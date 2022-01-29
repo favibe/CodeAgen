@@ -7,10 +7,5 @@ namespace CodeAgen.CodeEntities.CodeValueTypes
         public CodeBoolean(bool value) : base(value)
         {
         }
-
-        public override void OnBuild(ICodeBuilder builder)
-        {
-            builder.Append(Value.ToString());
-        }
     }
 }

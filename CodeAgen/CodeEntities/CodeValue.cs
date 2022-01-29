@@ -11,10 +11,13 @@ namespace CodeAgen.CodeEntities
             Value = value;
         }
 
-        public void PreBuild() {}
+        public virtual void PreBuild() {}
 
-        public abstract void OnBuild(ICodeBuilder builder);
+        public virtual void OnBuild(ICodeBuilder builder)
+        {
+            builder.Append(Value.ToString());
+        }
 
-        public void PostBuild() {}
+        public virtual void PostBuild() {}
     }
 }
