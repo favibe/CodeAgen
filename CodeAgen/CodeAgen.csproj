@@ -40,9 +40,9 @@
     <ItemGroup>
         <Compile Include="CodeEntities\CodeFragment.cs" />
         <Compile Include="CodeEntities\CodeValue.cs" />
-        <Compile Include="CodeEntities\CodeValueTypes\CodeValueBoolean.cs" />
-        <Compile Include="CodeEntities\CodeValueTypes\CodeValueFloat.cs" />
-        <Compile Include="CodeEntities\CodeValueTypes\CodeValueInt.cs" />
+        <Compile Include="CodeEntities\CodeValueTypes\CodeBoolean.cs" />
+        <Compile Include="CodeEntities\CodeValueTypes\CodeFloat.cs" />
+        <Compile Include="CodeEntities\CodeValueTypes\CodeInt.cs" />
         <Compile Include="Concrete\CodeTypeProvider.cs" />
         <Compile Include="Exceptions\CodeTypeException.cs" />
         <Compile Include="Interfaces\ICode.cs" />

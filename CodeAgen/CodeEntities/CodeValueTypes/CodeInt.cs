@@ -2,9 +2,9 @@
 
 namespace CodeAgen.CodeEntities.CodeValueTypes
 {
-    public sealed class CodeValueBoolean : CodeValue<bool>
+    public sealed class CodeInt : CodeValue<int>
     {
-        public CodeValueBoolean(bool value) : base(value)
+        public CodeInt(int value) : base(value)
         {
         }
 

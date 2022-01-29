@@ -3,9 +3,9 @@ using CodeAgen.Interfaces;
 
 namespace CodeAgen.CodeEntities.CodeValueTypes
 {
-    public sealed class CodeValueFloat : CodeValue<float>
+    public sealed class CodeFloat : CodeValue<float>
     {
-        public CodeValueFloat(float value) : base(value)
+        public CodeFloat(float value) : base(value)
         {
         }
 
