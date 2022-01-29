@@ -72,6 +72,7 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Typing\CodeType.cs" />
         <Compile Include="Typing\CodeTypeProvider.cs" />
+        <Compile Include="Typing\Entities\MockSimpleTypes.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\CodeAgen\CodeAgen.csproj">

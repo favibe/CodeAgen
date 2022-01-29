@@ -44,7 +44,7 @@ namespace CodeAgen.Tests.Typing
         {
             var type = new Primitives.CodeType("Namespace.Name");
             
-            Assert.Equal("Name", type.ShortName);
+            Assert.Equal("Name", type.Name);
         }
         
         [Theory]
