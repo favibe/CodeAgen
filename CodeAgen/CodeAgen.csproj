@@ -38,8 +38,16 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="CodeEntities\CodeFragment.cs" />
+        <Compile Include="CodeEntities\CodeValue.cs" />
+        <Compile Include="CodeEntities\CodeValueTypes\CodeValueBoolean.cs" />
+        <Compile Include="CodeEntities\CodeValueTypes\CodeValueFloat.cs" />
+        <Compile Include="CodeEntities\CodeValueTypes\CodeValueInt.cs" />
         <Compile Include="Concrete\CodeTypeProvider.cs" />
         <Compile Include="Exceptions\CodeTypeException.cs" />
+        <Compile Include="Interfaces\ICode.cs" />
+        <Compile Include="Interfaces\ICodeBuilder.cs" />
+        <Compile Include="Interfaces\ICodeEnvironment.cs" />
         <Compile Include="Interfaces\ICodeTypeProvider.cs" />
         <Compile Include="Primitives\CodeType.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
