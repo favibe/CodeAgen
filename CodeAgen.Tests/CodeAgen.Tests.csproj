@@ -69,6 +69,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Building\CodeBuilder.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Typing\CodeType.cs" />
         <Compile Include="Typing\CodeTypeProvider.cs" />

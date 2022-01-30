@@ -43,6 +43,7 @@
         <Compile Include="CodeEntities\CodeValueTypes\CodeBoolean.cs" />
         <Compile Include="CodeEntities\CodeValueTypes\CodeFloat.cs" />
         <Compile Include="CodeEntities\CodeValueTypes\CodeInt.cs" />
+        <Compile Include="Concrete\CodeBuilder.cs" />
         <Compile Include="Concrete\CodeTypeProvider.cs" />
         <Compile Include="Exceptions\CodeTypeException.cs" />
         <Compile Include="Interfaces\ICode.cs" />

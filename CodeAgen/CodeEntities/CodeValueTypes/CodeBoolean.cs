@@ -1,6 +1,4 @@
-﻿using CodeAgen.Interfaces;
-
-namespace CodeAgen.CodeEntities.CodeValueTypes
+﻿namespace CodeAgen.CodeEntities.CodeValueTypes
 {
     public sealed class CodeBoolean : CodeValue<bool>
     {
